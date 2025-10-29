@@ -189,17 +189,17 @@ const Index = () => {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto px-4">
-            <Button size="lg" className="bg-purple-400 text-white hover:bg-purple-300 hover-scale shadow-lg shadow-purple-500/50" onClick={() => scrollToSection('quiz')}>
-              <Icon name="Palette" className="mr-2" /> Стикеры
+            <Button size="lg" className="bg-purple-400 text-white hover:bg-purple-300 hover-scale shadow-lg shadow-purple-500/50 font-bold text-base" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Palette" className="mr-2" /> Брендовые стикеры
             </Button>
-            <Button size="lg" className="bg-purple-400 text-white hover:bg-purple-300 hover-scale shadow-lg shadow-purple-500/50" onClick={() => scrollToSection('quiz')}>
-              <Icon name="Camera" className="mr-2" /> Нейрофото
+            <Button size="lg" className="bg-purple-400 text-white hover:bg-purple-300 hover-scale shadow-lg shadow-purple-500/50 font-bold text-base" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Camera" className="mr-2" /> AI-фотосессии
             </Button>
-            <Button size="lg" variant="outline" className="border-purple-400 text-purple-300 hover:bg-purple-900/30 hover-scale" onClick={() => scrollToSection('quiz')}>
-              <Icon name="Briefcase" className="mr-2" /> Полный пакет
+            <Button size="lg" variant="outline" className="border-purple-400 text-purple-300 hover:bg-purple-900/30 hover-scale font-bold text-base" onClick={() => scrollToSection('calculator')}>
+              <Icon name="Calculator" className="mr-2" /> Рассчитать стоимость
             </Button>
-            <Button size="lg" variant="outline" className="border-purple-400 text-purple-300 hover:bg-purple-900/30 hover-scale" onClick={() => scrollToSection('quiz')}>
-              <Icon name="Eye" className="mr-2" /> Покажи всё
+            <Button size="lg" variant="outline" className="border-purple-400 text-purple-300 hover:bg-purple-900/30 hover-scale font-bold text-base" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Sparkles" className="mr-2" /> Примеры работ
             </Button>
           </div>
         </div>
