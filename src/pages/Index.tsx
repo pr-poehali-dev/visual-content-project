@@ -106,27 +106,33 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
         <div className="container mx-auto px-4 text-center z-10 animate-fade-in">
-          <div className="text-8xl mb-6 animate-bounce">😼</div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">Привет! Я Визи 👋</h1>
+          <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-purple-400 shadow-2xl shadow-purple-500/50 vizi-float">
+            <img 
+              src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
+              alt="Визи"
+              className="w-full h-full object-cover scale-110 vizi-blink"
+            />
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">Привет! Я Визи 🐆</h1>
           <p className="text-xl md:text-2xl mb-12 opacity-95 max-w-2xl mx-auto">
             Помогаю брендам создавать контент, который запоминают и используют!
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 hover-scale" onClick={() => scrollToSection('quiz')}>
+            <Button size="lg" className="bg-purple-400 text-white hover:bg-purple-300 hover-scale shadow-lg shadow-purple-500/50" onClick={() => scrollToSection('quiz')}>
               <Icon name="Palette" className="mr-2" /> Стикеры
             </Button>
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 hover-scale" onClick={() => scrollToSection('quiz')}>
+            <Button size="lg" className="bg-purple-400 text-white hover:bg-purple-300 hover-scale shadow-lg shadow-purple-500/50" onClick={() => scrollToSection('quiz')}>
               <Icon name="Camera" className="mr-2" /> Нейрофото
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20 hover-scale" onClick={() => scrollToSection('quiz')}>
+            <Button size="lg" variant="outline" className="border-purple-400 text-purple-300 hover:bg-purple-900/30 hover-scale" onClick={() => scrollToSection('quiz')}>
               <Icon name="Briefcase" className="mr-2" /> Полный пакет
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20 hover-scale" onClick={() => scrollToSection('quiz')}>
+            <Button size="lg" variant="outline" className="border-purple-400 text-purple-300 hover:bg-purple-900/30 hover-scale" onClick={() => scrollToSection('quiz')}>
               <Icon name="Eye" className="mr-2" /> Покажи всё
             </Button>
           </div>
@@ -304,7 +310,7 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
+      <section id="reviews" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Что говорят клиенты ⭐</h2>
           
@@ -478,7 +484,7 @@ const Index = () => {
         {chatOpen && (
           <Card className="absolute bottom-24 left-0 w-80 shadow-2xl animate-scale-in">
             <CardContent className="p-0">
-              <div className="bg-gradient-to-r from-primary to-purple-600 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
+              <div className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-800 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white overflow-hidden">
                   <img 
                     src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
