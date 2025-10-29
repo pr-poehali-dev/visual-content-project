@@ -111,12 +111,12 @@ const Index = () => {
         
         <div className="container mx-auto px-4 text-center z-10 animate-fade-in">
           <div className="text-8xl mb-6 animate-bounce">😼</div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">Привет! Я Визи 👋</h1>
-          <p className="text-xl md:text-2xl mb-12 opacity-95 max-w-2xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 px-4">Привет! Я Визи 👋</h1>
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 opacity-95 max-w-2xl mx-auto px-4">
             Помогаю брендам создавать контент, который запоминают и используют!
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto px-4">
             <Button size="lg" className="bg-purple-400 text-white hover:bg-purple-300 hover-scale shadow-lg shadow-purple-500/50" onClick={() => scrollToSection('quiz')}>
               <Icon name="Palette" className="mr-2" /> Стикеры
             </Button>
@@ -134,8 +134,8 @@ const Index = () => {
       </section>
 
       {/* Quiz Section */}
-      <section id="quiz" className="py-20 container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Давайте найдём ваше идеальное решение 🎯</h2>
+      <section id="quiz" className="py-12 sm:py-20 container mx-auto px-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Давайте найдём ваше идеальное решение 🎯</h2>
         
         {quizStep >= 0 && quizStep < quizQuestions.length ? (
           <Card className="max-w-3xl mx-auto animate-fade-in">
@@ -149,9 +149,9 @@ const Index = () => {
                 </div>
               </div>
               
-              <h3 className="text-2xl font-bold text-center mb-8">{quizQuestions[quizStep].question}</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">{quizQuestions[quizStep].question}</h3>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {quizQuestions[quizStep].options.map((option) => (
                   <Button
                     key={option}
@@ -192,9 +192,9 @@ const Index = () => {
       </section>
 
       {/* Calculator Section */}
-      <section id="calculator" className="py-20 bg-secondary/5">
+      <section id="calculator" className="py-12 sm:py-20 bg-secondary/5">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Сколько вы экономите? 💰</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Сколько вы экономите? 💰</h2>
           
           <Card className="max-w-4xl mx-auto">
             <CardContent className="p-8">
@@ -224,7 +224,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <Card className="border-red-300 bg-red-50">
                   <CardContent className="p-6">
                     <h4 className="font-bold text-lg mb-4">📷 Традиционная фотосессия</h4>
@@ -251,7 +251,7 @@ const Index = () => {
               <Card className="bg-gradient-to-r from-green-500 to-cyan-500 text-white text-center">
                 <CardContent className="p-8">
                   <p className="text-lg mb-2">Вы экономите:</p>
-                  <p className="text-5xl font-bold mb-4">{savings.toLocaleString('ru-RU')}₽</p>
+                  <p className="text-4xl sm:text-5xl font-bold mb-4">{savings.toLocaleString('ru-RU')}₽</p>
                   <div className="flex items-center justify-center gap-4 bg-white/20 rounded-lg p-4">
                     <span className="text-4xl">😼</span>
                     <p>Впечатляет, правда? 💰</p>
@@ -264,10 +264,10 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-20 container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Вот что мы создали 🎨</h2>
+      <section id="portfolio" className="py-12 sm:py-20 container mx-auto px-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12">Вот что мы создали 🎨</h2>
         
-        <div className="flex flex-wrap gap-3 justify-center mb-12">
+        <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-8 sm:mb-12">
           {['all', 'stickers', 'neuro', 'fashion', 'ecommerce'].map((filter) => (
             <Button
               key={filter}
@@ -284,7 +284,7 @@ const Index = () => {
           ))}
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredPortfolio.map((item, index) => (
             <Card key={index} className="group cursor-pointer overflow-hidden hover-scale">
               <div className="h-64 relative">
@@ -304,13 +304,13 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
+      <section id="reviews" className="py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Что говорят клиенты ⭐</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Что говорят клиенты ⭐</h2>
           
           <Card className="max-w-3xl mx-auto bg-white/10 backdrop-blur border-white/20">
-            <CardContent className="p-12 text-center">
-              <p className="text-3xl md:text-4xl font-bold mb-6">"{reviews[currentReview].quote}"</p>
+            <CardContent className="p-6 sm:p-12 text-center">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">"{reviews[currentReview].quote}"</p>
               <p className="text-xl font-semibold mb-2">{reviews[currentReview].author}</p>
               <p className="text-lg opacity-90 mb-4">{reviews[currentReview].role}</p>
               <p className="text-2xl mb-6">⭐⭐⭐⭐⭐</p>
@@ -339,12 +339,12 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Часто задаваемые вопросы ❓</h2>
+      <section id="faq" className="py-12 sm:py-20 container mx-auto px-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Часто задаваемые вопросы ❓</h2>
         
         <Accordion type="single" collapsible className="max-w-3xl mx-auto">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-lg">Сколько времени занимает разработка?</AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg">Сколько времени занимает разработка?</AccordionTrigger>
             <AccordionContent>
               <p className="mb-4">Обычно 24-72 часа в зависимости от сложности и количества.</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
@@ -356,7 +356,7 @@ const Index = () => {
           </AccordionItem>
           
           <AccordionItem value="item-2">
-            <AccordionTrigger className="text-lg">Можно ли использовать для коммерческих проектов?</AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg">Можно ли использовать для коммерческих проектов?</AccordionTrigger>
             <AccordionContent>
               <p className="mb-4">Да, вы получаете полные права на коммерческое использование.</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
@@ -368,7 +368,7 @@ const Index = () => {
           </AccordionItem>
           
           <AccordionItem value="item-3">
-            <AccordionTrigger className="text-lg">В каких форматах вы отдаёте файлы?</AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg">В каких форматах вы отдаёте файлы?</AccordionTrigger>
             <AccordionContent>
               <p className="mb-4">PNG, WebP и по запросу любые нужные форматы. Всё оптимизировано для соцсетей.</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
@@ -380,7 +380,7 @@ const Index = () => {
           </AccordionItem>
           
           <AccordionItem value="item-4">
-            <AccordionTrigger className="text-lg">Подходит ли для маркетплейсов?</AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg">Подходит ли для маркетплейсов?</AccordionTrigger>
             <AccordionContent>
               <p className="mb-4">Да! AI-контент идеален для Wildberries, Ozon, Яндекс.Маркета и соцсетей.</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
@@ -397,25 +397,25 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="text-6xl mb-6">😼</div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Готовы создать контент, который выделит вас?</h2>
-          <p className="text-xl mb-12 opacity-95">Присоединяйтесь к 89+ брендам, которые уже получают результаты</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-4">Готовы создать контент, который выделит вас?</h2>
+          <p className="text-lg sm:text-xl mb-8 sm:mb-12 opacity-95 px-4">Присоединяйтесь к 89+ брендам, которые уже получают результаты</p>
           
-          <div className="flex flex-wrap gap-6 justify-center mb-12">
+          <div className="flex flex-wrap gap-4 sm:gap-6 justify-center mb-8 sm:mb-12 px-4">
             <div className="flex items-center gap-3">
               <Icon name="CheckCircle2" size={28} />
-              <span className="text-lg">Экономия 90% бюджета</span>
+              <span className="text-base sm:text-lg">Экономия 90% бюджета</span>
             </div>
             <div className="flex items-center gap-3">
               <Icon name="CheckCircle2" size={28} />
-              <span className="text-lg">Готово за 48 часов</span>
+              <span className="text-base sm:text-lg">Готово за 48 часов</span>
             </div>
             <div className="flex items-center gap-3">
               <Icon name="CheckCircle2" size={28} />
-              <span className="text-lg">Гарантия результата</span>
+              <span className="text-base sm:text-lg">Гарантия результата</span>
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-4 justify-center mb-8">
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
             <Button size="lg" className="bg-white text-primary hover:bg-gray-100 hover-scale" onClick={() => setFormOpen(true)}>
               Начать прямо сейчас
             </Button>
@@ -434,9 +434,9 @@ const Index = () => {
       </section>
 
       {/* Chat Widget */}
-      <div className="fixed bottom-6 left-6 z-50 vizi-float">
+      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 vizi-float">
         <div 
-          className="w-24 h-24 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110"
+          className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110"
           onClick={() => {
             setChatOpen(!chatOpen);
             setShowViziHint(false);
