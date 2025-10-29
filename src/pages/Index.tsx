@@ -427,7 +427,7 @@ const Index = () => {
       {/* Chat Widget */}
       <div className="fixed bottom-6 right-6 z-50 vizi-float">
         <div 
-          className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-purple-600 shadow-2xl hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-white transition-all hover:scale-110"
+          className="w-28 h-28 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110"
           onClick={() => setChatOpen(!chatOpen)}
           onMouseEnter={(e) => e.currentTarget.classList.add('vizi-wiggle')}
           onAnimationEnd={(e) => e.currentTarget.classList.remove('vizi-wiggle')}
