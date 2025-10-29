@@ -425,15 +425,17 @@ const Index = () => {
       </section>
 
       {/* Chat Widget */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50 vizi-float">
         <div 
-          className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-purple-600 shadow-2xl hover-scale pulse cursor-pointer flex items-center justify-center overflow-hidden border-4 border-white"
+          className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-purple-600 shadow-2xl hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-white transition-all hover:scale-110"
           onClick={() => setChatOpen(!chatOpen)}
+          onMouseEnter={(e) => e.currentTarget.classList.add('vizi-wiggle')}
+          onAnimationEnd={(e) => e.currentTarget.classList.remove('vizi-wiggle')}
         >
           <img 
             src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/458a00f6-f799-4cb2-a588-4d73daa33fc2.jpg"
             alt="Визи"
-            className="w-full h-full object-cover scale-110"
+            className="w-full h-full object-cover scale-110 vizi-blink"
           />
         </div>
         
@@ -445,7 +447,7 @@ const Index = () => {
                   <img 
                     src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/458a00f6-f799-4cb2-a588-4d73daa33fc2.jpg"
                     alt="Визи"
-                    className="w-full h-full object-cover scale-110"
+                    className="w-full h-full object-cover scale-110 vizi-blink"
                   />
                 </div>
                 <span>Визи - Ваш консультант</span>
@@ -456,7 +458,7 @@ const Index = () => {
                     <img 
                       src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/458a00f6-f799-4cb2-a588-4d73daa33fc2.jpg"
                       alt="Визи"
-                      className="w-full h-full object-cover scale-110"
+                      className="w-full h-full object-cover scale-110 vizi-blink"
                     />
                   </div>
                   <Card className="flex-1 bg-secondary/10">

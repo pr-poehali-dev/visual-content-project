@@ -99,3 +99,55 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-5deg) scale(1.05);
+  }
+  75% {
+    transform: rotate(5deg) scale(1.05);
+  }
+}
+
+@keyframes blink {
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.3;
+  }
+}
+
+.vizi-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.vizi-wiggle {
+  animation: wiggle 1s ease-in-out;
+}
+
+.vizi-blink {
+  animation: blink 4s ease-in-out infinite;
+}
