@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -19,6 +19,7 @@ const Index = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [currentReview, setCurrentReview] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
+  const [showViziHint, setShowViziHint] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
 
   const quizQuestions = [
@@ -93,6 +94,14 @@ const Index = () => {
   const filteredPortfolio = activeFilter === 'all' 
     ? portfolio 
     : portfolio.filter(item => item.category === activeFilter || item.category === 'all');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowViziHint(true);
+    }, 20000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -425,10 +434,13 @@ const Index = () => {
       </section>
 
       {/* Chat Widget */}
-      <div className="fixed bottom-6 right-6 z-50 vizi-float">
+      <div className="fixed bottom-6 left-6 z-50 vizi-float">
         <div 
           className="w-24 h-24 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110"
-          onClick={() => setChatOpen(!chatOpen)}
+          onClick={() => {
+            setChatOpen(!chatOpen);
+            setShowViziHint(false);
+          }}
           onMouseEnter={(e) => e.currentTarget.classList.add('vizi-wiggle')}
           onAnimationEnd={(e) => e.currentTarget.classList.remove('vizi-wiggle')}
         >
@@ -439,8 +451,32 @@ const Index = () => {
           />
         </div>
         
+        {showViziHint && !chatOpen && (
+          <div className="absolute bottom-24 left-0 w-64 bg-white rounded-lg shadow-2xl p-4 animate-scale-in border-2 border-purple-400">
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                <img 
+                  src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
+                  alt="Визи"
+                  className="w-full h-full object-cover scale-110"
+                />
+              </div>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-gray-800">👋 Привет! Я Визи</p>
+                <p className="text-xs text-gray-600 mt-1">Помогу подобрать идеальный пакет для твоего бренда!</p>
+              </div>
+              <button 
+                onClick={() => setShowViziHint(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
+        
         {chatOpen && (
-          <Card className="absolute bottom-24 right-0 w-80 shadow-2xl animate-scale-in">
+          <Card className="absolute bottom-24 left-0 w-80 shadow-2xl animate-scale-in">
             <CardContent className="p-0">
               <div className="bg-gradient-to-r from-primary to-purple-600 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white overflow-hidden">
