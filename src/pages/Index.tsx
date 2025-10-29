@@ -189,16 +189,16 @@ const Index = () => {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto px-4">
-            <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 hover-scale shadow-lg shadow-purple-500/50 font-bold text-base" onClick={() => scrollToSection('portfolio')}>
+            <Button size="lg" className="bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-base transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Palette" className="mr-2" /> Брендовые стикеры
             </Button>
-            <Button size="lg" className="bg-white text-gray-900 hover:bg-gray-100 hover-scale shadow-lg shadow-purple-500/50 font-bold text-base" onClick={() => scrollToSection('portfolio')}>
+            <Button size="lg" className="bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-base transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Camera" className="mr-2" /> AI-фотосессии
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white/20 hover-scale font-bold text-base" onClick={() => scrollToSection('calculator')}>
+            <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-base transition-all duration-300" onClick={() => scrollToSection('calculator')}>
               <Icon name="Calculator" className="mr-2" /> Рассчитать стоимость
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white/20 hover-scale font-bold text-base" onClick={() => scrollToSection('portfolio')}>
+            <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-base transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Sparkles" className="mr-2" /> Примеры работ
             </Button>
           </div>
