@@ -110,14 +110,8 @@ const Index = () => {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
         <div className="container mx-auto px-4 text-center z-10 animate-fade-in">
-          <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-purple-400 shadow-2xl shadow-purple-500/50 vizi-float">
-            <img 
-              src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
-              alt="Визи"
-              className="w-full h-full object-cover scale-110 vizi-blink"
-            />
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">Привет! Я Визи 🐆</h1>
+          <div className="text-8xl mb-6 animate-bounce">🐆</div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">Привет! Я Визи 👋</h1>
           <p className="text-xl md:text-2xl mb-12 opacity-95 max-w-2xl mx-auto">
             Помогаю брендам создавать контент, который запоминают и используют!
           </p>
