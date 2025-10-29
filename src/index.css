@@ -140,6 +140,18 @@
   }
 }
 
+@keyframes pulse-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
+  }
+}
+
 .vizi-float {
   animation: float 4s ease-in-out infinite;
 }
@@ -150,4 +162,8 @@
 
 .vizi-blink {
   animation: blink 4s ease-in-out infinite;
+}
+
+.button-pulse:hover {
+  animation: pulse-glow 1.5s ease-in-out infinite;
 }
