@@ -426,23 +426,39 @@ const Index = () => {
 
       {/* Chat Widget */}
       <div className="fixed bottom-6 right-6 z-50">
-        <Button
-          size="lg"
-          className="w-16 h-16 rounded-full text-3xl shadow-2xl hover-scale pulse"
+        <div 
+          className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-purple-600 shadow-2xl hover-scale pulse cursor-pointer flex items-center justify-center overflow-hidden border-4 border-white"
           onClick={() => setChatOpen(!chatOpen)}
         >
-          😼
-        </Button>
+          <img 
+            src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/458a00f6-f799-4cb2-a588-4d73daa33fc2.jpg"
+            alt="Визи"
+            className="w-full h-full object-cover scale-110"
+          />
+        </div>
         
         {chatOpen && (
-          <Card className="absolute bottom-20 right-0 w-80 shadow-2xl animate-scale-in">
+          <Card className="absolute bottom-24 right-0 w-80 shadow-2xl animate-scale-in">
             <CardContent className="p-0">
-              <div className="bg-gradient-to-r from-primary to-purple-600 text-white p-4 rounded-t-lg font-bold">
-                💬 Визи - Ваш консультант
+              <div className="bg-gradient-to-r from-primary to-purple-600 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/458a00f6-f799-4cb2-a588-4d73daa33fc2.jpg"
+                    alt="Визи"
+                    className="w-full h-full object-cover scale-110"
+                  />
+                </div>
+                <span>Визи - Ваш консультант</span>
               </div>
               <div className="p-4 space-y-4 max-h-96 overflow-y-auto">
                 <div className="flex gap-3">
-                  <span className="text-2xl">😼</span>
+                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/458a00f6-f799-4cb2-a588-4d73daa33fc2.jpg"
+                      alt="Визи"
+                      className="w-full h-full object-cover scale-110"
+                    />
+                  </div>
                   <Card className="flex-1 bg-secondary/10">
                     <CardContent className="p-3 text-sm">
                       Привет! Я Визи, твой личный консультант. Как я могу помочь?
@@ -451,13 +467,13 @@ const Index = () => {
                 </div>
                 <div className="space-y-2">
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => setFormOpen(true)}>
-                    Сколько стоит?
+                    💰 Сколько стоит?
                   </Button>
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => scrollToSection('portfolio')}>
-                    Примеры работ
+                    🎨 Примеры работ
                   </Button>
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => setFormOpen(true)}>
-                    Как заказать?
+                    📝 Как заказать?
                   </Button>
                 </div>
               </div>
