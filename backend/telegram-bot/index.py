@@ -26,17 +26,20 @@ def send_message(chat_id: int, text: str, parse_mode: str = 'HTML', reply_markup
     req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
     urllib.request.urlopen(req)
 
-def send_photo(chat_id: int, photo_url: str, caption: str = '') -> None:
-    '''Отправка фото в Telegram'''
+def send_photo(chat_id: int, photo_url: str, caption: str = '', reply_markup: Optional[Dict] = None) -> None:
+    '''Отправка фото в Telegram с кнопками'''
     import urllib.request
     url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendPhoto'
-    data = json.dumps({
+    payload = {
         'chat_id': chat_id,
         'photo': photo_url,
         'caption': caption,
         'parse_mode': 'HTML'
-    }).encode('utf-8')
+    }
+    if reply_markup:
+        payload['reply_markup'] = reply_markup
     
+    data = json.dumps(payload).encode('utf-8')
     req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
     urllib.request.urlopen(req)
 
@@ -101,18 +104,20 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 Я бот студии <b>Vizi</b> — помогу тебе создать:
 
 🎨 <b>Брендовые стикеры</b> для Telegram/WhatsApp
-📸 <b>AI-фотосессии</b> любой сложности
-
-Выбери интересующий раздел:'''
+📸 <b>AI-фотосессии</b> любой сложности'''
             
             keyboard = {
                 'inline_keyboard': [
                     [
-                        {'text': '🎨 Стикеры', 'callback_data': 'stickers'},
+                        {'text': '🎨 Стикеры', 'callback_data': 'stickers'}
+                    ],
+                    [
                         {'text': '📸 Фотосессия', 'callback_data': 'photoshoot'}
                     ],
                     [
-                        {'text': '💰 Цены', 'callback_data': 'price'},
+                        {'text': '💰 Цены', 'callback_data': 'price'}
+                    ],
+                    [
                         {'text': '✨ Портфолио', 'callback_data': 'portfolio'}
                     ],
                     [
@@ -121,18 +126,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 ]
             }
             
-            send_photo(chat_id, vizi_image, caption=welcome_msg)
-            
-            import urllib.request
-            url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
-            payload = {
-                'chat_id': chat_id,
-                'text': 'Выбери раздел ниже:',
-                'reply_markup': keyboard
-            }
-            data = json.dumps(payload).encode('utf-8')
-            req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
-            urllib.request.urlopen(req)
+            send_photo(chat_id, vizi_image, caption=welcome_msg, reply_markup=keyboard)
         
         elif text == '/stickers' or text == 'stickers':
             stickers_msg = '''🎨 <b>Брендовые стикеры</b>
