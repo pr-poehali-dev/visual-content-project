@@ -94,6 +94,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             }
         
         if text == '/start' or text == 'start':
+            vizi_image = 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg'
+            
             welcome_msg = f'''👋 Привет, {first_name}!
 
 Я бот студии <b>Vizi</b> — помогу тебе создать:
@@ -119,7 +121,18 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 ]
             }
             
-            send_message(chat_id, welcome_msg, reply_markup=keyboard)
+            send_photo(chat_id, vizi_image, caption=welcome_msg)
+            
+            import urllib.request
+            url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
+            payload = {
+                'chat_id': chat_id,
+                'text': 'Выбери раздел ниже:',
+                'reply_markup': keyboard
+            }
+            data = json.dumps(payload).encode('utf-8')
+            req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
+            urllib.request.urlopen(req)
         
         elif text == '/stickers' or text == 'stickers':
             stickers_msg = '''🎨 <b>Брендовые стикеры</b>
