@@ -109,19 +109,19 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             keyboard = {
                 'inline_keyboard': [
                     [
-                        {'text': '🎨 Стикеры', 'callback_data': 'stickers'}
+                        {'text': '🎨  Брендовые стикеры', 'callback_data': 'stickers'}
                     ],
                     [
-                        {'text': '📸 Фотосессия', 'callback_data': 'photoshoot'}
+                        {'text': '📸  AI-фотосессии', 'callback_data': 'photoshoot'}
                     ],
                     [
-                        {'text': '💰 Цены', 'callback_data': 'price'}
+                        {'text': '💰  Прайс-лист', 'callback_data': 'price'}
                     ],
                     [
-                        {'text': '✨ Портфолио', 'callback_data': 'portfolio'}
+                        {'text': '✨  Примеры работ', 'callback_data': 'portfolio'}
                     ],
                     [
-                        {'text': '📞 Контакты', 'callback_data': 'contact'}
+                        {'text': '📞  Связаться с нами', 'callback_data': 'contact'}
                     ]
                 ]
             }
