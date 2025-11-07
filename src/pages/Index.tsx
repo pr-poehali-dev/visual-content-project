@@ -508,7 +508,7 @@ const Index = () => {
       {/* Chat Widget */}
       <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 vizi-float">
         <div 
-          className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110"
+          className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110 vizi-cyber-glow"
           onClick={() => {
             setChatOpen(!chatOpen);
             setShowViziHint(false);
@@ -517,20 +517,20 @@ const Index = () => {
           onAnimationEnd={(e) => e.currentTarget.classList.remove('vizi-wiggle')}
         >
           <img 
-            src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
+            src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
             alt="Визи"
-            className="w-full h-full object-cover scale-110 vizi-blink"
+            className="w-full h-full object-cover scale-110 vizi-neon"
           />
         </div>
         
         {showViziHint && !chatOpen && (
           <div className="absolute bottom-24 left-0 w-64 bg-white rounded-lg shadow-2xl p-4 animate-scale-in border-2 border-purple-400">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+              <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 vizi-cyber-glow">
                 <img 
-                  src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
+                  src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                   alt="Визи"
-                  className="w-full h-full object-cover scale-110"
+                  className="w-full h-full object-cover scale-110 vizi-neon"
                 />
               </div>
               <div className="flex-1">
