@@ -7,8 +7,14 @@ Returns: HTTP response с результатом обработки
 import json
 import os
 from typing import Dict, Any, Optional
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+ADMIN_TELEGRAM_ID = os.environ.get('ADMIN_TELEGRAM_ID', '')
+SMTP_EMAIL = os.environ.get('SMTP_EMAIL', '')
+SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD', '')
 
 def send_message(chat_id: int, text: str, parse_mode: str = 'HTML', reply_markup: Optional[Dict] = None) -> None:
     '''Отправка сообщения в Telegram с кнопками'''
@@ -42,6 +48,54 @@ def send_photo(chat_id: int, photo_url: str, caption: str = '', reply_markup: Op
     data = json.dumps(payload).encode('utf-8')
     req = urllib.request.Request(url, data=data, headers={'Content-Type': 'application/json'})
     urllib.request.urlopen(req)
+
+def notify_admin(user_info: Dict[str, Any], message_text: str) -> None:
+    '''Отправка уведомления админу в Telegram и на email'''
+    if not ADMIN_TELEGRAM_ID:
+        return
+    
+    username = user_info.get('username', '')
+    first_name = user_info.get('first_name', '')
+    last_name = user_info.get('last_name', '')
+    user_id = user_info.get('id', '')
+    
+    full_name = f"{first_name} {last_name}".strip()
+    user_link = f"@{username}" if username else f"ID: {user_id}"
+    
+    telegram_notification = f'''🔔 <b>Новая заявка!</b>
+
+👤 <b>От:</b> {full_name} ({user_link})
+💬 <b>Сообщение:</b>
+{message_text}'''
+    
+    try:
+        send_message(int(ADMIN_TELEGRAM_ID), telegram_notification)
+    except Exception as e:
+        pass
+    
+    if SMTP_EMAIL and SMTP_PASSWORD:
+        try:
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = f'Новая заявка от {full_name}'
+            msg['From'] = SMTP_EMAIL
+            msg['To'] = SMTP_EMAIL
+            
+            html_body = f'''<html>
+<body>
+<h2>🔔 Новая заявка!</h2>
+<p><strong>От:</strong> {full_name} ({user_link})</p>
+<p><strong>Сообщение:</strong></p>
+<p>{message_text}</p>
+</body>
+</html>'''
+            
+            msg.attach(MIMEText(html_body, 'html'))
+            
+            with smtplib.SMTP_SSL('smtp.mail.ru', 465) as server:
+                server.login(SMTP_EMAIL, SMTP_PASSWORD)
+                server.send_message(msg)
+        except Exception as e:
+            pass
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     method: str = event.get('httpMethod', 'POST')
@@ -325,6 +379,10 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             send_message(chat_id, order_msg, reply_markup=keyboard)
         
         else:
+            if 'message' in update:
+                user_info = update['message']['from']
+                notify_admin(user_info, text)
+            
             response_msg = f'''Спасибо за сообщение! 
 
 Я записал твой запрос:
