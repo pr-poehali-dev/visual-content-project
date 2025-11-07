@@ -553,7 +553,7 @@ const Index = () => {
               <div className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-800 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white overflow-hidden">
                   <img 
-                    src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
+                    src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                     alt="Визи"
                     className="w-full h-full object-cover scale-110 vizi-blink"
                   />
@@ -564,7 +564,7 @@ const Index = () => {
                 <div className="flex gap-3">
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
                     <img 
-                      src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/9f7fae1a-8ac9-4167-a01b-f7b991f1e530.jpg"
+                      src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                       alt="Визи"
                       className="w-full h-full object-cover scale-110 vizi-blink"
                     />
