@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Handle OPTIONS for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Submit valid form",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тестовый пользователь",
+        "contact": "test@example.com",
+        "service": "stickers",
+        "message": "Тестовая заявка"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Reject incomplete form",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тестовый"
+      },
+      "expectedStatus": 400
+    }
+  ]
+}

@@ -9,8 +9,11 @@ import { Slider } from '@/components/ui/slider';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
+import funcUrls from '../../backend/func2url.json';
 
 const Index = () => {
+  const { toast } = useToast();
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
   const [photos, setPhotos] = useState([50]);
@@ -22,6 +25,8 @@ const Index = () => {
   const [showViziHint, setShowViziHint] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: '', contact: '', service: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const quizQuestions = [
     {
@@ -95,6 +100,44 @@ const Index = () => {
   const filteredPortfolio = activeFilter === 'all' 
     ? portfolio 
     : portfolio.filter(item => item.category === activeFilter || item.category === 'all');
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(funcUrls['contact-form'], {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast({
+          title: '✅ Заявка отправлена!',
+          description: 'Мы свяжемся с вами в ближайшее время',
+        });
+        setFormData({ name: '', contact: '', service: '', message: '' });
+        setFormOpen(false);
+      } else {
+        toast({
+          title: '❌ Ошибка',
+          description: result.error || 'Не удалось отправить заявку',
+          variant: 'destructive'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: '❌ Ошибка',
+        description: 'Не удалось отправить заявку. Попробуйте позже.',
+        variant: 'destructive'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -602,18 +645,34 @@ const Index = () => {
           <DialogHeader>
             <DialogTitle className="text-lg sm:text-2xl">Заказать визуальный контент</DialogTitle>
           </DialogHeader>
-          <form className="space-y-3 sm:space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время'); setFormOpen(false); }}>
+          <form className="space-y-3 sm:space-y-4" onSubmit={handleFormSubmit}>
             <div>
               <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Ваше имя *</label>
-              <Input required placeholder="Иван Иванов" className="text-sm sm:text-base" />
+              <Input 
+                required 
+                placeholder="Иван Иванов" 
+                className="text-sm sm:text-base"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
             </div>
             <div>
               <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Контакт (email или телефон) *</label>
-              <Input required placeholder="ivan@example.com" className="text-sm sm:text-base" />
+              <Input 
+                required 
+                placeholder="ivan@example.com" 
+                className="text-sm sm:text-base"
+                value={formData.contact}
+                onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+              />
             </div>
             <div>
               <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Какая услуга вас интересует? *</label>
-              <Select required>
+              <Select 
+                required 
+                value={formData.service}
+                onValueChange={(value) => setFormData({ ...formData, service: value })}
+              >
                 <SelectTrigger className="text-sm sm:text-base">
                   <SelectValue placeholder="Выберите услугу" />
                 </SelectTrigger>
@@ -626,9 +685,22 @@ const Index = () => {
             </div>
             <div>
               <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Сообщение</label>
-              <Textarea placeholder="Расскажите о вашем проекте..." className="text-sm sm:text-base" rows={3} />
+              <Textarea 
+                placeholder="Расскажите о вашем проекте..." 
+                className="text-sm sm:text-base" 
+                rows={3}
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              />
             </div>
-            <Button type="submit" className="w-full text-sm sm:text-base" size="lg">Отправить заявку</Button>
+            <Button 
+              type="submit" 
+              className="w-full text-sm sm:text-base" 
+              size="lg"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+            </Button>
           </form>
         </DialogContent>
       </Dialog>
