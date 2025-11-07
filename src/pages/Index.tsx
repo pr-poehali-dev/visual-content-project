@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import funcUrls from '../../backend/func2url.json';
@@ -27,6 +28,8 @@ const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', contact: '', service: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
 
   const quizQuestions = [
     {
@@ -693,17 +696,132 @@ const Index = () => {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
+            <div className="flex items-start gap-2">
+              <Checkbox 
+                id="privacy" 
+                checked={privacyAccepted}
+                onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+              />
+              <label htmlFor="privacy" className="text-xs sm:text-sm text-gray-600 cursor-pointer">
+                Я согласен на{' '}
+                <button
+                  type="button"
+                  className="text-primary underline hover:text-primary/80"
+                  onClick={() => setPrivacyDialogOpen(true)}
+                >
+                  обработку персональных данных
+                </button>
+              </label>
+            </div>
             <Button 
               type="submit" 
               className="w-full text-sm sm:text-base" 
               size="lg"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !privacyAccepted}
             >
               {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
             </Button>
           </form>
         </DialogContent>
       </Dialog>
+
+      {/* Privacy Policy Dialog */}
+      <Dialog open={privacyDialogOpen} onOpenChange={setPrivacyDialogOpen}>
+        <DialogContent className="max-w-[95vw] sm:max-w-2xl mx-4 max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-lg sm:text-2xl">Политика конфиденциальности и обработка персональных данных</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 text-sm text-gray-700">
+            <section>
+              <h3 className="font-bold text-base mb-2">1. Общие положения</h3>
+              <p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта vizi-stickers.ru (далее — Сайт).</p>
+            </section>
+            
+            <section>
+              <h3 className="font-bold text-base mb-2">2. Собираемые данные</h3>
+              <p>При заполнении формы обратной связи мы собираем следующую информацию:</p>
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>Имя и фамилия</li>
+                <li>Контактные данные (email или телефон)</li>
+                <li>Информация о запрашиваемых услугах</li>
+                <li>Дополнительная информация, указанная в сообщении</li>
+              </ul>
+            </section>
+            
+            <section>
+              <h3 className="font-bold text-base mb-2">3. Цели обработки данных</h3>
+              <p>Ваши персональные данные используются исключительно для:</p>
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>Обработки вашей заявки</li>
+                <li>Связи с вами для уточнения деталей заказа</li>
+                <li>Предоставления запрашиваемых услуг</li>
+                <li>Улучшения качества обслуживания</li>
+              </ul>
+            </section>
+            
+            <section>
+              <h3 className="font-bold text-base mb-2">4. Защита данных</h3>
+              <p>Мы принимаем необходимые меры для защиты ваших персональных данных от несанкционированного доступа, изменения, раскрытия или уничтожения.</p>
+            </section>
+            
+            <section>
+              <h3 className="font-bold text-base mb-2">5. Передача данных третьим лицам</h3>
+              <p>Мы не передаем ваши персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством РФ.</p>
+            </section>
+            
+            <section>
+              <h3 className="font-bold text-base mb-2">6. Ваши права</h3>
+              <p>Вы имеете право:</p>
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>Получать информацию о обработке ваших данных</li>
+                <li>Требовать исправления неточных данных</li>
+                <li>Требовать удаления ваших данных</li>
+                <li>Отозвать согласие на обработку данных</li>
+              </ul>
+            </section>
+            
+            <section>
+              <h3 className="font-bold text-base mb-2">7. Контакты</h3>
+              <p>По вопросам обработки персональных данных обращайтесь:</p>
+              <p className="mt-2">
+                Email: <a href="mailto:vizi-stickers@mail.ru" className="text-primary underline">vizi-stickers@mail.ru</a><br />
+                Telegram: <a href="https://t.me/Keranos1st" className="text-primary underline">@Keranos1st</a>
+              </p>
+            </section>
+            
+            <section>
+              <h3 className="font-bold text-base mb-2">8. Согласие на обработку</h3>
+              <p>Отправляя форму обратной связи, вы подтверждаете, что:</p>
+              <ul className="list-disc pl-5 mt-2 space-y-1">
+                <li>Ознакомились с настоящей Политикой конфиденциальности</li>
+                <li>Даете согласие на обработку ваших персональных данных</li>
+                <li>Понимаете цели обработки данных</li>
+              </ul>
+            </section>
+          </div>
+          <Button onClick={() => setPrivacyDialogOpen(false)} className="w-full mt-4">Закрыть</Button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Footer with Privacy Link */}
+      <footer className="bg-gray-900 text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
+            <p>© 2024 Vizi Studio. Все права защищены.</p>
+            <span className="hidden sm:inline">•</span>
+            <button
+              onClick={() => setPrivacyDialogOpen(true)}
+              className="text-gray-400 hover:text-white underline transition-colors"
+            >
+              Политика конфиденциальности
+            </button>
+            <span className="hidden sm:inline">•</span>
+            <a href="mailto:vizi-stickers@mail.ru" className="text-gray-400 hover:text-white transition-colors">
+              vizi-stickers@mail.ru
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
