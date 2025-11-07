@@ -182,36 +182,36 @@ const Index = () => {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
         <div className="container mx-auto px-4 text-center z-10 animate-fade-in">
-          <div className="text-8xl mb-6 animate-bounce">😼</div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 px-4">Привет! Я Визи 👋</h1>
-          <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 opacity-95 max-w-2xl mx-auto px-4">
+          <div className="text-6xl sm:text-8xl mb-4 sm:mb-6 animate-bounce">😼</div>
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-6 px-2">Привет! Я Визи 👋</h1>
+          <p className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-12 opacity-95 max-w-2xl mx-auto px-2">
             Помогаю брендам создавать контент, который запоминают и используют!
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto px-4">
-            <Button size="lg" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-base transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
-              <Icon name="Palette" className="mr-2" /> Брендовые стикеры
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 max-w-2xl mx-auto px-2">
+            <Button size="lg" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Palette" className="mr-1 sm:mr-2" size={18} /> Брендовые стикеры
             </Button>
-            <Button size="lg" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-base transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
-              <Icon name="Camera" className="mr-2" /> AI-фотосессии
+            <Button size="lg" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Camera" className="mr-1 sm:mr-2" size={18} /> AI-фотосессии
             </Button>
-            <Button size="lg" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-base transition-all duration-300" onClick={() => scrollToSection('calculator')}>
-              <Icon name="Calculator" className="mr-2" /> Рассчитать стоимость
+            <Button size="lg" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('calculator')}>
+              <Icon name="Calculator" className="mr-1 sm:mr-2" size={18} /> Рассчитать
             </Button>
-            <Button size="lg" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-base transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
-              <Icon name="Sparkles" className="mr-2" /> Примеры работ
+            <Button size="lg" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Sparkles" className="mr-1 sm:mr-2" size={18} /> Примеры
             </Button>
           </div>
         </div>
       </section>
 
       {/* Quiz Section */}
-      <section id="quiz" className="py-12 sm:py-20 container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Давайте найдём ваше идеальное решение 🎯</h2>
+      <section id="quiz" className="py-8 sm:py-20 container mx-auto px-4">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Давайте найдём ваше идеальное решение 🎯</h2>
         
         {quizStep >= 0 && quizStep < quizQuestions.length ? (
           <Card className="max-w-3xl mx-auto animate-fade-in">
-            <CardContent className="p-8">
+            <CardContent className="p-4 sm:p-8">
               <div className="mb-6">
                 <div className="h-2 bg-secondary/20 rounded-full overflow-hidden">
                   <div 
@@ -221,15 +221,15 @@ const Index = () => {
                 </div>
               </div>
               
-              <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">{quizQuestions[quizStep].question}</h3>
+              <h3 className="text-lg sm:text-2xl font-bold text-center mb-4 sm:mb-8">{quizQuestions[quizStep].question}</h3>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                 {quizQuestions[quizStep].options.map((option) => (
                   <Button
                     key={option}
                     variant="outline"
                     size="lg"
-                    className="h-auto py-6 text-lg hover:border-primary hover:bg-primary hover:text-white hover-scale"
+                    className="h-auto py-4 sm:py-6 text-base sm:text-lg hover:border-primary hover:bg-primary hover:text-white hover-scale"
                     onClick={() => handleQuizAnswer(option)}
                   >
                     {option}
@@ -264,12 +264,12 @@ const Index = () => {
       </section>
 
       {/* Calculator Section */}
-      <section id="calculator" className="py-12 sm:py-20 bg-secondary/5">
+      <section id="calculator" className="py-8 sm:py-20 bg-secondary/5">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Сколько вы экономите? 💰</h2>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Сколько вы экономите? 💰</h2>
           
           <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
+            <CardContent className="p-4 sm:p-8">
               <div className="space-y-8 mb-8">
                 <div>
                   <div className="flex justify-between mb-4">
@@ -321,12 +321,12 @@ const Index = () => {
               </div>
               
               <Card className="bg-gradient-to-r from-green-500 to-cyan-500 text-white text-center">
-                <CardContent className="p-8">
-                  <p className="text-lg mb-2">Вы экономите:</p>
-                  <p className="text-4xl sm:text-5xl font-bold mb-4">{savings.toLocaleString('ru-RU')}₽</p>
-                  <div className="flex items-center justify-center gap-4 bg-white/20 rounded-lg p-4">
-                    <span className="text-4xl">😼</span>
-                    <p>Впечатляет, правда? 💰</p>
+                <CardContent className="p-4 sm:p-8">
+                  <p className="text-base sm:text-lg mb-2">Вы экономите:</p>
+                  <p className="text-3xl sm:text-5xl font-bold mb-3 sm:mb-4">{savings.toLocaleString('ru-RU')}₽</p>
+                  <div className="flex items-center justify-center gap-2 sm:gap-4 bg-white/20 rounded-lg p-3 sm:p-4">
+                    <span className="text-3xl sm:text-4xl">😼</span>
+                    <p className="text-sm sm:text-base">Впечатляет, правда? 💰</p>
                   </div>
                 </CardContent>
               </Card>
@@ -336,30 +336,31 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-12 sm:py-20 container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12">Вот что мы создали 🎨</h2>
+      <section id="portfolio" className="py-8 sm:py-20 container mx-auto px-4">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-12 px-2">Вот что мы создали 🎨</h2>
         
-        <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-8 sm:mb-12">
+        <div className="flex flex-wrap gap-2 justify-center mb-6 sm:mb-12 px-2">
           {['all', 'stickers', 'neuro', 'fashion', 'ecommerce'].map((filter) => (
             <Button
               key={filter}
               variant={activeFilter === filter ? 'default' : 'outline'}
               onClick={() => setActiveFilter(filter)}
-              className="hover-scale"
+              className="hover-scale text-xs sm:text-sm"
+              size="sm"
             >
-              {filter === 'all' && '🎨 Все работы'}
+              {filter === 'all' && '🎨 Все'}
               {filter === 'stickers' && '💬 Стикеры'}
-              {filter === 'neuro' && '📸 Нейрофото'}
+              {filter === 'neuro' && '📸 Фото'}
               {filter === 'fashion' && '👔 Fashion'}
-              {filter === 'ecommerce' && '🛍️ E-commerce'}
+              {filter === 'ecommerce' && '🛍️ Shop'}
             </Button>
           ))}
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {filteredPortfolio.map((item, index) => (
             <Card key={index} className="group cursor-pointer overflow-hidden hover-scale">
-              <div className="h-64 relative">
+              <div className="h-48 sm:h-64 relative">
                 <img 
                   src={item.image} 
                   alt={item.title}
@@ -376,30 +377,30 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
+      <section id="reviews" className="py-8 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Что говорят клиенты ⭐</h2>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Что говорят клиенты ⭐</h2>
           
           <Card className="max-w-3xl mx-auto bg-white/10 backdrop-blur border-white/20">
-            <CardContent className="p-6 sm:p-12 text-center">
-              <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">"{reviews[currentReview].quote}"</p>
-              <p className="text-xl font-semibold mb-2">{reviews[currentReview].author}</p>
-              <p className="text-lg opacity-90 mb-4">{reviews[currentReview].role}</p>
-              <p className="text-2xl mb-6">⭐⭐⭐⭐⭐</p>
+            <CardContent className="p-4 sm:p-12 text-center">
+              <p className="text-lg sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-6">"{reviews[currentReview].quote}"</p>
+              <p className="text-base sm:text-xl font-semibold mb-1 sm:mb-2">{reviews[currentReview].author}</p>
+              <p className="text-sm sm:text-lg opacity-90 mb-3 sm:mb-4">{reviews[currentReview].role}</p>
+              <p className="text-xl sm:text-2xl mb-4 sm:mb-6">⭐⭐⭐⭐⭐</p>
               
               <Card className="bg-white/20 border-white/30">
-                <CardContent className="p-4 flex items-center gap-4">
-                  <span className="text-4xl">😼</span>
-                  <p>{reviews[currentReview].comment}</p>
+                <CardContent className="p-3 sm:p-4 flex items-center gap-2 sm:gap-4">
+                  <span className="text-2xl sm:text-4xl">😼</span>
+                  <p className="text-sm sm:text-base">{reviews[currentReview].comment}</p>
                 </CardContent>
               </Card>
               
-              <div className="flex justify-center gap-2 mt-8">
+              <div className="flex justify-center gap-2 mt-4 sm:mt-8">
                 {reviews.map((_, index) => (
                   <button
                     key={index}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      currentReview === index ? 'bg-white w-8' : 'bg-white/50'
+                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+                      currentReview === index ? 'bg-white w-6 sm:w-8' : 'bg-white/50'
                     }`}
                     onClick={() => setCurrentReview(index)}
                   />
@@ -411,14 +412,14 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-12 sm:py-20 container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-16">Часто задаваемые вопросы ❓</h2>
+      <section id="faq" className="py-8 sm:py-20 container mx-auto px-4">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Часто задаваемые вопросы ❓</h2>
         
         <Accordion type="single" collapsible className="max-w-3xl mx-auto">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-base sm:text-lg">Сколько времени занимает разработка?</AccordionTrigger>
+            <AccordionTrigger className="text-sm sm:text-lg">Сколько времени занимает разработка?</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-4">Обычно 24-72 часа в зависимости от сложности и количества.</p>
+              <p className="mb-3 sm:mb-4 text-sm sm:text-base">Обычно 24-72 часа в зависимости от сложности и количества.</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
                   <strong>😼 Визи:</strong> Но обычно я справляюсь быстрее! ⚡
@@ -428,9 +429,9 @@ const Index = () => {
           </AccordionItem>
           
           <AccordionItem value="item-2">
-            <AccordionTrigger className="text-base sm:text-lg">Можно ли использовать для коммерческих проектов?</AccordionTrigger>
+            <AccordionTrigger className="text-sm sm:text-lg">Можно ли использовать для коммерческих проектов?</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-4">Да, вы получаете полные права на коммерческое использование.</p>
+              <p className="mb-3 sm:mb-4 text-sm sm:text-base">Да, вы получаете полные права на коммерческое использование.</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
                   <strong>😼 Визи:</strong> Ваше спокойствие — моя цель! 🛡️
@@ -594,23 +595,23 @@ const Index = () => {
 
       {/* Contact Form Dialog */}
       <Dialog open={formOpen} onOpenChange={setFormOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-[95vw] sm:max-w-md mx-4">
           <DialogHeader>
-            <DialogTitle className="text-2xl">Заказать визуальный контент</DialogTitle>
+            <DialogTitle className="text-lg sm:text-2xl">Заказать визуальный контент</DialogTitle>
           </DialogHeader>
-          <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время'); setFormOpen(false); }}>
+          <form className="space-y-3 sm:space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время'); setFormOpen(false); }}>
             <div>
-              <label className="text-sm font-semibold mb-2 block">Ваше имя *</label>
-              <Input required placeholder="Иван Иванов" />
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Ваше имя *</label>
+              <Input required placeholder="Иван Иванов" className="text-sm sm:text-base" />
             </div>
             <div>
-              <label className="text-sm font-semibold mb-2 block">Контакт (email или телефон) *</label>
-              <Input required placeholder="ivan@example.com" />
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Контакт (email или телефон) *</label>
+              <Input required placeholder="ivan@example.com" className="text-sm sm:text-base" />
             </div>
             <div>
-              <label className="text-sm font-semibold mb-2 block">Какая услуга вас интересует? *</label>
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Какая услуга вас интересует? *</label>
               <Select required>
-                <SelectTrigger>
+                <SelectTrigger className="text-sm sm:text-base">
                   <SelectValue placeholder="Выберите услугу" />
                 </SelectTrigger>
                 <SelectContent>
@@ -621,10 +622,10 @@ const Index = () => {
               </Select>
             </div>
             <div>
-              <label className="text-sm font-semibold mb-2 block">Сообщение</label>
-              <Textarea placeholder="Расскажите о вашем проекте..." />
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Сообщение</label>
+              <Textarea placeholder="Расскажите о вашем проекте..." className="text-sm sm:text-base" rows={3} />
             </div>
-            <Button type="submit" className="w-full" size="lg">Отправить заявку</Button>
+            <Button type="submit" className="w-full text-sm sm:text-base" size="lg">Отправить заявку</Button>
           </form>
         </DialogContent>
       </Dialog>
