@@ -109,6 +109,9 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             keyboard = {
                 'inline_keyboard': [
                     [
+                        {'text': '🚀  Начать общение', 'callback_data': 'start_chat'}
+                    ],
+                    [
                         {'text': '🎨  Брендовые стикеры', 'callback_data': 'stickers'}
                     ],
                     [
@@ -257,6 +260,27 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             }
             
             send_message(chat_id, contact_msg, reply_markup=keyboard)
+        
+        elif text == 'start_chat':
+            chat_msg = f'''💬 <b>Отлично, {first_name}!</b>
+
+Я готов помочь тебе создать визуальный контент! 🎨
+
+Напиши мне:
+• Что именно тебе нужно (стикеры, фото, или всё вместе)
+• Для какого проекта/бренда
+• Какой стиль тебе нравится
+• Примерный бюджет и сроки
+
+Просто напиши всё это текстом, и я свяжусь с тобой для обсуждения деталей! 👇'''
+            
+            keyboard = {
+                'inline_keyboard': [
+                    [{'text': '🔙 Главное меню', 'callback_data': 'start'}]
+                ]
+            }
+            
+            send_message(chat_id, chat_msg, reply_markup=keyboard)
         
         elif text == 'order_stickers':
             order_msg = '''✍️ <b>Заявка на стикеры</b>
