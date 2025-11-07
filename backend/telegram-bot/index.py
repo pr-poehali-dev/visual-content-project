@@ -213,7 +213,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             portfolio_msg = '''✨ <b>Примеры работ</b>
 
 Смотри мои работы на сайте:
-🌐 vizi-stickers.com
+🌐 vizi-stickers.ru
 
 Там найдёшь:
 • Реальные кейсы клиентов
@@ -223,7 +223,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             
             keyboard = {
                 'inline_keyboard': [
-                    [{'text': '🌐 Открыть сайт', 'url': 'https://vizi-stickers.com'}],
+                    [{'text': '🌐 Открыть сайт', 'url': 'https://vizi-stickers.ru'}],
                     [
                         {'text': '🎨 Стикеры', 'callback_data': 'stickers'},
                         {'text': '📸 Фотосессия', 'callback_data': 'photoshoot'}
@@ -240,7 +240,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 <b>Связаться со мной:</b>
 • Telegram: Пиши прямо сюда!
 • Email: vizi@example.com
-• Сайт: vizi-stickers.com
+• Сайт: vizi-stickers.ru
 
 Обычно отвечаю в течение 1-2 часов ⚡️
 
