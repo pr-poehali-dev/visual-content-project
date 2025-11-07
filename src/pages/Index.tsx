@@ -577,6 +577,9 @@ const Index = () => {
                   </Card>
                 </div>
                 <div className="space-y-2">
+                  <Button variant="default" size="sm" className="w-full justify-start bg-primary hover:bg-primary/90" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
+                    🚀 Начать общение
+                  </Button>
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
                     💰 Сколько стоит?
                   </Button>
