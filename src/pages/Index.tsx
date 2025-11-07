@@ -551,22 +551,22 @@ const Index = () => {
           <Card className="absolute bottom-24 left-0 w-80 shadow-2xl animate-scale-in">
             <CardContent className="p-0">
               <div className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-800 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white overflow-hidden">
+                <div className="w-10 h-10 rounded-full overflow-hidden vizi-cyber-glow">
                   <img 
                     src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                     alt="Визи"
-                    className="w-full h-full object-cover scale-110 vizi-blink"
+                    className="w-full h-full object-cover scale-110 vizi-neon"
                   />
                 </div>
                 <span>Визи - Ваш консультант</span>
               </div>
               <div className="p-4 space-y-4 max-h-96 overflow-y-auto">
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 vizi-cyber-glow">
                     <img 
                       src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                       alt="Визи"
-                      className="w-full h-full object-cover scale-110 vizi-blink"
+                      className="w-full h-full object-cover scale-110 vizi-neon"
                     />
                   </div>
                   <Card className="flex-1 bg-secondary/10">
