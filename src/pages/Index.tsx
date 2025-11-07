@@ -577,13 +577,13 @@ const Index = () => {
                   </Card>
                 </div>
                 <div className="space-y-2">
-                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => setFormOpen(true)}>
+                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => window.open('https://t.me/vizi_stickers_bot', '_blank')}>
                     💰 Сколько стоит?
                   </Button>
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => scrollToSection('portfolio')}>
                     🎨 Примеры работ
                   </Button>
-                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => setFormOpen(true)}>
+                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => window.open('https://t.me/vizi_stickers_bot', '_blank')}>
                     📝 Как заказать?
                   </Button>
                 </div>
