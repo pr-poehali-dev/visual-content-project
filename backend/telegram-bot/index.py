@@ -296,7 +296,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 
 <b>Связаться со мной:</b>
 • Telegram: Пиши прямо сюда!
-• Email: vizi@example.com
+• Email: vizi-stickers@mail.ru
 • Сайт: vizi-stickers.ru
 
 Обычно отвечаю в течение 1-2 часов ⚡️

@@ -784,8 +784,7 @@ const Index = () => {
               <h3 className="font-bold text-base mb-2">7. Контакты</h3>
               <p>По вопросам обработки персональных данных обращайтесь:</p>
               <p className="mt-2">
-                Email: <a href="mailto:vizi-stickers@mail.ru" className="text-primary underline">vizi-stickers@mail.ru</a><br />
-                Telegram: <a href="https://t.me/Keranos1st" className="text-primary underline">@Keranos1st</a>
+                Email: <a href="mailto:vizi-stickers@mail.ru" className="text-primary underline">vizi-stickers@mail.ru</a>
               </p>
             </section>
             
