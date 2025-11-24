@@ -72,8 +72,12 @@ const Index = () => {
 
   const portfolio = [
     { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b19a4884-4d74-495c-8df5-481e8b5d684f.jpg' },
-    { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/2662295c-14dd-4a8b-89af-55fa1e804858.jpg' },
+    { category: 'neuro', emoji: '📸', title: 'Портрет в интерьере', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
+    { category: 'neuro', emoji: '🌆', title: 'Уличная фотосессия', gradient: 'from-slate-400 to-gray-500', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
+    { category: 'neuro', emoji: '🏙️', title: 'Городской стиль', gradient: 'from-neutral-400 to-stone-500', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
     { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/27e6b5e9-f2c8-4456-ac38-68f3c707c5c0.jpg' },
+    { category: 'neuro', emoji: '☀️', title: 'Золотой час', gradient: 'from-amber-400 to-yellow-500', image: 'https://cdn.poehali.dev/files/a76ae61b-cb53-44ff-ac58-458dfd55f38b.jpeg' },
+    { category: 'neuro', emoji: '🧥', title: 'Осенний образ', gradient: 'from-orange-400 to-amber-500', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg' },
     { category: 'stickers', emoji: '✨', title: 'Премиум пакет', gradient: 'from-yellow-500 to-orange-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b588faf7-e0bd-4817-9163-e615929da64e.jpg' },
     { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/8b271831-359f-4f34-896b-7d3387664b95.jpeg' },
     { category: 'neuro', emoji: '🎯', title: 'Нейропортрет', gradient: 'from-purple-500 to-violet-600', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' }
