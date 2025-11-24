@@ -31,6 +31,7 @@ const Index = () => {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
   const [neuroGalleryOpen, setNeuroGalleryOpen] = useState(false);
+  const [currentNeuroIndex, setCurrentNeuroIndex] = useState(0);
 
   const quizQuestions = [
     {
@@ -72,17 +73,17 @@ const Index = () => {
   ];
 
   const neuroPhotos = [
+    { title: 'Осенний образ', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg' },
     { title: 'Портрет в интерьере', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
     { title: 'Уличная фотосессия', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
     { title: 'Городской стиль', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
     { title: 'Золотой час', image: 'https://cdn.poehali.dev/files/a76ae61b-cb53-44ff-ac58-458dfd55f38b.jpeg' },
-    { title: 'Осенний образ', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg' },
     { title: 'Нейропортрет', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' }
   ];
 
   const portfolio = [
     { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b19a4884-4d74-495c-8df5-481e8b5d684f.jpg' },
-    { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg', hasGallery: true },
+    { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/27e6b5e9-f2c8-4456-ac38-68f3c707c5c0.jpg' },
     { category: 'stickers', emoji: '✨', title: 'Премиум пакет', gradient: 'from-yellow-500 to-orange-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b588faf7-e0bd-4817-9163-e615929da64e.jpg' },
     { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/8b271831-359f-4f34-896b-7d3387664b95.jpeg' }
@@ -107,6 +108,14 @@ const Index = () => {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const nextNeuroPhoto = () => {
+    setCurrentNeuroIndex((prev) => (prev + 1) % neuroPhotos.length);
+  };
+
+  const prevNeuroPhoto = () => {
+    setCurrentNeuroIndex((prev) => (prev - 1 + neuroPhotos.length) % neuroPhotos.length);
   };
 
   const filteredPortfolio = activeFilter === 'all' 
@@ -740,21 +749,45 @@ const Index = () => {
 
       {/* Neuro Gallery Dialog */}
       <Dialog open={neuroGalleryOpen} onOpenChange={setNeuroGalleryOpen}>
-        <DialogContent className="max-w-[95vw] sm:max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
           <DialogHeader>
             <DialogTitle className="text-lg sm:text-2xl">📸 Нейрофотосессия</DialogTitle>
           </DialogHeader>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {neuroPhotos.map((photo, index) => (
-              <div key={index} className="space-y-2">
-                <img 
-                  src={photo.image} 
-                  alt={photo.title}
-                  className="w-full h-64 sm:h-80 object-cover rounded-lg"
+          <div className="relative">
+            <div className="relative aspect-[3/4] sm:aspect-video w-full overflow-hidden rounded-lg">
+              <img 
+                src={neuroPhotos[currentNeuroIndex].image} 
+                alt={neuroPhotos[currentNeuroIndex].title}
+                className="w-full h-full object-cover"
+              />
+              <button
+                onClick={prevNeuroPhoto}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronLeft" size={24} />
+              </button>
+              <button
+                onClick={nextNeuroPhoto}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronRight" size={24} />
+              </button>
+            </div>
+            <div className="mt-4 text-center space-y-2">
+              <p className="text-base sm:text-lg font-semibold">{neuroPhotos[currentNeuroIndex].title}</p>
+              <p className="text-sm text-gray-500">{currentNeuroIndex + 1} / {neuroPhotos.length}</p>
+            </div>
+            <div className="flex gap-2 justify-center mt-4">
+              {neuroPhotos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentNeuroIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentNeuroIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  }`}
                 />
-                <p className="text-sm sm:text-base font-semibold text-center">{photo.title}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           <Button onClick={() => setNeuroGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
         </DialogContent>
