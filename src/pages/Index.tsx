@@ -30,6 +30,7 @@ const Index = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
+  const [neuroGalleryOpen, setNeuroGalleryOpen] = useState(false);
 
   const quizQuestions = [
     {
@@ -70,17 +71,21 @@ const Index = () => {
     { quote: 'Стикеры прямо отпадные!', author: 'София', role: 'Блогер (187К подписчиков)', comment: 'София делится везде! 🔥' }
   ];
 
+  const neuroPhotos = [
+    { title: 'Портрет в интерьере', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
+    { title: 'Уличная фотосессия', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
+    { title: 'Городской стиль', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
+    { title: 'Золотой час', image: 'https://cdn.poehali.dev/files/a76ae61b-cb53-44ff-ac58-458dfd55f38b.jpeg' },
+    { title: 'Осенний образ', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg' },
+    { title: 'Нейропортрет', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' }
+  ];
+
   const portfolio = [
     { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b19a4884-4d74-495c-8df5-481e8b5d684f.jpg' },
-    { category: 'neuro', emoji: '📸', title: 'Портрет в интерьере', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
-    { category: 'neuro', emoji: '🌆', title: 'Уличная фотосессия', gradient: 'from-slate-400 to-gray-500', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
-    { category: 'neuro', emoji: '🏙️', title: 'Городской стиль', gradient: 'from-neutral-400 to-stone-500', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
+    { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/27e6b5e9-f2c8-4456-ac38-68f3c707c5c0.jpg' },
-    { category: 'neuro', emoji: '☀️', title: 'Золотой час', gradient: 'from-amber-400 to-yellow-500', image: 'https://cdn.poehali.dev/files/a76ae61b-cb53-44ff-ac58-458dfd55f38b.jpeg' },
-    { category: 'neuro', emoji: '🧥', title: 'Осенний образ', gradient: 'from-orange-400 to-amber-500', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg' },
     { category: 'stickers', emoji: '✨', title: 'Премиум пакет', gradient: 'from-yellow-500 to-orange-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b588faf7-e0bd-4817-9163-e615929da64e.jpg' },
-    { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/8b271831-359f-4f34-896b-7d3387664b95.jpeg' },
-    { category: 'neuro', emoji: '🎯', title: 'Нейропортрет', gradient: 'from-purple-500 to-violet-600', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' }
+    { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/8b271831-359f-4f34-896b-7d3387664b95.jpeg' }
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -409,7 +414,11 @@ const Index = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {filteredPortfolio.map((item, index) => (
-            <Card key={index} className="group cursor-pointer overflow-hidden hover-scale">
+            <Card 
+              key={index} 
+              className="group cursor-pointer overflow-hidden hover-scale"
+              onClick={() => item.hasGallery && setNeuroGalleryOpen(true)}
+            >
               <div className="h-48 sm:h-64 relative">
                 <img 
                   src={item.image} 
@@ -418,7 +427,7 @@ const Index = () => {
                 />
                 <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-6">
                   <p className="text-xl font-bold mb-4">{item.title}</p>
-                  <Button variant="secondary" size="sm">Подробнее</Button>
+                  {item.hasGallery && <Button variant="secondary" size="sm">Смотреть все</Button>}
                 </div>
               </div>
             </Card>
@@ -726,6 +735,28 @@ const Index = () => {
               {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
             </Button>
           </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Neuro Gallery Dialog */}
+      <Dialog open={neuroGalleryOpen} onOpenChange={setNeuroGalleryOpen}>
+        <DialogContent className="max-w-[95vw] sm:max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-lg sm:text-2xl">📸 Нейрофотосессия</DialogTitle>
+          </DialogHeader>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {neuroPhotos.map((photo, index) => (
+              <div key={index} className="space-y-2">
+                <img 
+                  src={photo.image} 
+                  alt={photo.title}
+                  className="w-full h-64 sm:h-80 object-cover rounded-lg"
+                />
+                <p className="text-sm sm:text-base font-semibold text-center">{photo.title}</p>
+              </div>
+            ))}
+          </div>
+          <Button onClick={() => setNeuroGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
