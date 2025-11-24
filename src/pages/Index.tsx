@@ -127,13 +127,14 @@ const Index = () => {
   const tradTime = photos[0] === 0 ? 0 : 7 + (photos[0] / 10 - 1) * 3;
   const tradProcessed = Math.ceil(photos[0] / 3);
   
-  const neuroPhotoCost = photos[0] === 0 ? 0 : 5000 + (photos[0] / 10 - 1) * 2500;
+  const neuroPhotoCost = photos[0] === 0 ? 0 : 5000 + (photos[0] / 10 - 1) * 3000;
   const neuroStickerCost = stickers[0] === 0 ? 0 : 2500 + (stickers[0] / 10 - 1) * 1500;
   const neuroCost = neuroPhotoCost + neuroStickerCost;
   const neuroTime = photos[0] === 0 ? 0 : 2 + Math.floor(photos[0] / 30) * 0.5;
   const neuroProcessed = photos[0];
   
   const savings = tradCost - neuroCost;
+  const timeSaved = tradTime - neuroTime;
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -460,6 +461,7 @@ const Index = () => {
                 <CardContent className="p-4 sm:p-8">
                   <p className="text-base sm:text-lg mb-2">Вы экономите:</p>
                   <p className="text-3xl sm:text-5xl font-bold mb-3 sm:mb-4">{savings.toLocaleString('ru-RU')}₽</p>
+                  <p className="text-lg sm:text-2xl font-semibold mb-4">и {timeSaved} {timeSaved === 1 || timeSaved === 0 ? 'день' : timeSaved < 5 ? 'дня' : 'дней'}</p>
                   <div className="flex items-center justify-center gap-2 sm:gap-4 bg-white/20 rounded-lg p-3 sm:p-4">
                     <span className="text-3xl sm:text-4xl">😼</span>
                     <p className="text-sm sm:text-base">Впечатляет, правда? 💰</p>
