@@ -87,7 +87,11 @@ const Index = () => {
 
   const stickerPhotos = [
     { title: 'Кибер-котик', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg' },
-    { title: 'Стикерпак Vizi', image: 'https://cdn.poehali.dev/files/0acc6698-fd67-4b82-abfc-2b57943caedd.jpeg' }
+    { title: 'Стикерпак Vizi', image: 'https://cdn.poehali.dev/files/0acc6698-fd67-4b82-abfc-2b57943caedd.jpeg' },
+    { title: 'Фотограф-камера', image: 'https://cdn.poehali.dev/files/4097e8c1-83cc-4b98-b2c5-70ba74345b8a.jpeg' },
+    { title: 'Фотограф студия', image: 'https://cdn.poehali.dev/files/f2f3edfb-252d-4440-a806-8587f251c296.jpeg' },
+    { title: 'Кофе стикеры', image: 'https://cdn.poehali.dev/files/f0502733-f2ce-4853-9345-d64894f87501.jpeg' },
+    { title: 'Кофе эмоции', image: 'https://cdn.poehali.dev/files/44b1682c-a3c7-4872-aebf-8f2f51177920.jpeg' }
   ];
 
   const portfolio = [
