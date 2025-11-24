@@ -106,7 +106,6 @@ const Index = () => {
     { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
     { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/27e6b5e9-f2c8-4456-ac38-68f3c707c5c0.jpg' },
-    { category: 'stickers', emoji: '✨', title: 'Премиум пакет', gradient: 'from-yellow-500 to-orange-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b588faf7-e0bd-4817-9163-e615929da64e.jpg' },
     { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
   ];
 
@@ -516,7 +515,7 @@ const Index = () => {
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-4 sm:p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex items-end p-4 sm:p-6">
                   <div className="w-full">
                     <p className="text-white text-lg sm:text-xl font-bold mb-1">{item.emoji} {item.title}</p>
                     {item.hasGallery && <p className="text-white/80 text-xs sm:text-sm">Нажмите для просмотра галереи</p>}
