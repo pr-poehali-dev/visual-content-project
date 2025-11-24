@@ -34,6 +34,8 @@ const Index = () => {
   const [currentNeuroIndex, setCurrentNeuroIndex] = useState(0);
   const [stickerGalleryOpen, setStickerGalleryOpen] = useState(false);
   const [currentStickerIndex, setCurrentStickerIndex] = useState(0);
+  const [ecommerceGalleryOpen, setEcommerceGalleryOpen] = useState(false);
+  const [currentEcommerceIndex, setCurrentEcommerceIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
@@ -94,12 +96,18 @@ const Index = () => {
     { title: 'Кофе эмоции', image: 'https://cdn.poehali.dev/files/44b1682c-a3c7-4872-aebf-8f2f51177920.jpeg' }
   ];
 
+  const ecommercePhotos = [
+    { title: 'Новогодняя игрушка', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg' },
+    { title: 'Пряничный домик', image: 'https://cdn.poehali.dev/files/ec48fe3e-3c51-4813-b8f5-a4d7680288cf.jpeg' },
+    { title: 'Геометрия уюта', image: 'https://cdn.poehali.dev/files/2c579169-bd1a-4310-975d-5cc2c0b45a8b.jpeg' }
+  ];
+
   const portfolio = [
     { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
     { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/27e6b5e9-f2c8-4456-ac38-68f3c707c5c0.jpg' },
     { category: 'stickers', emoji: '✨', title: 'Премиум пакет', gradient: 'from-yellow-500 to-orange-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b588faf7-e0bd-4817-9163-e615929da64e.jpg' },
-    { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/8b271831-359f-4f34-896b-7d3387664b95.jpeg' }
+    { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -162,6 +170,23 @@ const Index = () => {
     }
     if (touchStart - touchEnd < -75) {
       prevStickerPhoto();
+    }
+  };
+
+  const nextEcommercePhoto = () => {
+    setCurrentEcommerceIndex((prev) => (prev + 1) % ecommercePhotos.length);
+  };
+
+  const prevEcommercePhoto = () => {
+    setCurrentEcommerceIndex((prev) => (prev - 1 + ecommercePhotos.length) % ecommercePhotos.length);
+  };
+
+  const handleEcommerceTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      nextEcommercePhoto();
+    }
+    if (touchStart - touchEnd < -75) {
+      prevEcommercePhoto();
     }
   };
 
@@ -479,6 +504,8 @@ const Index = () => {
                     setNeuroGalleryOpen(true);
                   } else if (item.category === 'stickers') {
                     setStickerGalleryOpen(true);
+                  } else if (item.category === 'ecommerce') {
+                    setEcommerceGalleryOpen(true);
                   }
                 }
               }}
@@ -901,6 +928,57 @@ const Index = () => {
             </div>
           </div>
           <Button onClick={() => setStickerGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
+        </DialogContent>
+      </Dialog>
+
+      {/* E-commerce Gallery Dialog */}
+      <Dialog open={ecommerceGalleryOpen} onOpenChange={setEcommerceGalleryOpen}>
+        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
+          <DialogHeader>
+            <DialogTitle className="text-lg sm:text-2xl">🛒 E-commerce фото</DialogTitle>
+          </DialogHeader>
+          <div className="relative">
+            <div 
+              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleEcommerceTouchEnd}
+            >
+              <img 
+                src={ecommercePhotos[currentEcommerceIndex].image} 
+                alt={ecommercePhotos[currentEcommerceIndex].title}
+                className="w-full h-full object-contain bg-black"
+              />
+              <button
+                onClick={prevEcommercePhoto}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronLeft" size={24} />
+              </button>
+              <button
+                onClick={nextEcommercePhoto}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronRight" size={24} />
+              </button>
+            </div>
+            <div className="mt-4 text-center space-y-2">
+              <p className="text-base sm:text-lg font-semibold">{ecommercePhotos[currentEcommerceIndex].title}</p>
+              <p className="text-sm text-gray-500">{currentEcommerceIndex + 1} / {ecommercePhotos.length}</p>
+            </div>
+            <div className="flex gap-2 justify-center mt-4">
+              {ecommercePhotos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentEcommerceIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentEcommerceIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          <Button onClick={() => setEcommerceGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
