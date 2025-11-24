@@ -323,36 +323,40 @@ const Index = () => {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-hidden">
+      <section className="relative min-h-[100svh] flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-hidden py-6">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
-        <div className="container mx-auto px-4 text-center z-10 animate-fade-in">
-          <div className="text-6xl sm:text-8xl mb-4 sm:mb-6 animate-bounce">😼</div>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-6 px-2">Привет! Я Визи 👋</h1>
-          <p className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-12 opacity-95 max-w-2xl mx-auto px-2">
+        <div className="container mx-auto px-4 text-center z-10 animate-fade-in max-w-4xl">
+          <div className="text-5xl sm:text-7xl mb-3 sm:mb-5 animate-bounce">😼</div>
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-2 sm:mb-4 leading-tight">Привет! Я Визи 👋</h1>
+          <p className="text-sm sm:text-lg md:text-xl mb-6 sm:mb-10 opacity-90 max-w-xl mx-auto px-2">
             Помогаю брендам создавать контент, который запоминают и используют!
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 max-w-2xl mx-auto px-2">
-            <Button size="lg" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
-              <Icon name="Palette" className="mr-1 sm:mr-2" size={18} /> Брендовые стикеры
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 max-w-lg mx-auto">
+            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Palette" className="mr-1" size={16} />
+              Стикеры
             </Button>
-            <Button size="lg" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white hover-scale shadow-lg shadow-purple-500/50 hover:shadow-purple-400/80 hover:shadow-2xl font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
-              <Icon name="Camera" className="mr-1 sm:mr-2" size={18} /> AI-фотосессии
+            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Camera" className="mr-1" size={16} />
+              AI-фото
             </Button>
-            <Button size="lg" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('calculator')}>
-              <Icon name="Calculator" className="mr-1 sm:mr-2" size={18} /> Рассчитать
+            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('calculator')}>
+              <Icon name="Calculator" className="mr-1" size={16} />
+              Калькулятор
             </Button>
-            <Button size="lg" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 backdrop-blur hover:bg-white hover:text-gray-900 hover-scale hover:shadow-2xl hover:shadow-white/50 font-bold text-sm sm:text-base py-3 sm:py-4 transition-all duration-300" onClick={() => scrollToSection('portfolio')}>
-              <Icon name="Sparkles" className="mr-1 sm:mr-2" size={18} /> Примеры
+            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+              <Icon name="Sparkles" className="mr-1" size={16} />
+              Примеры
             </Button>
           </div>
         </div>
       </section>
 
       {/* Quiz Section */}
-      <section id="quiz" className="py-8 sm:py-20 container mx-auto px-4">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Давайте найдём ваше идеальное решение 🎯</h2>
+      <section id="quiz" className="py-12 sm:py-20 container mx-auto px-4">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Давайте найдём ваше идеальное решение 🎯</h2>
         
         {quizStep >= 0 && quizStep < quizQuestions.length ? (
           <Card className="max-w-3xl mx-auto animate-fade-in">
@@ -366,7 +370,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <h3 className="text-lg sm:text-2xl font-bold text-center mb-4 sm:mb-8">{quizQuestions[quizStep].question}</h3>
+              <h3 className="text-base sm:text-xl font-bold text-center mb-6 sm:mb-8">{quizQuestions[quizStep].question}</h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                 {quizQuestions[quizStep].options.map((option) => (
@@ -374,7 +378,7 @@ const Index = () => {
                     key={option}
                     variant="outline"
                     size="lg"
-                    className="h-auto py-4 sm:py-6 text-base sm:text-lg hover:border-primary hover:bg-primary hover:text-white hover-scale"
+                    className="h-auto py-3 sm:py-5 text-sm sm:text-base hover:border-primary hover:bg-primary hover:text-white active:scale-95 transition-transform"
                     onClick={() => handleQuizAnswer(option)}
                   >
                     {option}
@@ -409,9 +413,9 @@ const Index = () => {
       </section>
 
       {/* Calculator Section */}
-      <section id="calculator" className="py-8 sm:py-20 bg-secondary/5">
+      <section id="calculator" className="py-12 sm:py-20 bg-secondary/5">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Сколько вы экономите? 💰</h2>
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Сколько вы экономите? 💰</h2>
           
           <Card className="max-w-4xl mx-auto">
             <CardContent className="p-4 sm:p-8">
@@ -474,8 +478,8 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-8 sm:py-20 container mx-auto px-4">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-12 px-2">Вот что мы создали 🎨</h2>
+      <section id="portfolio" className="py-12 sm:py-20 container mx-auto px-4">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 leading-tight">Вот что мы создали 🎨</h2>
         
         <div className="flex flex-wrap gap-2 justify-center mb-6 sm:mb-12 px-2">
           {['all', 'stickers', 'neuro', 'fashion', 'ecommerce'].map((filter) => (
@@ -535,16 +539,16 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-8 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
+      <section id="reviews" className="py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Что говорят клиенты ⭐</h2>
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Что говорят клиенты ⭐</h2>
           
           <Card className="max-w-3xl mx-auto bg-white/10 backdrop-blur border-white/20">
             <CardContent className="p-4 sm:p-12 text-center">
-              <p className="text-lg sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-6">"{reviews[currentReview].quote}"</p>
-              <p className="text-base sm:text-xl font-semibold mb-1 sm:mb-2">{reviews[currentReview].author}</p>
-              <p className="text-sm sm:text-lg opacity-90 mb-3 sm:mb-4">{reviews[currentReview].role}</p>
-              <p className="text-xl sm:text-2xl mb-4 sm:mb-6">⭐⭐⭐⭐⭐</p>
+              <p className="text-base sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 leading-tight">"{reviews[currentReview].quote}"</p>
+              <p className="text-sm sm:text-lg font-semibold mb-1">{reviews[currentReview].author}</p>
+              <p className="text-xs sm:text-base opacity-90 mb-3 sm:mb-4">{reviews[currentReview].role}</p>
+              <p className="text-lg sm:text-xl mb-4 sm:mb-6">⭐⭐⭐⭐⭐</p>
               
               <Card className="bg-white/20 border-white/30">
                 <CardContent className="p-3 sm:p-4 flex items-center gap-2 sm:gap-4">
@@ -570,8 +574,8 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-8 sm:py-20 container mx-auto px-4">
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-16 px-2">Часто задаваемые вопросы ❓</h2>
+      <section id="faq" className="py-12 sm:py-20 container mx-auto px-4">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Часто задаваемые вопросы ❓</h2>
         
         <Accordion type="single" collapsible className="max-w-3xl mx-auto">
           <AccordionItem value="item-1">
@@ -625,47 +629,47 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
         <div className="container mx-auto px-4 text-center">
-          <div className="text-6xl mb-6">😼</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-4">Готовы создать контент, который выделит вас?</h2>
-          <p className="text-lg sm:text-xl mb-8 sm:mb-12 opacity-95 px-4">Присоединяйтесь к 89+ брендам, которые уже получают результаты</p>
+          <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">😼</div>
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-5 leading-tight">Готовы создать контент, который выделит вас?</h2>
+          <p className="text-sm sm:text-lg mb-6 sm:mb-10 opacity-90">Присоединяйтесь к 89+ брендам, которые уже получают результаты</p>
           
-          <div className="flex flex-wrap gap-4 sm:gap-6 justify-center mb-8 sm:mb-12 px-4">
-            <div className="flex items-center gap-3">
-              <Icon name="CheckCircle2" size={28} />
-              <span className="text-base sm:text-lg">Экономия 90% бюджета</span>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 justify-center mb-6 sm:mb-10 max-w-2xl mx-auto">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
+              <span className="text-sm sm:text-base">Экономия 90% бюджета</span>
             </div>
-            <div className="flex items-center gap-3">
-              <Icon name="CheckCircle2" size={28} />
-              <span className="text-base sm:text-lg">Готово за 48 часов</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
+              <span className="text-sm sm:text-base">Готово за 48 часов</span>
             </div>
-            <div className="flex items-center gap-3">
-              <Icon name="CheckCircle2" size={28} />
-              <span className="text-base sm:text-lg">Гарантия результата</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
+              <span className="text-sm sm:text-base">Гарантия результата</span>
             </div>
           </div>
           
-          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 px-4">
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 hover-scale" onClick={() => setFormOpen(true)}>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 sm:mb-8 max-w-md mx-auto">
+            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 w-full sm:w-auto" onClick={() => setFormOpen(true)}>
               Начать прямо сейчас
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20 hover-scale" onClick={() => setChatOpen(true)}>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20 w-full sm:w-auto" onClick={() => setChatOpen(true)}>
               Поговорить с Визи
             </Button>
           </div>
           
-          <Card className="max-w-2xl mx-auto bg-white/20 border-white/30">
-            <CardContent className="p-6">
-              <p className="text-lg font-semibold mb-2">🔥 Осталось 3 слота по спеццене этого месяца</p>
-              <p className="text-sm opacity-90">Не упустите шанс! Завтра может быть поздно!</p>
+          <Card className="max-w-md mx-auto bg-white/20 border-white/30">
+            <CardContent className="p-4 sm:p-6">
+              <p className="text-base sm:text-lg font-semibold mb-1 sm:mb-2">🔥 Осталось 3 слота по спеццене</p>
+              <p className="text-xs sm:text-sm opacity-90">Не упустите шанс! Завтра может быть поздно!</p>
             </CardContent>
           </Card>
         </div>
       </section>
 
       {/* Chat Widget */}
-      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 vizi-float">
+      <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-50 vizi-float">
         <div 
           className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110 vizi-cyber-glow"
           onClick={() => {
@@ -683,7 +687,7 @@ const Index = () => {
         </div>
         
         {showViziHint && !chatOpen && (
-          <div className="absolute bottom-24 left-0 w-64 bg-white rounded-lg shadow-2xl p-4 animate-scale-in border-2 border-purple-400">
+          <div className="absolute bottom-20 right-0 w-64 sm:w-72 bg-white rounded-lg shadow-2xl p-3 sm:p-4 animate-scale-in border-2 border-purple-400">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 vizi-cyber-glow">
                 <img 
@@ -707,7 +711,7 @@ const Index = () => {
         )}
         
         {chatOpen && (
-          <Card className="absolute bottom-24 left-0 w-80 shadow-2xl animate-scale-in">
+          <Card className="absolute bottom-20 right-0 w-80 sm:w-96 shadow-2xl animate-scale-in max-h-[60vh] flex flex-col overflow-hidden">
             <CardContent className="p-0">
               <div className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-800 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full overflow-hidden vizi-cyber-glow">
