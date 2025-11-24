@@ -17,22 +17,8 @@ const Index = () => {
   const { toast } = useToast();
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
-  const [photos, setPhotos] = useState([50]);
-  const [stickers, setStickers] = useState([20]);
-  const [qualityPhotos, setQualityPhotos] = useState([10]);
-
-  const handlePhotosChange = (value: number[]) => {
-    setPhotos(value);
-    if (qualityPhotos[0] > value[0]) {
-      setQualityPhotos([value[0]]);
-    }
-  };
-
-  const handleQualityPhotosChange = (value: number[]) => {
-    if (value[0] <= photos[0]) {
-      setQualityPhotos(value);
-    }
-  };
+  const [photos, setPhotos] = useState([0]);
+  const [stickers, setStickers] = useState([0]);
   const [activeFilter, setActiveFilter] = useState('all');
   const [currentReview, setCurrentReview] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
@@ -135,7 +121,12 @@ const Index = () => {
     }, 1500);
   };
 
-  const tradCost = 12000 + ((qualityPhotos[0] - 10) / 10) * 5000 + stickers[0] * 2000;
+  const tradPhotoCost = photos[0] === 0 ? 0 : 10000 + (photos[0] / 10 - 1) * 5000;
+  const tradStickerCost = stickers[0] === 0 ? 0 : 5000 + (stickers[0] / 10 - 1) * 5000;
+  const tradCost = tradPhotoCost + tradStickerCost;
+  const tradTime = photos[0] === 0 ? 0 : 7 + (photos[0] / 10 - 1) * 3;
+  const tradProcessed = Math.ceil(photos[0] / 3);
+  
   const neuroCost = Math.round(photos[0] * 500 + stickers[0] * 250);
   const savings = tradCost - neuroCost;
 
@@ -424,7 +415,7 @@ const Index = () => {
                     <span className="font-semibold">📸 Количество фото</span>
                     <Badge variant="secondary" className="text-lg">{photos[0]}</Badge>
                   </div>
-                  <Slider value={photos} onValueChange={handlePhotosChange} min={10} max={100} step={10} />
+                  <Slider value={photos} onValueChange={setPhotos} min={0} max={100} step={10} />
                 </div>
                 
                 <div>
@@ -432,15 +423,7 @@ const Index = () => {
                     <span className="font-semibold">🎨 Стикеров в паке</span>
                     <Badge variant="secondary" className="text-lg">{stickers[0]}</Badge>
                   </div>
-                  <Slider value={stickers} onValueChange={setStickers} min={10} max={30} step={1} />
-                </div>
-                
-                <div>
-                  <div className="flex justify-between mb-4">
-                    <span className="font-semibold">✨ Качественные фотографии</span>
-                    <Badge variant="secondary" className="text-lg">{qualityPhotos[0]}</Badge>
-                  </div>
-                  <Slider value={qualityPhotos} onValueChange={handleQualityPhotosChange} min={10} max={photos[0]} step={10} />
+                  <Slider value={stickers} onValueChange={setStickers} min={0} max={100} step={10} />
                 </div>
               </div>
               
@@ -450,8 +433,8 @@ const Index = () => {
                     <h4 className="font-bold text-lg mb-4">📷 Традиционная фотосессия</h4>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between"><span>Стоимость:</span><span className="font-bold">{tradCost.toLocaleString('ru-RU')}₽</span></div>
-                      <div className="flex justify-between"><span>Время:</span><span>14 дней</span></div>
-                      <div className="flex justify-between"><span>Вариантов:</span><span>{photos[0] + stickers[0]}</span></div>
+                      <div className="flex justify-between"><span>Время:</span><span>{tradTime} {tradTime === 1 ? 'день' : tradTime < 5 ? 'дня' : 'дней'}</span></div>
+                      <div className="flex justify-between"><span>Обработанные:</span><span>{tradProcessed}</span></div>
                     </div>
                   </CardContent>
                 </Card>
