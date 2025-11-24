@@ -105,7 +105,7 @@ const Index = () => {
   };
 
   const tradCost = photos[0] * 1500 + stickers[0] * 2000 + revisions[0] * 500;
-  const neuroCost = Math.round((photos[0] * 50 + stickers[0] * 200) * 1.2);
+  const neuroCost = Math.round(photos[0] * 50 + stickers[0] * 250);
   const savings = tradCost - neuroCost;
 
   const scrollToSection = (id: string) => {
