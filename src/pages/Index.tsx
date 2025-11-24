@@ -32,6 +32,8 @@ const Index = () => {
   const [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
   const [neuroGalleryOpen, setNeuroGalleryOpen] = useState(false);
   const [currentNeuroIndex, setCurrentNeuroIndex] = useState(0);
+  const [stickerGalleryOpen, setStickerGalleryOpen] = useState(false);
+  const [currentStickerIndex, setCurrentStickerIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
@@ -83,8 +85,13 @@ const Index = () => {
     { title: 'Нейропортрет', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' }
   ];
 
+  const stickerPhotos = [
+    { title: 'Кибер-котик', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg' },
+    { title: 'Стикерпак Vizi', image: 'https://cdn.poehali.dev/files/0acc6698-fd67-4b82-abfc-2b57943caedd.jpeg' }
+  ];
+
   const portfolio = [
-    { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b19a4884-4d74-495c-8df5-481e8b5d684f.jpg' },
+    { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
     { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/27e6b5e9-f2c8-4456-ac38-68f3c707c5c0.jpg' },
     { category: 'stickers', emoji: '✨', title: 'Премиум пакет', gradient: 'from-yellow-500 to-orange-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/b588faf7-e0bd-4817-9163-e615929da64e.jpg' },
@@ -134,6 +141,23 @@ const Index = () => {
     }
     if (touchStart - touchEnd < -75) {
       prevNeuroPhoto();
+    }
+  };
+
+  const nextStickerPhoto = () => {
+    setCurrentStickerIndex((prev) => (prev + 1) % stickerPhotos.length);
+  };
+
+  const prevStickerPhoto = () => {
+    setCurrentStickerIndex((prev) => (prev - 1 + stickerPhotos.length) % stickerPhotos.length);
+  };
+
+  const handleStickerTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      nextStickerPhoto();
+    }
+    if (touchStart - touchEnd < -75) {
+      prevStickerPhoto();
     }
   };
 
@@ -445,7 +469,15 @@ const Index = () => {
             <Card 
               key={index} 
               className="group cursor-pointer overflow-hidden hover-scale"
-              onClick={() => item.hasGallery && setNeuroGalleryOpen(true)}
+              onClick={() => {
+                if (item.hasGallery) {
+                  if (item.category === 'neuro') {
+                    setNeuroGalleryOpen(true);
+                  } else if (item.category === 'stickers') {
+                    setStickerGalleryOpen(true);
+                  }
+                }
+              }}
             >
               <div className="h-48 sm:h-64 relative">
                 <img 
@@ -814,6 +846,57 @@ const Index = () => {
             </div>
           </div>
           <Button onClick={() => setNeuroGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Sticker Gallery Dialog */}
+      <Dialog open={stickerGalleryOpen} onOpenChange={setStickerGalleryOpen}>
+        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
+          <DialogHeader>
+            <DialogTitle className="text-lg sm:text-2xl">🎨 Брендовый стикерпак</DialogTitle>
+          </DialogHeader>
+          <div className="relative">
+            <div 
+              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleStickerTouchEnd}
+            >
+              <img 
+                src={stickerPhotos[currentStickerIndex].image} 
+                alt={stickerPhotos[currentStickerIndex].title}
+                className="w-full h-full object-contain bg-black"
+              />
+              <button
+                onClick={prevStickerPhoto}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronLeft" size={24} />
+              </button>
+              <button
+                onClick={nextStickerPhoto}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronRight" size={24} />
+              </button>
+            </div>
+            <div className="mt-4 text-center space-y-2">
+              <p className="text-base sm:text-lg font-semibold">{stickerPhotos[currentStickerIndex].title}</p>
+              <p className="text-sm text-gray-500">{currentStickerIndex + 1} / {stickerPhotos.length}</p>
+            </div>
+            <div className="flex gap-2 justify-center mt-4">
+              {stickerPhotos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentStickerIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentStickerIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          <Button onClick={() => setStickerGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
