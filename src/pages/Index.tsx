@@ -32,6 +32,8 @@ const Index = () => {
   const [privacyDialogOpen, setPrivacyDialogOpen] = useState(false);
   const [neuroGalleryOpen, setNeuroGalleryOpen] = useState(false);
   const [currentNeuroIndex, setCurrentNeuroIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const quizQuestions = [
     {
@@ -116,6 +118,23 @@ const Index = () => {
 
   const prevNeuroPhoto = () => {
     setCurrentNeuroIndex((prev) => (prev - 1 + neuroPhotos.length) % neuroPhotos.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      nextNeuroPhoto();
+    }
+    if (touchStart - touchEnd < -75) {
+      prevNeuroPhoto();
+    }
   };
 
   const filteredPortfolio = activeFilter === 'all' 
@@ -754,11 +773,16 @@ const Index = () => {
             <DialogTitle className="text-lg sm:text-2xl">📸 Нейрофотосессия</DialogTitle>
           </DialogHeader>
           <div className="relative">
-            <div className="relative aspect-[3/4] sm:aspect-video w-full overflow-hidden rounded-lg">
+            <div 
+              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <img 
                 src={neuroPhotos[currentNeuroIndex].image} 
                 alt={neuroPhotos[currentNeuroIndex].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-black"
               />
               <button
                 onClick={prevNeuroPhoto}
