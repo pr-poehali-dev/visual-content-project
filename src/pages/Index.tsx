@@ -127,7 +127,12 @@ const Index = () => {
   const tradTime = photos[0] === 0 ? 0 : 7 + (photos[0] / 10 - 1) * 3;
   const tradProcessed = Math.ceil(photos[0] / 3);
   
-  const neuroCost = Math.round(photos[0] * 500 + stickers[0] * 250);
+  const neuroPhotoCost = photos[0] === 0 ? 0 : 5000 + (photos[0] / 10 - 1) * 2500;
+  const neuroStickerCost = stickers[0] === 0 ? 0 : 2500 + (stickers[0] / 10 - 1) * 1500;
+  const neuroCost = neuroPhotoCost + neuroStickerCost;
+  const neuroTime = photos[0] === 0 ? 0 : 2 + Math.floor(photos[0] / 30) * 0.5;
+  const neuroProcessed = photos[0];
+  
   const savings = tradCost - neuroCost;
 
   const scrollToSection = (id: string) => {
@@ -444,8 +449,8 @@ const Index = () => {
                     <h4 className="font-bold text-lg mb-4">🤖 С нами (Нейрофото + стикеры)</h4>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between"><span>Стоимость:</span><span className="font-bold">{neuroCost.toLocaleString('ru-RU')}₽</span></div>
-                      <div className="flex justify-between"><span>Время:</span><span>2 дня</span></div>
-                      <div className="flex justify-between"><span>Вариантов:</span><span>{photos[0] * 2 + stickers[0] * 3}</span></div>
+                      <div className="flex justify-between"><span>Время:</span><span>{neuroTime} {neuroTime === 1 || neuroTime === 0 ? 'день' : neuroTime < 5 ? 'дня' : 'дней'}</span></div>
+                      <div className="flex justify-between"><span>Обработанные:</span><span>{neuroProcessed}</span></div>
                     </div>
                   </CardContent>
                 </Card>
