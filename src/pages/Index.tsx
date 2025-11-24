@@ -19,7 +19,7 @@ const Index = () => {
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
   const [photos, setPhotos] = useState([50]);
   const [stickers, setStickers] = useState([20]);
-  const [revisions, setRevisions] = useState([5]);
+  const [qualityPhotos, setQualityPhotos] = useState([10]);
   const [activeFilter, setActiveFilter] = useState('all');
   const [currentReview, setCurrentReview] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
@@ -122,7 +122,7 @@ const Index = () => {
     }, 1500);
   };
 
-  const tradCost = photos[0] * 1200 + stickers[0] * 2000 + revisions[0] * 500;
+  const tradCost = 12000 + (qualityPhotos[0] - 10) * 500 + stickers[0] * 2000;
   const neuroCost = Math.round(photos[0] * 500 + stickers[0] * 250);
   const savings = tradCost - neuroCost;
 
@@ -424,10 +424,10 @@ const Index = () => {
                 
                 <div>
                   <div className="flex justify-between mb-4">
-                    <span className="font-semibold">🔄 Правок</span>
-                    <Badge variant="secondary" className="text-lg">{revisions[0]}</Badge>
+                    <span className="font-semibold">✨ Качественные фотографии</span>
+                    <Badge variant="secondary" className="text-lg">{qualityPhotos[0]}</Badge>
                   </div>
-                  <Slider value={revisions} onValueChange={setRevisions} min={1} max={10} step={1} />
+                  <Slider value={qualityPhotos} onValueChange={setQualityPhotos} min={10} max={100} step={10} />
                 </div>
               </div>
               
