@@ -516,6 +516,12 @@ const Index = () => {
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-4 sm:p-6">
+                  <div className="w-full">
+                    <p className="text-white text-lg sm:text-xl font-bold mb-1">{item.emoji} {item.title}</p>
+                    {item.hasGallery && <p className="text-white/80 text-xs sm:text-sm">Нажмите для просмотра галереи</p>}
+                  </div>
+                </div>
                 <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-6">
                   <p className="text-xl font-bold mb-4">{item.title}</p>
                   {item.hasGallery && <Button variant="secondary" size="sm">Смотреть все</Button>}
