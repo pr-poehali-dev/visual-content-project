@@ -20,6 +20,19 @@ const Index = () => {
   const [photos, setPhotos] = useState([50]);
   const [stickers, setStickers] = useState([20]);
   const [qualityPhotos, setQualityPhotos] = useState([10]);
+
+  const handlePhotosChange = (value: number[]) => {
+    setPhotos(value);
+    if (qualityPhotos[0] > value[0]) {
+      setQualityPhotos([value[0]]);
+    }
+  };
+
+  const handleQualityPhotosChange = (value: number[]) => {
+    if (value[0] <= photos[0]) {
+      setQualityPhotos(value);
+    }
+  };
   const [activeFilter, setActiveFilter] = useState('all');
   const [currentReview, setCurrentReview] = useState(0);
   const [chatOpen, setChatOpen] = useState(false);
@@ -122,7 +135,7 @@ const Index = () => {
     }, 1500);
   };
 
-  const tradCost = 12000 + (qualityPhotos[0] - 10) * 500 + stickers[0] * 2000;
+  const tradCost = 12000 + ((qualityPhotos[0] - 10) / 10) * 5000 + stickers[0] * 2000;
   const neuroCost = Math.round(photos[0] * 500 + stickers[0] * 250);
   const savings = tradCost - neuroCost;
 
@@ -411,7 +424,7 @@ const Index = () => {
                     <span className="font-semibold">📸 Количество фото</span>
                     <Badge variant="secondary" className="text-lg">{photos[0]}</Badge>
                   </div>
-                  <Slider value={photos} onValueChange={setPhotos} min={10} max={100} step={1} />
+                  <Slider value={photos} onValueChange={handlePhotosChange} min={10} max={100} step={10} />
                 </div>
                 
                 <div>
@@ -427,7 +440,7 @@ const Index = () => {
                     <span className="font-semibold">✨ Качественные фотографии</span>
                     <Badge variant="secondary" className="text-lg">{qualityPhotos[0]}</Badge>
                   </div>
-                  <Slider value={qualityPhotos} onValueChange={setQualityPhotos} min={10} max={100} step={10} />
+                  <Slider value={qualityPhotos} onValueChange={handleQualityPhotosChange} min={10} max={photos[0]} step={10} />
                 </div>
               </div>
               
