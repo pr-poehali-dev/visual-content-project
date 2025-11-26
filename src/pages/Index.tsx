@@ -407,30 +407,30 @@ const Index = () => {
       )}
 
       {/* Hero Section */}
-      <section className="relative min-h-[100svh] flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-hidden py-6">
+      <section className="relative min-h-[100svh] flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-hidden py-8 px-4">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
-        <div className="container mx-auto px-4 text-center z-10 animate-fade-in max-w-4xl">
-          <div className="text-5xl sm:text-7xl mb-3 sm:mb-5 animate-bounce">😼</div>
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-2 sm:mb-4 leading-tight">Привет! Я Визи 👋</h1>
-          <p className="text-sm sm:text-lg md:text-xl mb-6 sm:mb-10 opacity-90 max-w-xl mx-auto px-2">
+        <div className="container mx-auto text-center z-10 animate-fade-in max-w-4xl">
+          <div className="text-6xl sm:text-7xl mb-4 sm:mb-5 animate-bounce">😼</div>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 leading-tight px-4">Привет! Я Визи 👋</h1>
+          <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-90 max-w-xl mx-auto px-4">
             Помогаю брендам создавать контент, который запоминают и используют!
           </p>
           
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 max-w-lg mx-auto">
-            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+          <div className="grid grid-cols-2 gap-3 sm:gap-3 max-w-lg mx-auto px-4">
+            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Palette" className="mr-1" size={16} />
               Стикеры
             </Button>
-            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Camera" className="mr-1" size={16} />
               AI-фото
             </Button>
-            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('calculator')}>
+            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('calculator')}>
               <Icon name="Calculator" className="mr-1" size={16} />
               Калькулятор
             </Button>
-            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-xs sm:text-sm py-4 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Sparkles" className="mr-1" size={16} />
               Примеры
             </Button>
@@ -439,8 +439,8 @@ const Index = () => {
       </section>
 
       {/* Quiz Section */}
-      <section id="quiz" className="py-12 sm:py-20 container mx-auto px-4">
-        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Давайте найдём ваше идеальное решение 🎯</h2>
+      <section id="quiz" className="py-16 sm:py-20 container mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Давайте найдём ваше идеальное решение 🎯</h2>
         
         {quizStep >= 0 && quizStep < quizQuestions.length ? (
           <Card className="max-w-3xl mx-auto animate-fade-in">
@@ -454,7 +454,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <h3 className="text-base sm:text-xl font-bold text-center mb-6 sm:mb-8">{quizQuestions[quizStep].question}</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-center mb-6 sm:mb-8 px-2">{quizQuestions[quizStep].question}</h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                 {quizQuestions[quizStep].options.map((option) => (
@@ -503,9 +503,9 @@ const Index = () => {
       </section>
 
       {/* Calculator Section */}
-      <section id="calculator" className="py-12 sm:py-20 bg-secondary/5">
+      <section id="calculator" className="py-16 sm:py-20 bg-secondary/5">
         <div className="container mx-auto px-4">
-          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Сколько вы экономите? 💰</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Сколько вы экономите? 💰</h2>
           
           <Card className="max-w-4xl mx-auto">
             <CardContent className="p-4 sm:p-8">
@@ -568,10 +568,10 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-12 sm:py-20 container mx-auto px-4">
-        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 leading-tight">Вот что мы создали 🎨</h2>
+      <section id="portfolio" className="py-16 sm:py-20 container mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-10 leading-tight px-2">Вот что мы создали 🎨</h2>
         
-        <div className="flex flex-wrap gap-2 justify-center mb-6 sm:mb-12 px-2">
+        <div className="flex flex-wrap gap-2 justify-center mb-8 sm:mb-12 px-2">
           {['all', 'stickers', 'neuro', 'fashion', 'ecommerce'].map((filter) => (
             <Button
               key={filter}
@@ -589,7 +589,7 @@ const Index = () => {
           ))}
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredPortfolio.map((item, index) => (
             <Card 
               key={index} 
@@ -631,9 +631,9 @@ const Index = () => {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
+      <section id="reviews" className="py-16 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Что говорят клиенты ⭐</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Что говорят клиенты ⭐</h2>
           
           <div className="max-w-4xl mx-auto relative">
             <Card className="bg-white/10 backdrop-blur border-white/20">
@@ -706,8 +706,8 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-12 sm:py-20 container mx-auto px-4">
-        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Часто задаваемые вопросы ❓</h2>
+      <section id="faq" className="py-16 sm:py-20 container mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Часто задаваемые вопросы ❓</h2>
         
         <Accordion type="single" collapsible className="max-w-3xl mx-auto">
           <AccordionItem value="item-1">
@@ -761,11 +761,11 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-12 sm:py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
         <div className="container mx-auto px-4 text-center">
-          <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">😼</div>
-          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-5 leading-tight">Готовы создать контент, который выделит вас?</h2>
-          <p className="text-sm sm:text-lg mb-6 sm:mb-10 opacity-90">Присоединяйтесь к 10+ брендам, которые уже получают результаты</p>
+          <div className="text-6xl sm:text-6xl mb-5 sm:mb-6">😼</div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 leading-tight px-2">Готовы создать контент, который выделит вас?</h2>
+          <p className="text-base sm:text-lg mb-8 sm:mb-10 opacity-90 px-4">Присоединяйтесь к 10+ брендам, которые уже получают результаты</p>
           
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 justify-center mb-6 sm:mb-10 max-w-3xl mx-auto">
             <div className="flex items-center gap-2 sm:gap-3">
