@@ -767,14 +767,18 @@ const Index = () => {
           <h2 className="text-xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-5 leading-tight">Готовы создать контент, который выделит вас?</h2>
           <p className="text-sm sm:text-lg mb-6 sm:mb-10 opacity-90">Присоединяйтесь к 10+ брендам, которые уже получают результаты</p>
           
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 justify-center mb-6 sm:mb-10 max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 justify-center mb-6 sm:mb-10 max-w-3xl mx-auto">
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
-              <span className="text-sm sm:text-base">Экономия 90% бюджета</span>
+              <span className="text-sm sm:text-base">Экономия 50% бюджета</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
               <span className="text-sm sm:text-base">Готово за 48 часов</span>
+            </div>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
+              <span className="text-sm sm:text-base">15+ выполненных заказов</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
