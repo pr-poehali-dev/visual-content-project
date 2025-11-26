@@ -938,7 +938,7 @@ const Index = () => {
           </DialogHeader>
           <div className="relative">
             <div 
-              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-black"
+              className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleStickerTouchEnd}
