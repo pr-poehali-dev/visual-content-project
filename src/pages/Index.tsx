@@ -78,11 +78,9 @@ const Index = () => {
   ];
 
   const neuroPhotos = [
-    { title: 'Осенний образ', image: 'https://cdn.poehali.dev/files/c6f99c5e-7950-4569-ab9e-d935a9449a33.jpeg' },
     { title: 'Портрет в интерьере', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
     { title: 'Уличная фотосессия', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
     { title: 'Городской стиль', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
-    { title: 'Золотой час', image: 'https://cdn.poehali.dev/files/a76ae61b-cb53-44ff-ac58-458dfd55f38b.jpeg' },
     { title: 'Нейропортрет', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' }
   ];
 
