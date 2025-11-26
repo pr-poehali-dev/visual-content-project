@@ -81,7 +81,12 @@ const Index = () => {
     { title: 'Портрет в интерьере', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
     { title: 'Уличная фотосессия', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
     { title: 'Городской стиль', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
-    { title: 'Нейропортрет', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' }
+    { title: 'Нейропортрет', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' },
+    { title: 'Зимняя Москва', image: 'https://cdn.poehali.dev/files/ffb55f20-d2e1-4fea-8b1d-118b8feaae69.jpeg' },
+    { title: 'Волшебный шар', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg' },
+    { title: 'Уютное Рождество', image: 'https://cdn.poehali.dev/files/ffc743a7-fb3d-43e7-a169-e97efa541bb7.jpeg' },
+    { title: 'Праздничный вечер', image: 'https://cdn.poehali.dev/files/6a470c32-8ef3-4a95-a291-88506d871222.jpeg' },
+    { title: 'Рождественская Москва', image: 'https://cdn.poehali.dev/files/f168d5b2-6dd9-48ee-9756-8c45655ffedc.jpeg' }
   ];
 
   const stickerPhotos = [
