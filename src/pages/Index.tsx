@@ -35,6 +35,8 @@ const Index = () => {
   const [currentStickerIndex, setCurrentStickerIndex] = useState(0);
   const [ecommerceGalleryOpen, setEcommerceGalleryOpen] = useState(false);
   const [currentEcommerceIndex, setCurrentEcommerceIndex] = useState(0);
+  const [fashionGalleryOpen, setFashionGalleryOpen] = useState(false);
+  const [currentFashionIndex, setCurrentFashionIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
@@ -104,10 +106,18 @@ const Index = () => {
     { title: 'Геометрия уюта', image: 'https://cdn.poehali.dev/files/2c579169-bd1a-4310-975d-5cc2c0b45a8b.jpeg' }
   ];
 
+  const fashionPhotos = [
+    { title: 'Дизайнерские стикеры', image: 'https://cdn.poehali.dev/files/272b3cde-20db-4113-a8fc-9e3801e65553.jpeg' },
+    { title: 'Fashion стиль', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg' },
+    { title: 'Путешествия', image: 'https://cdn.poehali.dev/files/778b28d3-f95c-4ede-ae6d-42002f28e4f4.jpeg' },
+    { title: 'Креативные мемы', image: 'https://cdn.poehali.dev/files/c08e79cc-6ac9-4357-bbf6-2ec5d4eeda98.jpeg' },
+    { title: 'Йога и гармония', image: 'https://cdn.poehali.dev/files/2d9822cf-2427-48c0-8fc6-e56e4edc8a24.jpeg' }
+  ];
+
   const portfolio = [
     { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
     { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
-    { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/27e6b5e9-f2c8-4456-ac38-68f3c707c5c0.jpg' },
+    { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
     { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
   ];
 
@@ -199,6 +209,23 @@ const Index = () => {
     }
     if (touchStart - touchEnd < -75) {
       prevEcommercePhoto();
+    }
+  };
+
+  const nextFashionPhoto = () => {
+    setCurrentFashionIndex((prev) => (prev + 1) % fashionPhotos.length);
+  };
+
+  const prevFashionPhoto = () => {
+    setCurrentFashionIndex((prev) => (prev - 1 + fashionPhotos.length) % fashionPhotos.length);
+  };
+
+  const handleFashionTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      nextFashionPhoto();
+    }
+    if (touchStart - touchEnd < -75) {
+      prevFashionPhoto();
     }
   };
 
@@ -515,6 +542,8 @@ const Index = () => {
                     setStickerGalleryOpen(true);
                   } else if (item.category === 'ecommerce') {
                     setEcommerceGalleryOpen(true);
+                  } else if (item.category === 'fashion') {
+                    setFashionGalleryOpen(true);
                   }
                 }
               }}
@@ -994,6 +1023,57 @@ const Index = () => {
             </div>
           </div>
           <Button onClick={() => setEcommerceGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Fashion Gallery Dialog */}
+      <Dialog open={fashionGalleryOpen} onOpenChange={setFashionGalleryOpen}>
+        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
+          <DialogHeader>
+            <DialogTitle className="text-lg sm:text-2xl">👗 Fashion стикеры</DialogTitle>
+          </DialogHeader>
+          <div className="relative">
+            <div 
+              className="relative aspect-square w-full overflow-hidden rounded-lg"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleFashionTouchEnd}
+            >
+              <img 
+                src={fashionPhotos[currentFashionIndex].image} 
+                alt={fashionPhotos[currentFashionIndex].title}
+                className="w-full h-full object-contain bg-gray-100"
+              />
+              <button
+                onClick={prevFashionPhoto}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronLeft" size={24} />
+              </button>
+              <button
+                onClick={nextFashionPhoto}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronRight" size={24} />
+              </button>
+            </div>
+            <div className="mt-4 text-center space-y-2">
+              <p className="text-base sm:text-lg font-semibold">{fashionPhotos[currentFashionIndex].title}</p>
+              <p className="text-sm text-gray-500">{currentFashionIndex + 1} / {fashionPhotos.length}</p>
+            </div>
+            <div className="flex gap-2 justify-center mt-4">
+              {fashionPhotos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentFashionIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentFashionIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          <Button onClick={() => setFashionGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
