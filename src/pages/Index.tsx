@@ -675,9 +675,9 @@ const Index = () => {
                 <div className="flex items-center justify-between mt-6">
                   <button
                     onClick={() => setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length)}
-                    className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all"
+                    className="w-12 h-12 sm:w-12 sm:h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-95 touch-manipulation"
                   >
-                    <Icon name="ChevronLeft" size={24} />
+                    <Icon name="ChevronLeft" size={28} />
                   </button>
                   
                   <div className="flex gap-2">
@@ -694,9 +694,9 @@ const Index = () => {
                   
                   <button
                     onClick={() => setCurrentReview((prev) => (prev + 1) % reviews.length)}
-                    className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all"
+                    className="w-12 h-12 sm:w-12 sm:h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-95 touch-manipulation"
                   >
-                    <Icon name="ChevronRight" size={24} />
+                    <Icon name="ChevronRight" size={28} />
                   </button>
                 </div>
               </CardContent>
@@ -1003,15 +1003,15 @@ const Index = () => {
               ))}
               <button
                 onClick={prevNeuroPhoto}
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronLeft" size={24} />
+                <Icon name="ChevronLeft" size={28} />
               </button>
               <button
                 onClick={nextNeuroPhoto}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronRight" size={24} />
+                <Icon name="ChevronRight" size={28} />
               </button>
             </div>
             <div className="mt-4 text-center space-y-2">
@@ -1023,8 +1023,8 @@ const Index = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentNeuroIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentNeuroIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  className={`w-3 h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentNeuroIndex ? 'bg-primary w-8' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -1060,15 +1060,15 @@ const Index = () => {
               ))}
               <button
                 onClick={prevStickerPhoto}
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronLeft" size={24} />
+                <Icon name="ChevronLeft" size={28} />
               </button>
               <button
                 onClick={nextStickerPhoto}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronRight" size={24} />
+                <Icon name="ChevronRight" size={28} />
               </button>
             </div>
             <div className="mt-4 text-center space-y-2">
@@ -1080,8 +1080,8 @@ const Index = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentStickerIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentStickerIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  className={`w-3 h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentStickerIndex ? 'bg-primary w-8' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -1117,15 +1117,15 @@ const Index = () => {
               ))}
               <button
                 onClick={prevEcommercePhoto}
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronLeft" size={24} />
+                <Icon name="ChevronLeft" size={28} />
               </button>
               <button
                 onClick={nextEcommercePhoto}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronRight" size={24} />
+                <Icon name="ChevronRight" size={28} />
               </button>
             </div>
             <div className="mt-4 text-center space-y-2">
@@ -1137,8 +1137,8 @@ const Index = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentEcommerceIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentEcommerceIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  className={`w-3 h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentEcommerceIndex ? 'bg-primary w-8' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -1174,15 +1174,15 @@ const Index = () => {
               ))}
               <button
                 onClick={prevFashionPhoto}
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronLeft" size={24} />
+                <Icon name="ChevronLeft" size={28} />
               </button>
               <button
                 onClick={nextFashionPhoto}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-14 h-14 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-95 touch-manipulation"
               >
-                <Icon name="ChevronRight" size={24} />
+                <Icon name="ChevronRight" size={28} />
               </button>
             </div>
             <div className="mt-4 text-center space-y-2">
@@ -1194,8 +1194,8 @@ const Index = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentFashionIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentFashionIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                  className={`w-3 h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentFashionIndex ? 'bg-primary w-8' : 'bg-gray-300'
                   }`}
                 />
               ))}
