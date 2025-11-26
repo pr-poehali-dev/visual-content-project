@@ -654,7 +654,7 @@ const Index = () => {
             <Button size="lg" className="bg-white text-primary hover:bg-gray-100 w-full sm:w-auto" onClick={() => setFormOpen(true)}>
               Начать прямо сейчас
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20 w-full sm:w-auto" onClick={() => setChatOpen(true)}>
+            <Button size="lg" variant="outline" className="border-white bg-white text-black hover:bg-gray-100 w-full sm:w-auto" onClick={() => setChatOpen(true)}>
               Поговорить с Визи
             </Button>
           </div>
