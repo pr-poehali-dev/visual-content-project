@@ -778,7 +778,7 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
-              <span className="text-sm sm:text-base">15+ выполненных заказов</span>
+              <span className="text-sm sm:text-base">15+ частных заказов</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
