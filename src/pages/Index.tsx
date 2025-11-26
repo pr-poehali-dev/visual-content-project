@@ -325,6 +325,14 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentReview((prev) => (prev + 1) % reviews.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [reviews.length]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Mobile Menu Button */}
