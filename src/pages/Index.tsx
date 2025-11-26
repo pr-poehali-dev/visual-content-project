@@ -765,7 +765,7 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">😼</div>
           <h2 className="text-xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-5 leading-tight">Готовы создать контент, который выделит вас?</h2>
-          <p className="text-sm sm:text-lg mb-6 sm:mb-10 opacity-90">Присоединяйтесь к 89+ брендам, которые уже получают результаты</p>
+          <p className="text-sm sm:text-lg mb-6 sm:mb-10 opacity-90">Присоединяйтесь к 10+ брендам, которые уже получают результаты</p>
           
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 justify-center mb-6 sm:mb-10 max-w-2xl mx-auto">
             <div className="flex items-center gap-2 sm:gap-3">
