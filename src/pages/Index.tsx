@@ -411,26 +411,26 @@ const Index = () => {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
         <div className="container mx-auto text-center z-10 animate-fade-in max-w-4xl">
-          <div className="text-6xl sm:text-7xl mb-4 sm:mb-5 animate-bounce">😼</div>
+          <div className="text-6xl sm:text-7xl mb-4 sm:mb-5">😼</div>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 leading-tight px-4">Привет! Я Визи 👋</h1>
           <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-90 max-w-xl mx-auto px-4">
             Помогаю брендам создавать контент, который запоминают и используют!
           </p>
           
           <div className="grid grid-cols-2 gap-3 sm:gap-3 max-w-lg mx-auto px-4">
-            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+            <Button size="sm" className="bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Palette" className="mr-1" size={16} />
               Стикеры
             </Button>
-            <Button size="sm" className="button-pulse bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+            <Button size="sm" className="bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Camera" className="mr-1" size={16} />
               AI-фото
             </Button>
-            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('calculator')}>
+            <Button size="sm" variant="outline" className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('calculator')}>
               <Icon name="Calculator" className="mr-1" size={16} />
               Калькулятор
             </Button>
-            <Button size="sm" variant="outline" className="button-pulse border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
+            <Button size="sm" variant="outline" className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Sparkles" className="mr-1" size={16} />
               Примеры
             </Button>
@@ -612,6 +612,7 @@ const Index = () => {
                 <img 
                   src={item.image} 
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex items-end p-4 sm:p-6">
@@ -818,6 +819,7 @@ const Index = () => {
           <img 
             src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
             alt="Визи"
+            loading="lazy"
             className="w-full h-full object-cover scale-110 vizi-neon"
           />
         </div>
@@ -829,6 +831,7 @@ const Index = () => {
                 <img 
                   src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                   alt="Визи"
+                  loading="lazy"
                   className="w-full h-full object-cover scale-110 vizi-neon"
                 />
               </div>

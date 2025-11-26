@@ -180,24 +180,35 @@
 
 .vizi-float {
   animation: float 4s ease-in-out infinite;
+  will-change: transform;
 }
 
 .vizi-wiggle {
   animation: wiggle 1s ease-in-out;
+  will-change: transform;
 }
 
 .vizi-blink {
   animation: blink 4s ease-in-out infinite;
+  will-change: opacity;
 }
 
 .vizi-neon {
   animation: neon-pulse 2s ease-in-out infinite;
+  will-change: filter;
 }
 
 .vizi-cyber-glow {
   animation: cyber-glow 3s ease-in-out infinite;
+  will-change: box-shadow;
 }
 
-.button-pulse:hover {
-  animation: pulse-glow 1.5s ease-in-out infinite;
+@media (prefers-reduced-motion: reduce) {
+  .vizi-float,
+  .vizi-wiggle,
+  .vizi-blink,
+  .vizi-neon,
+  .vizi-cyber-glow {
+    animation: none;
+  }
 }
