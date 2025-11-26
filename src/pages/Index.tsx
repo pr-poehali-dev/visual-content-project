@@ -1281,7 +1281,7 @@ const Index = () => {
       {/* Footer with Privacy Link */}
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400 mb-4">
             <p>© 2024 Vizi Studio. Все права защищены.</p>
             <span className="hidden sm:inline">•</span>
             <button
@@ -1295,6 +1295,9 @@ const Index = () => {
               vizi-stickers@mail.ru
             </a>
           </div>
+          <p className="text-xs text-gray-500 max-w-3xl mx-auto">
+            * Instagram и Facebook принадлежат компании Meta Platforms Inc., которая признана экстремистской организацией и запрещена на территории Российской Федерации
+          </p>
         </div>
       </footer>
     </div>
