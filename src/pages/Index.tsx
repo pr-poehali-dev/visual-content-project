@@ -74,9 +74,55 @@ const Index = () => {
   ];
 
   const reviews = [
-    { quote: 'Охват +250%, и это за месяц!', author: 'Анна', role: 'Fashion бренд', comment: 'Анна теперь постоянный клиент! 😊' },
-    { quote: 'Экономия 40К, результат за 2 дня', author: 'Дмитрий', role: 'Маркетолог', comment: 'Дмитрий привёл ещё 3 клиентов! 🙌' },
-    { quote: 'Стикеры прямо отпадные!', author: 'София', role: 'Блогер (187К подписчиков)', comment: 'София делится везде! 🔥' }
+    { 
+      quote: 'Обращалась в Визи за AI-портретом для профиля — результат супер! Всё сделали быстро, учли мои пожелания по цветам и стилю. Теперь у меня крутая картинка, которую все отмечают. Рекомендую!', 
+      author: 'Анна С.', 
+      role: 'Личный заказ', 
+      rating: 5,
+      comment: 'Анна теперь постоянный клиент! Персональный подход — наша фишка 😊' 
+    },
+    { 
+      quote: 'С женой заказывали семейные нейро-фото в Визи для нового года. Оригинальные работы, быстрая обработка, всё получали онлайн. Цена чуть выше обычной студии, но эффект получился вау!', 
+      author: 'Евгений Л.', 
+      role: 'Семейный заказ', 
+      rating: 4,
+      comment: 'Семейные фото — особый жанр! Рад, что эффект оправдал ожидания 🎄' 
+    },
+    { 
+      quote: 'Очень понравилось работать с Визи — заказывала аниме-аватар, сделали быстро и показали варианты на выбор. Можно всё обсудить через чат, ребята всегда на связи! Обязательно обращусь ещё.', 
+      author: 'Мария Р.', 
+      role: 'Аниме-аватар', 
+      rating: 5,
+      comment: 'Мария выбирала из 5 вариантов! Всегда даём выбор 💬' 
+    },
+    { 
+      quote: 'Визи делали AI-портреты для корпоративного сайта. Понравился современный стиль, всё получили в срок, подход творческий. Команда помогла подобрать варианты, коллеги оценили! Однозначно рекомендую.', 
+      author: 'Артём М.', 
+      role: 'Корпоративный заказ', 
+      rating: 5,
+      comment: 'Корпоративные проекты — моя любовь! Стиль и профессионализм 💼' 
+    },
+    { 
+      quote: 'Сотрудничаем с Визи уже полгода — заказываем визуалы для клиентских проектов. Ребята берут оптовые заказы, работают в сроки, готовы к корректировкам. Цена адекватная для bulk-заказов, качество стабильное. Как подрядчик рекомендую!', 
+      author: 'MediaAgency "БХ"', 
+      role: 'B2B агентство', 
+      rating: 5,
+      comment: 'Полгода сотрудничества! Оптовые заказы — это наша сила 🤝' 
+    },
+    { 
+      quote: 'Обратились в Визи для генерации иллюстраций под нашу платформу. Команда сразу поняла техническое задание, предложила несколько подходов к стилю. Получили готовый контент в срок, без переделок. Рассчитываем на дальнейшее сотрудничество!', 
+      author: 'ООО "Стартап Лаб"', 
+      role: 'B2B стартап', 
+      rating: 5,
+      comment: 'Техзадание поняли с первого раза! Говорим на языке стартапов 🚀' 
+    },
+    { 
+      quote: 'Используем Визи для создания аватаров товаров и промо-визуалов в каталог. Срок выполнения быстрый, можно оформить большой заказ и получить скидку. Вышло выгоднее, чем нанимать внутреннего дизайнера. Пока работаем над единообразием стиля, но в целом доволен!', 
+      author: 'Елена К.', 
+      role: 'E-commerce', 
+      rating: 4,
+      comment: 'E-commerce визуалы — наша специализация! Единообразие стиля — в работе 🛒' 
+    }
   ];
 
   const neuroPhotos = [
@@ -575,33 +621,73 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 leading-tight">Что говорят клиенты ⭐</h2>
           
-          <Card className="max-w-3xl mx-auto bg-white/10 backdrop-blur border-white/20">
-            <CardContent className="p-4 sm:p-12 text-center">
-              <p className="text-base sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 leading-tight">"{reviews[currentReview].quote}"</p>
-              <p className="text-sm sm:text-lg font-semibold mb-1">{reviews[currentReview].author}</p>
-              <p className="text-xs sm:text-base opacity-90 mb-3 sm:mb-4">{reviews[currentReview].role}</p>
-              <p className="text-lg sm:text-xl mb-4 sm:mb-6">⭐⭐⭐⭐⭐</p>
-              
-              <Card className="bg-white/20 border-white/30">
-                <CardContent className="p-3 sm:p-4 flex items-center gap-2 sm:gap-4">
-                  <span className="text-2xl sm:text-4xl">😼</span>
-                  <p className="text-sm sm:text-base">{reviews[currentReview].comment}</p>
-                </CardContent>
-              </Card>
-              
-              <div className="flex justify-center gap-2 mt-4 sm:mt-8">
-                {reviews.map((_, index) => (
+          <div className="max-w-4xl mx-auto relative">
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6 sm:p-10">
+                <div className="mb-4">
+                  <p className="text-yellow-400 text-2xl sm:text-3xl mb-2">
+                    {'★'.repeat(reviews[currentReview].rating)}{'☆'.repeat(5 - reviews[currentReview].rating)}
+                  </p>
+                </div>
+                
+                <p className="text-base sm:text-lg md:text-xl mb-6 leading-relaxed text-left">"{reviews[currentReview].quote}"</p>
+                
+                <div className="flex items-center gap-3 mb-6 pb-6 border-b border-white/20">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-2xl">
+                    {reviews[currentReview].author.charAt(0)}
+                  </div>
+                  <div className="text-left">
+                    <p className="text-base sm:text-lg font-semibold">{reviews[currentReview].author}</p>
+                    <p className="text-sm sm:text-base opacity-80">{reviews[currentReview].role}</p>
+                  </div>
+                </div>
+                
+                <Card className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-purple-400/30">
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 vizi-cyber-glow">
+                      <img 
+                        src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
+                        alt="Визи"
+                        className="w-full h-full object-cover scale-110 vizi-neon"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs sm:text-sm font-semibold mb-1">Комментарий Визи:</p>
+                      <p className="text-sm sm:text-base">{reviews[currentReview].comment}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <div className="flex items-center justify-between mt-6">
                   <button
-                    key={index}
-                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-                      currentReview === index ? 'bg-white w-6 sm:w-8' : 'bg-white/50'
-                    }`}
-                    onClick={() => setCurrentReview(index)}
-                  />
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                    onClick={() => setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length)}
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all"
+                  >
+                    <Icon name="ChevronLeft" size={24} />
+                  </button>
+                  
+                  <div className="flex gap-2">
+                    {reviews.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+                          currentReview === index ? 'bg-white w-6 sm:w-8' : 'bg-white/50'
+                        }`}
+                        onClick={() => setCurrentReview(index)}
+                      />
+                    ))}
+                  </div>
+                  
+                  <button
+                    onClick={() => setCurrentReview((prev) => (prev + 1) % reviews.length)}
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all"
+                  >
+                    <Icon name="ChevronRight" size={24} />
+                  </button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
