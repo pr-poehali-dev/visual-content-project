@@ -881,16 +881,22 @@ const Index = () => {
           </DialogHeader>
           <div className="relative">
             <div 
-              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg"
+              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-black"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              <img 
-                src={neuroPhotos[currentNeuroIndex].image} 
-                alt={neuroPhotos[currentNeuroIndex].title}
-                className="w-full h-full object-contain bg-black"
-              />
+              {neuroPhotos.map((photo, index) => (
+                <img 
+                  key={index}
+                  src={photo.image} 
+                  alt={photo.title}
+                  loading="eager"
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                    index === currentNeuroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                />
+              ))}
               <button
                 onClick={prevNeuroPhoto}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
@@ -932,16 +938,22 @@ const Index = () => {
           </DialogHeader>
           <div className="relative">
             <div 
-              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg"
+              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-black"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleStickerTouchEnd}
             >
-              <img 
-                src={stickerPhotos[currentStickerIndex].image} 
-                alt={stickerPhotos[currentStickerIndex].title}
-                className="w-full h-full object-contain bg-black"
-              />
+              {stickerPhotos.map((photo, index) => (
+                <img 
+                  key={index}
+                  src={photo.image} 
+                  alt={photo.title}
+                  loading="eager"
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                    index === currentStickerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                />
+              ))}
               <button
                 onClick={prevStickerPhoto}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
@@ -983,16 +995,22 @@ const Index = () => {
           </DialogHeader>
           <div className="relative">
             <div 
-              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg"
+              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-black"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleEcommerceTouchEnd}
             >
-              <img 
-                src={ecommercePhotos[currentEcommerceIndex].image} 
-                alt={ecommercePhotos[currentEcommerceIndex].title}
-                className="w-full h-full object-contain bg-black"
-              />
+              {ecommercePhotos.map((photo, index) => (
+                <img 
+                  key={index}
+                  src={photo.image} 
+                  alt={photo.title}
+                  loading="eager"
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                    index === currentEcommerceIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                />
+              ))}
               <button
                 onClick={prevEcommercePhoto}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
@@ -1034,16 +1052,22 @@ const Index = () => {
           </DialogHeader>
           <div className="relative">
             <div 
-              className="relative aspect-square w-full overflow-hidden rounded-lg"
+              className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleFashionTouchEnd}
             >
-              <img 
-                src={fashionPhotos[currentFashionIndex].image} 
-                alt={fashionPhotos[currentFashionIndex].title}
-                className="w-full h-full object-contain bg-gray-100"
-              />
+              {fashionPhotos.map((photo, index) => (
+                <img 
+                  key={index}
+                  src={photo.image} 
+                  alt={photo.title}
+                  loading="eager"
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                    index === currentFashionIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                />
+              ))}
               <button
                 onClick={prevFashionPhoto}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
