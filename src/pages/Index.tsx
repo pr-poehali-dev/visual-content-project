@@ -992,13 +992,13 @@ const Index = () => {
 
       {/* Neuro Gallery Dialog */}
       <Dialog open={neuroGalleryOpen} onOpenChange={setNeuroGalleryOpen}>
-        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
-          <DialogHeader>
-            <DialogTitle className="text-lg sm:text-2xl">📸 Нейрофотосессия</DialogTitle>
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100vh] sm:h-auto mx-0 sm:mx-4 p-2 sm:p-6">
+          <DialogHeader className="pb-2">
+            <DialogTitle className="text-base sm:text-2xl">📸 Нейрофотосессия</DialogTitle>
           </DialogHeader>
-          <div className="relative">
+          <div className="relative flex-1 flex flex-col">
             <div 
-              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-black"
+              className="relative w-full flex-1 overflow-hidden rounded-lg bg-black"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
@@ -1027,35 +1027,35 @@ const Index = () => {
                 <Icon name="ChevronRight" size={32} />
               </button>
             </div>
-            <div className="mt-4 text-center space-y-2">
-              <p className="text-base sm:text-lg font-semibold">{neuroPhotos[currentNeuroIndex].title}</p>
-              <p className="text-sm text-gray-500">{currentNeuroIndex + 1} / {neuroPhotos.length}</p>
+            <div className="mt-2 sm:mt-4 text-center space-y-1">
+              <p className="text-sm sm:text-lg font-semibold">{neuroPhotos[currentNeuroIndex].title}</p>
+              <p className="text-xs sm:text-sm text-gray-500">{currentNeuroIndex + 1} / {neuroPhotos.length}</p>
             </div>
-            <div className="flex gap-2 justify-center mt-4">
+            <div className="flex gap-2 justify-center mt-2 sm:mt-4 flex-wrap">
               {neuroPhotos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentNeuroIndex(index)}
-                  className={`h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
-                    index === currentNeuroIndex ? 'bg-primary w-10' : 'bg-gray-300 w-3'
+                  className={`h-2 sm:h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentNeuroIndex ? 'bg-primary w-8 sm:w-10' : 'bg-gray-300 w-2 sm:w-3'
                   }`}
                 />
               ))}
             </div>
           </div>
-          <Button onClick={() => setNeuroGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
+          <Button onClick={() => setNeuroGalleryOpen(false)} className="w-full mt-2 sm:mt-4 text-sm sm:text-base">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
       {/* Sticker Gallery Dialog */}
       <Dialog open={stickerGalleryOpen} onOpenChange={setStickerGalleryOpen}>
-        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
-          <DialogHeader>
-            <DialogTitle className="text-lg sm:text-2xl">🎨 Брендовый стикерпак</DialogTitle>
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100vh] sm:h-auto mx-0 sm:mx-4 p-2 sm:p-6">
+          <DialogHeader className="pb-2">
+            <DialogTitle className="text-base sm:text-2xl">🎨 Брендовый стикерпак</DialogTitle>
           </DialogHeader>
-          <div className="relative">
+          <div className="relative flex-1 flex flex-col">
             <div 
-              className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100"
+              className="relative w-full flex-1 overflow-hidden rounded-lg bg-gray-100"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleStickerTouchEnd}
@@ -1084,35 +1084,35 @@ const Index = () => {
                 <Icon name="ChevronRight" size={32} />
               </button>
             </div>
-            <div className="mt-4 text-center space-y-2">
-              <p className="text-base sm:text-lg font-semibold">{stickerPhotos[currentStickerIndex].title}</p>
-              <p className="text-sm text-gray-500">{currentStickerIndex + 1} / {stickerPhotos.length}</p>
+            <div className="mt-2 sm:mt-4 text-center space-y-1">
+              <p className="text-sm sm:text-lg font-semibold">{stickerPhotos[currentStickerIndex].title}</p>
+              <p className="text-xs sm:text-sm text-gray-500">{currentStickerIndex + 1} / {stickerPhotos.length}</p>
             </div>
-            <div className="flex gap-2 justify-center mt-4">
+            <div className="flex gap-2 justify-center mt-2 sm:mt-4">
               {stickerPhotos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentStickerIndex(index)}
-                  className={`h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
-                    index === currentStickerIndex ? 'bg-primary w-10' : 'bg-gray-300 w-3'
+                  className={`h-2 sm:h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentStickerIndex ? 'bg-primary w-8 sm:w-10' : 'bg-gray-300 w-2 sm:w-3'
                   }`}
                 />
               ))}
             </div>
           </div>
-          <Button onClick={() => setStickerGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
+          <Button onClick={() => setStickerGalleryOpen(false)} className="w-full mt-2 sm:mt-4 text-sm sm:text-base">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
       {/* E-commerce Gallery Dialog */}
       <Dialog open={ecommerceGalleryOpen} onOpenChange={setEcommerceGalleryOpen}>
-        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
-          <DialogHeader>
-            <DialogTitle className="text-lg sm:text-2xl">🛒 E-commerce фото</DialogTitle>
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100vh] sm:h-auto mx-0 sm:mx-4 p-2 sm:p-6">
+          <DialogHeader className="pb-2">
+            <DialogTitle className="text-base sm:text-2xl">🛒 E-commerce фото</DialogTitle>
           </DialogHeader>
-          <div className="relative">
+          <div className="relative flex-1 flex flex-col">
             <div 
-              className="relative aspect-[3/4] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-black"
+              className="relative w-full flex-1 overflow-hidden rounded-lg bg-black"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleEcommerceTouchEnd}
@@ -1141,35 +1141,35 @@ const Index = () => {
                 <Icon name="ChevronRight" size={32} />
               </button>
             </div>
-            <div className="mt-4 text-center space-y-2">
-              <p className="text-base sm:text-lg font-semibold">{ecommercePhotos[currentEcommerceIndex].title}</p>
-              <p className="text-sm text-gray-500">{currentEcommerceIndex + 1} / {ecommercePhotos.length}</p>
+            <div className="mt-2 sm:mt-4 text-center space-y-1">
+              <p className="text-sm sm:text-lg font-semibold">{ecommercePhotos[currentEcommerceIndex].title}</p>
+              <p className="text-xs sm:text-sm text-gray-500">{currentEcommerceIndex + 1} / {ecommercePhotos.length}</p>
             </div>
-            <div className="flex gap-2 justify-center mt-4">
+            <div className="flex gap-2 justify-center mt-2 sm:mt-4">
               {ecommercePhotos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentEcommerceIndex(index)}
-                  className={`h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
-                    index === currentEcommerceIndex ? 'bg-primary w-10' : 'bg-gray-300 w-3'
+                  className={`h-2 sm:h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentEcommerceIndex ? 'bg-primary w-8 sm:w-10' : 'bg-gray-300 w-2 sm:w-3'
                   }`}
                 />
               ))}
             </div>
           </div>
-          <Button onClick={() => setEcommerceGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
+          <Button onClick={() => setEcommerceGalleryOpen(false)} className="w-full mt-2 sm:mt-4 text-sm sm:text-base">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
       {/* Fashion Gallery Dialog */}
       <Dialog open={fashionGalleryOpen} onOpenChange={setFashionGalleryOpen}>
-        <DialogContent className="max-w-[95vw] sm:max-w-3xl mx-4">
-          <DialogHeader>
-            <DialogTitle className="text-lg sm:text-2xl">👗 Fashion стикеры</DialogTitle>
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100vh] sm:h-auto mx-0 sm:mx-4 p-2 sm:p-6">
+          <DialogHeader className="pb-2">
+            <DialogTitle className="text-base sm:text-2xl">👗 Fashion стикеры</DialogTitle>
           </DialogHeader>
-          <div className="relative">
+          <div className="relative flex-1 flex flex-col">
             <div 
-              className="relative aspect-square w-full overflow-hidden rounded-lg bg-gray-100"
+              className="relative w-full flex-1 overflow-hidden rounded-lg bg-gray-100"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleFashionTouchEnd}
@@ -1198,23 +1198,23 @@ const Index = () => {
                 <Icon name="ChevronRight" size={32} />
               </button>
             </div>
-            <div className="mt-4 text-center space-y-2">
-              <p className="text-base sm:text-lg font-semibold">{fashionPhotos[currentFashionIndex].title}</p>
-              <p className="text-sm text-gray-500">{currentFashionIndex + 1} / {fashionPhotos.length}</p>
+            <div className="mt-2 sm:mt-4 text-center space-y-1">
+              <p className="text-sm sm:text-lg font-semibold">{fashionPhotos[currentFashionIndex].title}</p>
+              <p className="text-xs sm:text-sm text-gray-500">{currentFashionIndex + 1} / {fashionPhotos.length}</p>
             </div>
-            <div className="flex gap-2 justify-center mt-4">
+            <div className="flex gap-2 justify-center mt-2 sm:mt-4">
               {fashionPhotos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentFashionIndex(index)}
-                  className={`h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
-                    index === currentFashionIndex ? 'bg-primary w-10' : 'bg-gray-300 w-3'
+                  className={`h-2 sm:h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentFashionIndex ? 'bg-primary w-8 sm:w-10' : 'bg-gray-300 w-2 sm:w-3'
                   }`}
                 />
               ))}
             </div>
           </div>
-          <Button onClick={() => setFashionGalleryOpen(false)} className="w-full mt-4">Закрыть</Button>
+          <Button onClick={() => setFashionGalleryOpen(false)} className="w-full mt-2 sm:mt-4 text-sm sm:text-base">Закрыть</Button>
         </DialogContent>
       </Dialog>
 
