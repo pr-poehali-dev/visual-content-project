@@ -126,6 +126,11 @@ const Index = () => {
   ];
 
   const neuroPhotos = [
+    { title: 'Chanel элегантность', image: 'https://cdn.poehali.dev/files/8ace4480-833b-4492-b35c-1bacfe569082.jpeg' },
+    { title: 'Versace зимний лукбук', image: 'https://cdn.poehali.dev/files/9cda06be-bddb-4444-8a7f-4aac8bc2dc71.jpeg' },
+    { title: 'Зимний стиль Geely', image: 'https://cdn.poehali.dev/files/852e855b-0251-49e8-aea6-217d3f10c3d9.jpeg' },
+    { title: 'Минималистичная элегантность', image: 'https://cdn.poehali.dev/files/c0ea7e63-0320-4609-b446-6f33a65a0f72.jpeg' },
+    { title: 'Естественная красота', image: 'https://cdn.poehali.dev/files/4eaf5416-5b22-4bd0-8917-bb94cdfaf271.jpeg' },
     { title: 'Портрет в интерьере', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
     { title: 'Уличная фотосессия', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
     { title: 'Городской стиль', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
