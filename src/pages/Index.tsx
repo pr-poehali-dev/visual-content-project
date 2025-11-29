@@ -126,6 +126,10 @@ const Index = () => {
   ];
 
   const neuroPhotos = [
+    { title: 'Fashion-минимализм', image: 'https://cdn.poehali.dev/files/85226719-576c-41a5-83e7-3350b31a11d6.jpeg' },
+    { title: 'Рождественская элегантность', image: 'https://cdn.poehali.dev/files/7c57b981-1a76-45da-9aa3-62be985a95c3.jpeg' },
+    { title: 'Весенняя оранжерея', image: 'https://cdn.poehali.dev/files/800d83ff-97c4-435d-a060-ffcca6f5d16d.jpeg' },
+    { title: 'Шахматная королева', image: 'https://cdn.poehali.dev/files/2fea8a02-3efa-4682-a0f0-ca5f2af7b2d7.jpeg' },
     { title: 'Chanel элегантность', image: 'https://cdn.poehali.dev/files/8ace4480-833b-4492-b35c-1bacfe569082.jpeg' },
     { title: 'Versace зимний лукбук', image: 'https://cdn.poehali.dev/files/9cda06be-bddb-4444-8a7f-4aac8bc2dc71.jpeg' },
     { title: 'Зимний стиль Geely', image: 'https://cdn.poehali.dev/files/852e855b-0251-49e8-aea6-217d3f10c3d9.jpeg' },
