@@ -162,6 +162,7 @@ const Index = () => {
   ];
 
   const fashionPhotos = [
+    { title: 'Стикеры для авто', image: 'https://cdn.poehali.dev/files/ea9af10e-aa28-4e38-abcd-1ce40e0bbe4a.jpeg' },
     { title: 'Дизайнерские стикеры', image: 'https://cdn.poehali.dev/files/272b3cde-20db-4113-a8fc-9e3801e65553.jpeg' },
     { title: 'Fashion стиль', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg' },
     { title: 'Путешествия', image: 'https://cdn.poehali.dev/files/778b28d3-f95c-4ede-ae6d-42002f28e4f4.jpeg' },
