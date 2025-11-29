@@ -1014,14 +1014,20 @@ const Index = () => {
       <Dialog open={neuroGalleryOpen} onOpenChange={setNeuroGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <div className="flex items-center justify-between">
-              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">📸 Нейрофотосессия</DialogTitle>
-              <button
-                onClick={() => setNeuroGalleryOpen(false)}
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
-              >
-                <Icon name="X" size={20} className="text-white sm:text-foreground" />
-              </button>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">📸 Нейрофотосессия</DialogTitle>
+                <button
+                  onClick={() => setNeuroGalleryOpen(false)}
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+                >
+                  <Icon name="X" size={20} className="text-white sm:text-foreground" />
+                </button>
+              </div>
+              <div className="flex items-center justify-center gap-2 sm:hidden">
+                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
+                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+              </div>
             </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
@@ -1079,14 +1085,20 @@ const Index = () => {
       <Dialog open={stickerGalleryOpen} onOpenChange={setStickerGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <div className="flex items-center justify-between">
-              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🎨 Брендовый стикерпак</DialogTitle>
-              <button
-                onClick={() => setStickerGalleryOpen(false)}
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
-              >
-                <Icon name="X" size={20} className="text-white sm:text-foreground" />
-              </button>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🎨 Брендовый стикерпак</DialogTitle>
+                <button
+                  onClick={() => setStickerGalleryOpen(false)}
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+                >
+                  <Icon name="X" size={20} className="text-white sm:text-foreground" />
+                </button>
+              </div>
+              <div className="flex items-center justify-center gap-2 sm:hidden">
+                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
+                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+              </div>
             </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
@@ -1144,14 +1156,20 @@ const Index = () => {
       <Dialog open={ecommerceGalleryOpen} onOpenChange={setEcommerceGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <div className="flex items-center justify-between">
-              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🛒 E-commerce фото</DialogTitle>
-              <button
-                onClick={() => setEcommerceGalleryOpen(false)}
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
-              >
-                <Icon name="X" size={20} className="text-white sm:text-foreground" />
-              </button>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🛒 E-commerce фото</DialogTitle>
+                <button
+                  onClick={() => setEcommerceGalleryOpen(false)}
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+                >
+                  <Icon name="X" size={20} className="text-white sm:text-foreground" />
+                </button>
+              </div>
+              <div className="flex items-center justify-center gap-2 sm:hidden">
+                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
+                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+              </div>
             </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
@@ -1209,14 +1227,20 @@ const Index = () => {
       <Dialog open={fashionGalleryOpen} onOpenChange={setFashionGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <div className="flex items-center justify-between">
-              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">👗 Fashion стикеры</DialogTitle>
-              <button
-                onClick={() => setFashionGalleryOpen(false)}
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
-              >
-                <Icon name="X" size={20} className="text-white sm:text-foreground" />
-              </button>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">👗 Fashion стикеры</DialogTitle>
+                <button
+                  onClick={() => setFashionGalleryOpen(false)}
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+                >
+                  <Icon name="X" size={20} className="text-white sm:text-foreground" />
+                </button>
+              </div>
+              <div className="flex items-center justify-center gap-2 sm:hidden">
+                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
+                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+              </div>
             </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
