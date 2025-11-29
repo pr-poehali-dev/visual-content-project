@@ -39,6 +39,8 @@ const Index = () => {
   const [currentFashionIndex, setCurrentFashionIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [touchStartY, setTouchStartY] = useState(0);
+  const [touchEndY, setTouchEndY] = useState(0);
 
   const quizQuestions = [
     {
@@ -219,17 +221,23 @@ const Index = () => {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
+    setTouchStartY(e.targetTouches[0].clientY);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
+    setTouchEndY(e.targetTouches[0].clientY);
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 75) {
+    const swipeX = Math.abs(touchStart - touchEnd);
+    const swipeY = Math.abs(touchStartY - touchEndY);
+    
+    if (swipeY > swipeX && swipeY > 100) {
+      setNeuroGalleryOpen(false);
+    } else if (touchStart - touchEnd > 75) {
       nextNeuroPhoto();
-    }
-    if (touchStart - touchEnd < -75) {
+    } else if (touchStart - touchEnd < -75) {
       prevNeuroPhoto();
     }
   };
@@ -243,10 +251,14 @@ const Index = () => {
   };
 
   const handleStickerTouchEnd = () => {
-    if (touchStart - touchEnd > 75) {
+    const swipeX = Math.abs(touchStart - touchEnd);
+    const swipeY = Math.abs(touchStartY - touchEndY);
+    
+    if (swipeY > swipeX && swipeY > 100) {
+      setStickerGalleryOpen(false);
+    } else if (touchStart - touchEnd > 75) {
       nextStickerPhoto();
-    }
-    if (touchStart - touchEnd < -75) {
+    } else if (touchStart - touchEnd < -75) {
       prevStickerPhoto();
     }
   };
@@ -260,10 +272,14 @@ const Index = () => {
   };
 
   const handleEcommerceTouchEnd = () => {
-    if (touchStart - touchEnd > 75) {
+    const swipeX = Math.abs(touchStart - touchEnd);
+    const swipeY = Math.abs(touchStartY - touchEndY);
+    
+    if (swipeY > swipeX && swipeY > 100) {
+      setEcommerceGalleryOpen(false);
+    } else if (touchStart - touchEnd > 75) {
       nextEcommercePhoto();
-    }
-    if (touchStart - touchEnd < -75) {
+    } else if (touchStart - touchEnd < -75) {
       prevEcommercePhoto();
     }
   };
@@ -277,10 +293,14 @@ const Index = () => {
   };
 
   const handleFashionTouchEnd = () => {
-    if (touchStart - touchEnd > 75) {
+    const swipeX = Math.abs(touchStart - touchEnd);
+    const swipeY = Math.abs(touchStartY - touchEndY);
+    
+    if (swipeY > swipeX && swipeY > 100) {
+      setFashionGalleryOpen(false);
+    } else if (touchStart - touchEnd > 75) {
       nextFashionPhoto();
-    }
-    if (touchStart - touchEnd < -75) {
+    } else if (touchStart - touchEnd < -75) {
       prevFashionPhoto();
     }
   };
@@ -994,7 +1014,15 @@ const Index = () => {
       <Dialog open={neuroGalleryOpen} onOpenChange={setNeuroGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">📸 Нейрофотосессия</DialogTitle>
+            <div className="flex items-center justify-between">
+              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">📸 Нейрофотосессия</DialogTitle>
+              <button
+                onClick={() => setNeuroGalleryOpen(false)}
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+              >
+                <Icon name="X" size={20} className="text-white sm:text-foreground" />
+              </button>
+            </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
             <div 
@@ -1051,7 +1079,15 @@ const Index = () => {
       <Dialog open={stickerGalleryOpen} onOpenChange={setStickerGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🎨 Брендовый стикерпак</DialogTitle>
+            <div className="flex items-center justify-between">
+              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🎨 Брендовый стикерпак</DialogTitle>
+              <button
+                onClick={() => setStickerGalleryOpen(false)}
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+              >
+                <Icon name="X" size={20} className="text-white sm:text-foreground" />
+              </button>
+            </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
             <div 
@@ -1108,7 +1144,15 @@ const Index = () => {
       <Dialog open={ecommerceGalleryOpen} onOpenChange={setEcommerceGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🛒 E-commerce фото</DialogTitle>
+            <div className="flex items-center justify-between">
+              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🛒 E-commerce фото</DialogTitle>
+              <button
+                onClick={() => setEcommerceGalleryOpen(false)}
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+              >
+                <Icon name="X" size={20} className="text-white sm:text-foreground" />
+              </button>
+            </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
             <div 
@@ -1165,7 +1209,15 @@ const Index = () => {
       <Dialog open={fashionGalleryOpen} onOpenChange={setFashionGalleryOpen}>
         <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
-            <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">👗 Fashion стикеры</DialogTitle>
+            <div className="flex items-center justify-between">
+              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">👗 Fashion стикеры</DialogTitle>
+              <button
+                onClick={() => setFashionGalleryOpen(false)}
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+              >
+                <Icon name="X" size={20} className="text-white sm:text-foreground" />
+              </button>
+            </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col h-full">
             <div 
