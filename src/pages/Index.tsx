@@ -572,6 +572,81 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Premium Fashion Brands Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 via-purple-50 to-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 text-sm px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-600">Premium Portfolio</Badge>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight px-2">Работы для модных брендов 👑</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto px-4">Создаём премиум-контент для Chanel, Versace, Geely и других известных брендов</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 max-w-7xl mx-auto">
+            {neuroPhotos.slice(0, 5).map((photo, index) => (
+              <Card 
+                key={index}
+                className="group cursor-pointer overflow-hidden hover-scale border-2 border-gray-200 hover:border-purple-400 transition-all"
+                onClick={() => {
+                  setCurrentNeuroIndex(index);
+                  setNeuroGalleryOpen(true);
+                }}
+              >
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img 
+                    src={photo.image} 
+                    alt={photo.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-3">
+                      <p className="text-white font-semibold text-xs sm:text-sm">{photo.title}</p>
+                    </div>
+                  </div>
+                  <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Icon name="Expand" size={14} className="text-gray-900" />
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-700 hover:to-violet-700"
+              onClick={() => {
+                setNeuroGalleryOpen(true);
+                setCurrentNeuroIndex(0);
+              }}
+            >
+              <Icon name="Sparkles" className="mr-2" size={18} />
+              Смотреть всю премиум-галерею
+            </Button>
+          </div>
+
+          <div className="mt-12 grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <Card className="text-center border-purple-200 bg-white/50">
+              <CardContent className="p-4">
+                <div className="text-2xl mb-2">🏆</div>
+                <p className="font-semibold text-sm">Работали с топ-брендами</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center border-purple-200 bg-white/50">
+              <CardContent className="p-4">
+                <div className="text-2xl mb-2">⚡</div>
+                <p className="font-semibold text-sm">Готово за 48 часов</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center border-purple-200 bg-white/50">
+              <CardContent className="p-4">
+                <div className="text-2xl mb-2">💎</div>
+                <p className="font-semibold text-sm">Премиум-качество</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Section */}
       <section id="portfolio" className="py-16 sm:py-20 container mx-auto px-4">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-10 leading-tight px-2">Вот что мы создали 🎨</h2>
