@@ -173,10 +173,10 @@ const Index = () => {
   ];
 
   const portfolio = [
-    { category: 'stickers', emoji: '🎨', title: 'Брендовый стикерпак', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
-    { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
-    { category: 'fashion', emoji: '👗', title: 'Fashion стикеры', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
-    { category: 'ecommerce', emoji: '🛒', title: 'E-commerce фото', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
+    { category: 'stickers', emoji: '🎨', title: 'AI стикеры для бизнеса', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
+    { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия онлайн', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
+    { category: 'fashion', emoji: '👗', title: 'Съемка одежды для каталога', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
+    { category: 'ecommerce', emoji: '🛒', title: 'Фото товаров для Wildberries', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -442,9 +442,9 @@ const Index = () => {
         
         <div className="container mx-auto text-center z-10 animate-fade-in max-w-4xl">
           <div className="text-6xl sm:text-7xl mb-4 sm:mb-5">😼</div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 leading-tight px-4">Привет! Я Визи 👋</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 leading-tight px-4">Нейрофотосессия и AI фото онлайн 👋</h1>
           <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-90 max-w-xl mx-auto px-4">
-            Помогаю брендам создавать контент, который запоминают и используют!
+            Создайте AI стикеры для бизнеса, нейрофото и фото товаров для Wildberries — быстро, без VPN, оплата из России!
           </p>
           
           <div className="grid grid-cols-2 gap-3 sm:gap-3 max-w-lg mx-auto px-4">
@@ -612,7 +612,7 @@ const Index = () => {
             >
               {filter === 'all' && '🎨 Все'}
               {filter === 'stickers' && '💬 Стикеры'}
-              {filter === 'neuro' && '📸 Фото'}
+              {filter === 'neuro' && '📸 Нейрофото'}
               {filter === 'fashion' && '👔 Fashion'}
               {filter === 'ecommerce' && '🛍️ Shop'}
             </Button>
@@ -738,13 +738,13 @@ const Index = () => {
 
       {/* FAQ Section */}
       <section id="faq" className="py-16 sm:py-20 container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Часто задаваемые вопросы ❓</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Вопросы о AI фотосессии и стикерах ❓</h2>
         
         <Accordion type="single" collapsible className="max-w-3xl mx-auto">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-sm sm:text-lg">Сколько времени занимает разработка?</AccordionTrigger>
+            <AccordionTrigger className="text-sm sm:text-lg">Сколько времени занимает нейрофотосессия и создание стикеров?</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-3 sm:mb-4 text-sm sm:text-base">Обычно 24-72 часа в зависимости от сложности и количества.</p>
+              <p className="mb-3 sm:mb-4 text-sm sm:text-base">AI фотосессия онлайн и генератор стикеров — обычно 24-72 часа в зависимости от сложности. Быстрая генерация!</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
                   <strong>😼 Визи:</strong> Но обычно я справляюсь быстрее! ⚡
@@ -778,9 +778,9 @@ const Index = () => {
           </AccordionItem>
           
           <AccordionItem value="item-4">
-            <AccordionTrigger className="text-base sm:text-lg">Подходит ли для маркетплейсов?</AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg">Подходит ли фото товаров для Wildberries и Ozon?</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-4">Да! AI-контент идеален для Wildberries, Ozon, Яндекс.Маркета и соцсетей.</p>
+              <p className="mb-4">Да! Предметная съемка для маркетплейсов и фото товаров для Wildberries, Ozon, Яндекс.Маркета — каталожная съемка товаров для интернет-магазинов.</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
                   <strong>😼 Визи:</strong> Работает везде! 🚀
@@ -795,8 +795,8 @@ const Index = () => {
       <section className="py-16 sm:py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="text-6xl sm:text-6xl mb-5 sm:mb-6">😼</div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 leading-tight px-2">Готовы создать контент, который выделит вас?</h2>
-          <p className="text-base sm:text-lg mb-8 sm:mb-10 opacity-90 px-4">Присоединяйтесь к 10+ брендам, которые уже получают результаты</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 leading-tight px-2">Создать AI фото и стикеры для бизнеса?</h2>
+          <p className="text-base sm:text-lg mb-8 sm:mb-10 opacity-90 px-4">Нейрофотосессия онлайн, генератор стикеров нейросеть и фото товаров — без VPN, оплата из России</p>
           
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 justify-center mb-6 sm:mb-10 max-w-3xl mx-auto">
             <div className="flex items-center gap-2 sm:gap-3">
