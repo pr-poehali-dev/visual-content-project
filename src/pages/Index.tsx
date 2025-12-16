@@ -375,7 +375,7 @@ const Index = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              🎯 Квиз
+              {t.menu.quiz}
             </button>
             <button
               className="text-2xl font-bold text-white hover:text-purple-400 transition-colors"
@@ -384,7 +384,7 @@ const Index = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              💰 Калькулятор
+              {t.menu.calculator}
             </button>
             <button
               className="text-2xl font-bold text-white hover:text-purple-400 transition-colors"
@@ -393,7 +393,7 @@ const Index = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              🎨 Портфолио
+              {t.menu.portfolio}
             </button>
             <button
               className="text-2xl font-bold text-white hover:text-purple-400 transition-colors"
@@ -402,7 +402,7 @@ const Index = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              ⭐ Отзывы
+              {t.menu.reviews}
             </button>
             <button
               className="text-2xl font-bold text-white hover:text-purple-400 transition-colors"
@@ -411,7 +411,7 @@ const Index = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              ❓ FAQ
+              {t.menu.faq}
             </button>
             <Button
               size="lg"
@@ -421,7 +421,7 @@ const Index = () => {
                 setMobileMenuOpen(false);
               }}
             >
-              🚀 Начать проект
+              {t.menu.startProject}
             </Button>
           </div>
         </div>
@@ -881,7 +881,7 @@ const Index = () => {
                     className="w-full h-full object-cover scale-110 vizi-neon"
                   />
                 </div>
-                <span>Визи - Ваш консультант</span>
+                <span>{language === 'ru' ? 'Визи - Ваш консультант' : 'Vizi - Your Consultant'}</span>
               </div>
               <div className="p-4 space-y-4 max-h-96 overflow-y-auto">
                 <div className="flex gap-3">
@@ -1017,7 +1017,7 @@ const Index = () => {
               </div>
               <div className="flex items-center justify-center gap-2 sm:hidden">
                 <div className="w-8 h-1 bg-white/30 rounded-full"></div>
-                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+                <p className="text-xs text-white/60">{t.gallery.swipeHint}</p>
               </div>
             </div>
           </DialogHeader>
@@ -1088,7 +1088,7 @@ const Index = () => {
               </div>
               <div className="flex items-center justify-center gap-2 sm:hidden">
                 <div className="w-8 h-1 bg-white/30 rounded-full"></div>
-                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+                <p className="text-xs text-white/60">{t.gallery.swipeHint}</p>
               </div>
             </div>
           </DialogHeader>
@@ -1159,7 +1159,7 @@ const Index = () => {
               </div>
               <div className="flex items-center justify-center gap-2 sm:hidden">
                 <div className="w-8 h-1 bg-white/30 rounded-full"></div>
-                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+                <p className="text-xs text-white/60">{t.gallery.swipeHint}</p>
               </div>
             </div>
           </DialogHeader>
@@ -1230,7 +1230,7 @@ const Index = () => {
               </div>
               <div className="flex items-center justify-center gap-2 sm:hidden">
                 <div className="w-8 h-1 bg-white/30 rounded-full"></div>
-                <p className="text-xs text-white/60">Свайп вверх/вниз для закрытия</p>
+                <p className="text-xs text-white/60">{t.gallery.swipeHint}</p>
               </div>
             </div>
           </DialogHeader>

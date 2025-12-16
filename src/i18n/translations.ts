@@ -141,6 +141,14 @@ export const translations = {
       stickerGalleryTitle: '🎨 Брендовый стикерпак',
       ecommerceGalleryTitle: '🛒 E-commerce фото',
       fashionGalleryTitle: '👗 Fashion стикеры'
+    },
+    menu: {
+      quiz: '🎯 Квиз',
+      calculator: '💰 Калькулятор',
+      portfolio: '🎨 Портфолио',
+      reviews: '⭐ Отзывы',
+      faq: '❓ FAQ',
+      startProject: '🚀 Начать проект'
     }
   },
   en: {
@@ -285,6 +293,14 @@ export const translations = {
       stickerGalleryTitle: '🎨 Brand Sticker Pack',
       ecommerceGalleryTitle: '🛒 E-commerce Photos',
       fashionGalleryTitle: '👗 Fashion Stickers'
+    },
+    menu: {
+      quiz: '🎯 Quiz',
+      calculator: '💰 Calculator',
+      portfolio: '🎨 Portfolio',
+      reviews: '⭐ Reviews',
+      faq: '❓ FAQ',
+      startProject: '🚀 Start Project'
     }
   }
 };
