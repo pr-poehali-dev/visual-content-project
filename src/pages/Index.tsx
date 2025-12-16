@@ -11,10 +11,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Checkbox } from '@/components/ui/checkbox';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/hooks/useLanguage';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import funcUrls from '../../backend/func2url.json';
 
 const Index = () => {
   const { toast } = useToast();
+  const { language, setLanguage, t } = useLanguage();
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
   const [photos, setPhotos] = useState([0]);
@@ -44,34 +47,19 @@ const Index = () => {
 
   const quizQuestions = [
     {
-      question: 'Где ваша аудитория?',
-      options: ['Telegram', 'VK', 'Instagram*', 'Везде'],
-      reactions: {
-        'Telegram': 'Круто! Там огромное сообщество! 🚀',
-        'VK': 'ВК — мощная платформа! 💪',
-        'Instagram*': 'Визуал в Инстаграме королевствует! 👑',
-        'Везде': 'Амбициозно! Мне это нравится! 🌟'
-      }
+      question: t.quiz.question1,
+      options: t.quiz.options1,
+      reactions: t.quiz.reactions1
     },
     {
-      question: 'Главная боль прямо сейчас?',
-      options: ['Контент скучный', 'Фотосессии дороги', 'Не выделяемся', 'Нет времени'],
-      reactions: {
-        'Контент скучный': 'Понимаю... Пора менять! 🎨',
-        'Фотосессии дороги': 'Знаю это чувство! AI решит это! ✨',
-        'Не выделяемся': 'Давайте создадим узнаваемый стиль!',
-        'Нет времени': 'Я беру это на себя! Быстро и качественно! ⚡'
-      }
+      question: t.quiz.question2,
+      options: t.quiz.options2,
+      reactions: t.quiz.reactions2
     },
     {
-      question: 'Сколько готовы инвестировать?',
-      options: ['До 10К', '10-30К', '30-50К', '50К+'],
-      reactions: {
-        'До 10К': 'Есть крутые варианты в этом диапазоне! 💡',
-        '10-30К': 'Отлично! Максимальный результат! 🎯',
-        '30-50К': 'Wow! Можем сделать что-то невероятное! 🚀',
-        '50К+': 'Это будет шедевр! 👑'
-      }
+      question: t.quiz.question3,
+      options: t.quiz.options3,
+      reactions: t.quiz.reactions3
     }
   ];
 
@@ -173,10 +161,10 @@ const Index = () => {
   ];
 
   const portfolio = [
-    { category: 'stickers', emoji: '🎨', title: 'AI стикеры для бизнеса', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
-    { category: 'neuro', emoji: '📸', title: 'Нейрофотосессия онлайн', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
-    { category: 'fashion', emoji: '👗', title: 'Съемка одежды для каталога', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
-    { category: 'ecommerce', emoji: '🛒', title: 'Фото товаров для Wildberries', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
+    { category: 'stickers', emoji: '🎨', title: t.portfolio.stickerTitle, gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
+    { category: 'neuro', emoji: '📸', title: t.portfolio.neuroTitle, gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
+    { category: 'fashion', emoji: '👗', title: t.portfolio.fashionTitle, gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
+    { category: 'ecommerce', emoji: '🛒', title: t.portfolio.ecommerceTitle, gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -324,22 +312,22 @@ const Index = () => {
 
       if (response.ok && result.success) {
         toast({
-          title: '✅ Заявка отправлена!',
-          description: 'Мы свяжемся с вами в ближайшее время',
+          title: t.form.successTitle,
+          description: t.form.successDescription,
         });
         setFormData({ name: '', contact: '', service: '', message: '' });
         setFormOpen(false);
       } else {
         toast({
-          title: '❌ Ошибка',
-          description: result.error || 'Не удалось отправить заявку',
+          title: t.form.errorTitle,
+          description: result.error || t.form.errorDescription,
           variant: 'destructive'
         });
       }
     } catch (error) {
       toast({
-        title: '❌ Ошибка',
-        description: 'Не удалось отправить заявку. Попробуйте позже.',
+        title: t.form.errorTitle,
+        description: t.form.errorDescription,
         variant: 'destructive'
       });
     } finally {
@@ -365,6 +353,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Language Switcher */}
+      <LanguageSwitcher currentLanguage={language} onLanguageChange={setLanguage} />
+
       {/* Mobile Menu Button */}
       <button
         className="fixed top-4 right-4 z-50 w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center lg:hidden hover:scale-110 transition-transform"
@@ -442,27 +433,27 @@ const Index = () => {
         
         <div className="container mx-auto text-center z-10 animate-fade-in max-w-4xl">
           <div className="text-6xl sm:text-7xl mb-4 sm:mb-5">😼</div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 leading-tight px-4">Нейрофотосессия и AI фото онлайн 👋</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 leading-tight px-4">{t.hero.title}</h1>
           <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 opacity-90 max-w-xl mx-auto px-4">
-            Создайте AI стикеры для бизнеса, нейрофото и фото товаров для Wildberries — быстро, без VPN, оплата из России!
+            {t.hero.subtitle}
           </p>
           
           <div className="grid grid-cols-2 gap-3 sm:gap-3 max-w-lg mx-auto px-4">
             <Button size="sm" className="bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Palette" className="mr-1" size={16} />
-              Стикеры
+              {t.hero.btnStickers}
             </Button>
             <Button size="sm" className="bg-white text-gray-900 hover:bg-purple-400 hover:text-white shadow-lg font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Camera" className="mr-1" size={16} />
-              AI-фото
+              {t.hero.btnAiPhoto}
             </Button>
             <Button size="sm" variant="outline" className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('calculator')}>
               <Icon name="Calculator" className="mr-1" size={16} />
-              Калькулятор
+              {t.hero.btnCalculator}
             </Button>
             <Button size="sm" variant="outline" className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-gray-900 font-bold text-sm sm:text-sm py-5 sm:py-5 h-auto active:scale-95 transition-transform" onClick={() => scrollToSection('portfolio')}>
               <Icon name="Sparkles" className="mr-1" size={16} />
-              Примеры
+              {t.hero.btnExamples}
             </Button>
           </div>
         </div>
@@ -470,7 +461,7 @@ const Index = () => {
 
       {/* Quiz Section */}
       <section id="quiz" className="py-16 sm:py-20 container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Давайте найдём ваше идеальное решение 🎯</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">{t.quiz.title}</h2>
         
         {quizStep >= 0 && quizStep < quizQuestions.length ? (
           <Card className="max-w-3xl mx-auto animate-fade-in">
@@ -518,15 +509,15 @@ const Index = () => {
           </Card>
         ) : quizStep === -1 ? (
           <div className="text-center animate-fade-in">
-            <h3 className="text-3xl font-bold mb-6">🎉 Идеальное предложение готово!</h3>
+            <h3 className="text-3xl font-bold mb-6">{t.quiz.finalTitle}</h3>
             <Card className="max-w-md mx-auto bg-primary/5 border-l-4 border-primary">
               <CardContent className="p-6 flex items-center gap-4">
                 <span className="text-5xl">😼</span>
-                <p className="text-lg">Я знаю, что вам нужно! Вы готовы начать?</p>
+                <p className="text-lg">{t.quiz.finalMessage}</p>
               </CardContent>
             </Card>
             <Button size="lg" className="mt-8" onClick={() => setFormOpen(true)}>
-              Начать прямо сейчас
+              {t.quiz.btnStart}
             </Button>
           </div>
         ) : null}
@@ -535,14 +526,14 @@ const Index = () => {
       {/* Calculator Section */}
       <section id="calculator" className="py-16 sm:py-20 bg-secondary/5">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Сколько вы экономите? 💰</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">{t.calculator.title}</h2>
           
           <Card className="max-w-4xl mx-auto">
             <CardContent className="p-4 sm:p-8">
               <div className="space-y-8 mb-8">
                 <div>
                   <div className="flex justify-between mb-4">
-                    <span className="font-semibold">📸 Количество фото</span>
+                    <span className="font-semibold">{t.calculator.photosLabel}</span>
                     <Badge variant="secondary" className="text-lg">{photos[0]}</Badge>
                   </div>
                   <Slider value={photos} onValueChange={setPhotos} min={0} max={100} step={10} />
@@ -550,7 +541,7 @@ const Index = () => {
                 
                 <div>
                   <div className="flex justify-between mb-4">
-                    <span className="font-semibold">🎨 Стикеров в паке</span>
+                    <span className="font-semibold">{t.calculator.stickersLabel}</span>
                     <Badge variant="secondary" className="text-lg">{stickers[0]}</Badge>
                   </div>
                   <Slider value={stickers} onValueChange={setStickers} min={0} max={100} step={10} />
@@ -560,22 +551,22 @@ const Index = () => {
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <Card className="border-red-300 bg-red-50">
                   <CardContent className="p-6">
-                    <h4 className="font-bold text-lg mb-4">📷 Традиционная фотосессия</h4>
+                    <h4 className="font-bold text-lg mb-4">{t.calculator.tradTitle}</h4>
                     <div className="space-y-2 text-sm">
-                      <div className="flex justify-between"><span>Стоимость:</span><span className="font-bold">{tradCost.toLocaleString('ru-RU')}₽</span></div>
-                      <div className="flex justify-between"><span>Время:</span><span>{tradTime} {tradTime === 1 ? 'день' : tradTime < 5 ? 'дня' : 'дней'}</span></div>
-                      <div className="flex justify-between"><span>Обработанные:</span><span>{tradProcessed}</span></div>
+                      <div className="flex justify-between"><span>{t.calculator.cost}</span><span className="font-bold">{tradCost.toLocaleString('ru-RU')}₽</span></div>
+                      <div className="flex justify-between"><span>{t.calculator.time}</span><span>{tradTime} {tradTime === 1 ? t.calculator.day : tradTime < 5 ? t.calculator.days2 : t.calculator.days}</span></div>
+                      <div className="flex justify-between"><span>{t.calculator.processed}</span><span>{tradProcessed}</span></div>
                     </div>
                   </CardContent>
                 </Card>
                 
                 <Card className="border-green-300 bg-green-50">
                   <CardContent className="p-6">
-                    <h4 className="font-bold text-lg mb-4">🤖 С нами (Нейрофото + стикеры)</h4>
+                    <h4 className="font-bold text-lg mb-4">{t.calculator.neuroTitle}</h4>
                     <div className="space-y-2 text-sm">
-                      <div className="flex justify-between"><span>Стоимость:</span><span className="font-bold">{neuroCost.toLocaleString('ru-RU')}₽</span></div>
-                      <div className="flex justify-between"><span>Время:</span><span>{neuroTime} {neuroTime === 1 || neuroTime === 0 ? 'день' : neuroTime < 5 ? 'дня' : 'дней'}</span></div>
-                      <div className="flex justify-between"><span>Обработанные:</span><span>{neuroProcessed}</span></div>
+                      <div className="flex justify-between"><span>{t.calculator.cost}</span><span className="font-bold">{neuroCost.toLocaleString('ru-RU')}₽</span></div>
+                      <div className="flex justify-between"><span>{t.calculator.time}</span><span>{neuroTime} {neuroTime === 1 || neuroTime === 0 ? t.calculator.day : neuroTime < 5 ? t.calculator.days2 : t.calculator.days}</span></div>
+                      <div className="flex justify-between"><span>{t.calculator.processed}</span><span>{neuroProcessed}</span></div>
                     </div>
                   </CardContent>
                 </Card>
@@ -583,12 +574,12 @@ const Index = () => {
               
               <Card className="bg-gradient-to-r from-green-500 to-cyan-500 text-white text-center">
                 <CardContent className="p-4 sm:p-8">
-                  <p className="text-base sm:text-lg mb-2">Вы экономите:</p>
+                  <p className="text-base sm:text-lg mb-2">{t.calculator.savingsText}</p>
                   <p className="text-3xl sm:text-5xl font-bold mb-3 sm:mb-4">{savings.toLocaleString('ru-RU')}₽</p>
-                  <p className="text-lg sm:text-2xl font-semibold mb-4">и {timeSaved} {timeSaved === 1 || timeSaved === 0 ? 'день' : timeSaved < 5 ? 'дня' : 'дней'}</p>
+                  <p className="text-lg sm:text-2xl font-semibold mb-4">{t.calculator.andText} {timeSaved} {timeSaved === 1 || timeSaved === 0 ? t.calculator.day : timeSaved < 5 ? t.calculator.days2 : t.calculator.days}</p>
                   <div className="flex items-center justify-center gap-2 sm:gap-4 bg-white/20 rounded-lg p-3 sm:p-4">
                     <span className="text-3xl sm:text-4xl">😼</span>
-                    <p className="text-sm sm:text-base">Впечатляет, правда? 💰</p>
+                    <p className="text-sm sm:text-base">{t.calculator.viziMessage}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -599,7 +590,7 @@ const Index = () => {
 
       {/* Portfolio Section */}
       <section id="portfolio" className="py-16 sm:py-20 container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-10 leading-tight px-2">Вот что мы создали 🎨</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-10 leading-tight px-2">{t.portfolio.title}</h2>
         
         <div className="flex flex-wrap gap-2 justify-center mb-8 sm:mb-12 px-2">
           {['all', 'stickers', 'neuro', 'fashion', 'ecommerce'].map((filter) => (
@@ -610,11 +601,11 @@ const Index = () => {
               className="hover-scale text-xs sm:text-sm"
               size="sm"
             >
-              {filter === 'all' && '🎨 Все'}
-              {filter === 'stickers' && '💬 Стикеры'}
-              {filter === 'neuro' && '📸 Нейрофото'}
-              {filter === 'fashion' && '👔 Fashion'}
-              {filter === 'ecommerce' && '🛍️ Shop'}
+              {filter === 'all' && t.portfolio.filterAll}
+              {filter === 'stickers' && t.portfolio.filterStickers}
+              {filter === 'neuro' && t.portfolio.filterNeuro}
+              {filter === 'fashion' && t.portfolio.filterFashion}
+              {filter === 'ecommerce' && t.portfolio.filterEcommerce}
             </Button>
           ))}
         </div>
@@ -664,7 +655,7 @@ const Index = () => {
       {/* Reviews Section */}
       <section id="reviews" className="py-16 sm:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Что говорят клиенты ⭐</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">{t.reviews.title}</h2>
           
           <div className="max-w-4xl mx-auto relative">
             <Card className="bg-white/10 backdrop-blur border-white/20">
@@ -738,52 +729,52 @@ const Index = () => {
 
       {/* FAQ Section */}
       <section id="faq" className="py-16 sm:py-20 container mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">Вопросы о AI фотосессии и стикерах ❓</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-12 leading-tight px-2">{t.faq.title}</h2>
         
         <Accordion type="single" collapsible className="max-w-3xl mx-auto">
           <AccordionItem value="item-1">
-            <AccordionTrigger className="text-sm sm:text-lg">Сколько времени занимает нейрофотосессия и создание стикеров?</AccordionTrigger>
+            <AccordionTrigger className="text-sm sm:text-lg">{t.faq.q1}</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-3 sm:mb-4 text-sm sm:text-base">AI фотосессия онлайн и генератор стикеров — обычно 24-72 часа в зависимости от сложности. Быстрая генерация!</p>
+              <p className="mb-3 sm:mb-4 text-sm sm:text-base">{t.faq.a1}</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
-                  <strong>😼 Визи:</strong> Но обычно я справляюсь быстрее! ⚡
+                  <strong>😼 Визи:</strong> {t.faq.v1}
                 </CardContent>
               </Card>
             </AccordionContent>
           </AccordionItem>
           
           <AccordionItem value="item-2">
-            <AccordionTrigger className="text-sm sm:text-lg">Можно ли использовать для коммерческих проектов?</AccordionTrigger>
+            <AccordionTrigger className="text-sm sm:text-lg">{t.faq.q2}</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-3 sm:mb-4 text-sm sm:text-base">Да, вы получаете полные права на коммерческое использование.</p>
+              <p className="mb-3 sm:mb-4 text-sm sm:text-base">{t.faq.a2}</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
-                  <strong>😼 Визи:</strong> Ваше спокойствие — моя цель! 🛡️
+                  <strong>😼 Визи:</strong> {t.faq.v2}
                 </CardContent>
               </Card>
             </AccordionContent>
           </AccordionItem>
           
           <AccordionItem value="item-3">
-            <AccordionTrigger className="text-base sm:text-lg">В каких форматах вы отдаёте файлы?</AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg">{t.faq.q3}</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-4">PNG, WebP и по запросу любые нужные форматы. Всё оптимизировано для соцсетей.</p>
+              <p className="mb-4">{t.faq.a3}</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
-                  <strong>😼 Визи:</strong> Всё готово к загрузке! 🚀
+                  <strong>😼 Визи:</strong> {t.faq.v3}
                 </CardContent>
               </Card>
             </AccordionContent>
           </AccordionItem>
           
           <AccordionItem value="item-4">
-            <AccordionTrigger className="text-base sm:text-lg">Подходит ли фото товаров для Wildberries и Ozon?</AccordionTrigger>
+            <AccordionTrigger className="text-base sm:text-lg">{t.faq.q4}</AccordionTrigger>
             <AccordionContent>
-              <p className="mb-4">Да! Предметная съемка для маркетплейсов и фото товаров для Wildberries, Ozon, Яндекс.Маркета — каталожная съемка товаров для интернет-магазинов.</p>
+              <p className="mb-4">{t.faq.a4}</p>
               <Card className="bg-primary/5 border-l-4 border-primary">
                 <CardContent className="p-3 text-sm">
-                  <strong>😼 Визи:</strong> Работает везде! 🚀
+                  <strong>😼 Визи:</strong> {t.faq.v4}
                 </CardContent>
               </Card>
             </AccordionContent>
@@ -795,41 +786,41 @@ const Index = () => {
       <section className="py-16 sm:py-20 bg-gradient-to-br from-primary via-purple-600 to-violet-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="text-6xl sm:text-6xl mb-5 sm:mb-6">😼</div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 leading-tight px-2">Создать AI фото и стикеры для бизнеса?</h2>
-          <p className="text-base sm:text-lg mb-8 sm:mb-10 opacity-90 px-4">Нейрофотосессия онлайн, генератор стикеров нейросеть и фото товаров — без VPN, оплата из России</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 leading-tight px-2">{t.cta.title}</h2>
+          <p className="text-base sm:text-lg mb-8 sm:mb-10 opacity-90 px-4">{t.cta.subtitle}</p>
           
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 justify-center mb-6 sm:mb-10 max-w-3xl mx-auto">
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
-              <span className="text-sm sm:text-base">Экономия 50% бюджета</span>
+              <span className="text-sm sm:text-base">{t.cta.benefit1}</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
-              <span className="text-sm sm:text-base">Готово за 48 часов</span>
+              <span className="text-sm sm:text-base">{t.cta.benefit2}</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
-              <span className="text-sm sm:text-base">15+ частных заказов</span>
+              <span className="text-sm sm:text-base">{t.cta.benefit3}</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Icon name="CheckCircle2" size={20} className="flex-shrink-0" />
-              <span className="text-sm sm:text-base">Гарантия результата</span>
+              <span className="text-sm sm:text-base">{t.cta.benefit4}</span>
             </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 sm:mb-8 max-w-md mx-auto">
             <Button size="lg" className="bg-white text-primary hover:bg-gray-100 w-full sm:w-auto" onClick={() => setFormOpen(true)}>
-              Начать прямо сейчас
+              {t.cta.btnStartNow}
             </Button>
             <Button size="lg" variant="outline" className="border-white bg-white text-black hover:bg-gray-100 w-full sm:w-auto" onClick={() => setChatOpen(true)}>
-              Поговорить с Визи
+              {t.cta.btnTalkToVizi}
             </Button>
           </div>
           
           <Card className="max-w-md mx-auto bg-white/20 border-white/30">
             <CardContent className="p-4 sm:p-6">
-              <p className="text-base sm:text-lg font-semibold mb-1 sm:mb-2">🔥 Осталось 3 слота по спеццене</p>
-              <p className="text-xs sm:text-sm opacity-90">Не упустите шанс! Завтра может быть поздно!</p>
+              <p className="text-base sm:text-lg font-semibold mb-1 sm:mb-2">{t.cta.urgency}</p>
+              <p className="text-xs sm:text-sm opacity-90">{t.cta.urgencySubtext}</p>
             </CardContent>
           </Card>
         </div>
@@ -866,8 +857,8 @@ const Index = () => {
                 />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-800">👋 Привет! Я Визи</p>
-                <p className="text-xs text-gray-600 mt-1">Помогу подобрать идеальный пакет для твоего бренда!</p>
+                <p className="text-sm font-medium text-gray-800">{t.chat.viziHint}</p>
+                <p className="text-xs text-gray-600 mt-1">{t.chat.viziHintSubtext}</p>
               </div>
               <button 
                 onClick={() => setShowViziHint(false)}
@@ -903,22 +894,22 @@ const Index = () => {
                   </div>
                   <Card className="flex-1 bg-secondary/10">
                     <CardContent className="p-3 text-sm">
-                      Привет! Я Визи, твой личный консультант. Как я могу помочь?
+                      {t.chat.viziGreeting}
                     </CardContent>
                   </Card>
                 </div>
                 <div className="space-y-2">
                   <Button variant="default" size="sm" className="w-full justify-start bg-primary hover:bg-primary/90" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
-                    🚀 Начать общение
+                    {t.chat.btnStartChat}
                   </Button>
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
-                    💰 Сколько стоит?
+                    {t.chat.btnCost}
                   </Button>
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => scrollToSection('portfolio')}>
-                    🎨 Примеры работ
+                    {t.chat.btnExamples}
                   </Button>
                   <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => setFormOpen(true)}>
-                    📝 Как заказать?
+                    {t.chat.btnOrder}
                   </Button>
                 </div>
               </div>
@@ -931,50 +922,50 @@ const Index = () => {
       <Dialog open={formOpen} onOpenChange={setFormOpen}>
         <DialogContent className="max-w-[95vw] sm:max-w-md mx-4">
           <DialogHeader>
-            <DialogTitle className="text-lg sm:text-2xl">Заказать визуальный контент</DialogTitle>
+            <DialogTitle className="text-lg sm:text-2xl">{t.form.title}</DialogTitle>
           </DialogHeader>
           <form className="space-y-3 sm:space-y-4" onSubmit={handleFormSubmit}>
             <div>
-              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Ваше имя *</label>
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">{t.form.nameLabel}</label>
               <Input 
                 required 
-                placeholder="Иван Иванов" 
+                placeholder={t.form.namePlaceholder} 
                 className="text-sm sm:text-base"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
             <div>
-              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Контакт (email или телефон) *</label>
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">{t.form.contactLabel}</label>
               <Input 
                 required 
-                placeholder="ivan@example.com" 
+                placeholder={t.form.contactPlaceholder} 
                 className="text-sm sm:text-base"
                 value={formData.contact}
                 onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
               />
             </div>
             <div>
-              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Какая услуга вас интересует? *</label>
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">{t.form.serviceLabel}</label>
               <Select 
                 required 
                 value={formData.service}
                 onValueChange={(value) => setFormData({ ...formData, service: value })}
               >
                 <SelectTrigger className="text-sm sm:text-base">
-                  <SelectValue placeholder="Выберите услугу" />
+                  <SelectValue placeholder={t.form.servicePlaceholder} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="stickers">🎨 Стикеры</SelectItem>
-                  <SelectItem value="neuro">📸 Нейрофотосессии</SelectItem>
-                  <SelectItem value="full">💼 Полный пакет</SelectItem>
+                  <SelectItem value="stickers">{t.form.serviceStickers}</SelectItem>
+                  <SelectItem value="neuro">{t.form.serviceNeuro}</SelectItem>
+                  <SelectItem value="full">{t.form.serviceFull}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">Сообщение</label>
+              <label className="text-xs sm:text-sm font-semibold mb-1 sm:mb-2 block">{t.form.messageLabel}</label>
               <Textarea 
-                placeholder="Расскажите о вашем проекте..." 
+                placeholder={t.form.messagePlaceholder} 
                 className="text-sm sm:text-base" 
                 rows={3}
                 value={formData.message}
@@ -988,13 +979,13 @@ const Index = () => {
                 onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
               />
               <label htmlFor="privacy" className="text-xs sm:text-sm text-gray-600 cursor-pointer">
-                Я согласен на{' '}
+                {t.form.privacyText}{' '}
                 <button
                   type="button"
                   className="text-primary underline hover:text-primary/80"
                   onClick={() => setPrivacyDialogOpen(true)}
                 >
-                  обработку персональных данных
+                  {t.form.privacyLink}
                 </button>
               </label>
             </div>
@@ -1004,7 +995,7 @@ const Index = () => {
               size="lg"
               disabled={isSubmitting || !privacyAccepted}
             >
-              {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+              {isSubmitting ? t.form.btnSubmitting : t.form.btnSubmit}
             </Button>
           </form>
         </DialogContent>
@@ -1016,7 +1007,7 @@ const Index = () => {
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">📸 Нейрофотосессия</DialogTitle>
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">{t.gallery.neuroGalleryTitle}</DialogTitle>
                 <button
                   onClick={() => setNeuroGalleryOpen(false)}
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
@@ -1077,7 +1068,7 @@ const Index = () => {
               ))}
             </div>
           </div>
-          <Button onClick={() => setNeuroGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">Закрыть</Button>
+          <Button onClick={() => setNeuroGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
 
@@ -1087,7 +1078,7 @@ const Index = () => {
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🎨 Брендовый стикерпак</DialogTitle>
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">{t.gallery.stickerGalleryTitle}</DialogTitle>
                 <button
                   onClick={() => setStickerGalleryOpen(false)}
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
@@ -1148,7 +1139,7 @@ const Index = () => {
               ))}
             </div>
           </div>
-          <Button onClick={() => setStickerGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">Закрыть</Button>
+          <Button onClick={() => setStickerGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
 
@@ -1158,7 +1149,7 @@ const Index = () => {
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🛒 E-commerce фото</DialogTitle>
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">{t.gallery.ecommerceGalleryTitle}</DialogTitle>
                 <button
                   onClick={() => setEcommerceGalleryOpen(false)}
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
@@ -1219,7 +1210,7 @@ const Index = () => {
               ))}
             </div>
           </div>
-          <Button onClick={() => setEcommerceGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">Закрыть</Button>
+          <Button onClick={() => setEcommerceGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
 
@@ -1229,7 +1220,7 @@ const Index = () => {
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">👗 Fashion стикеры</DialogTitle>
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">{t.gallery.fashionGalleryTitle}</DialogTitle>
                 <button
                   onClick={() => setFashionGalleryOpen(false)}
                   className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
@@ -1290,7 +1281,7 @@ const Index = () => {
               ))}
             </div>
           </div>
-          <Button onClick={() => setFashionGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">Закрыть</Button>
+          <Button onClick={() => setFashionGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
 
@@ -1367,7 +1358,7 @@ const Index = () => {
               </ul>
             </section>
           </div>
-          <Button onClick={() => setPrivacyDialogOpen(false)} className="w-full mt-4">Закрыть</Button>
+          <Button onClick={() => setPrivacyDialogOpen(false)} className="w-full mt-4">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
 
@@ -1375,13 +1366,13 @@ const Index = () => {
       <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400 mb-4">
-            <p>© 2024 Vizi Studio. Все права защищены.</p>
+            <p>{t.footer.copyright}</p>
             <span className="hidden sm:inline">•</span>
             <button
               onClick={() => setPrivacyDialogOpen(true)}
               className="text-gray-400 hover:text-white underline transition-colors"
             >
-              Политика конфиденциальности
+              {t.footer.privacyPolicy}
             </button>
             <span className="hidden sm:inline">•</span>
             <a href="mailto:vizi-stickers@mail.ru" className="text-gray-400 hover:text-white transition-colors">
@@ -1389,7 +1380,7 @@ const Index = () => {
             </a>
           </div>
           <p className="text-xs text-gray-500 max-w-3xl mx-auto">
-            * Instagram и Facebook принадлежат компании Meta Platforms Inc., которая признана экстремистской организацией и запрещена на территории Российской Федерации
+            {t.footer.disclaimer}
           </p>
         </div>
       </footer>
