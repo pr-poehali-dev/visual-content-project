@@ -337,7 +337,10 @@ const Index = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowViziHint(true);
+      // Показываем подсказку только на desktop
+      if (window.innerWidth >= 640) {
+        setShowViziHint(true);
+      }
     }, 20000);
 
     return () => clearTimeout(timer);
@@ -836,9 +839,9 @@ const Index = () => {
       </section>
 
       {/* Chat Widget */}
-      <div className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-50 vizi-float">
+      <div className="fixed bottom-20 right-3 sm:bottom-6 sm:right-6 z-40 vizi-float">
         <div 
-          className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-4 border-purple-400 transition-all hover:scale-110 vizi-cyber-glow"
+          className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-gray-900 via-purple-900 to-gray-800 shadow-2xl shadow-purple-500/50 hover:shadow-purple-400/70 hover:vizi-wiggle cursor-pointer flex items-center justify-center overflow-hidden border-2 sm:border-4 border-purple-400 transition-all hover:scale-110 active:scale-95 vizi-cyber-glow"
           onClick={() => {
             setChatOpen(!chatOpen);
             setShowViziHint(false);
@@ -855,9 +858,9 @@ const Index = () => {
         </div>
         
         {showViziHint && !chatOpen && (
-          <div className="absolute bottom-20 right-0 w-64 sm:w-72 bg-white rounded-lg shadow-2xl p-3 sm:p-4 animate-scale-in border-2 border-purple-400">
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 vizi-cyber-glow">
+          <div className="absolute bottom-20 right-0 w-[280px] sm:w-72 bg-white rounded-lg shadow-2xl p-3 sm:p-4 animate-scale-in border-2 border-purple-400">
+            <div className="flex items-start gap-2">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex-shrink-0 vizi-cyber-glow">
                 <img 
                   src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                   alt="Визи"
@@ -865,13 +868,16 @@ const Index = () => {
                   className="w-full h-full object-cover scale-110 vizi-neon"
                 />
               </div>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-gray-800">{t.chat.viziHint}</p>
-                <p className="text-xs text-gray-600 mt-1">{t.chat.viziHintSubtext}</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs sm:text-sm font-medium text-gray-800 break-words">{t.chat.viziHint}</p>
+                <p className="text-xs text-gray-600 mt-1 break-words">{t.chat.viziHintSubtext}</p>
               </div>
               <button 
-                onClick={() => setShowViziHint(false)}
-                className="text-gray-400 hover:text-gray-600"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowViziHint(false);
+                }}
+                className="text-gray-400 hover:text-gray-600 flex-shrink-0 w-6 h-6 flex items-center justify-center"
               >
                 ✕
               </button>
@@ -880,20 +886,20 @@ const Index = () => {
         )}
         
         {chatOpen && (
-          <Card className="absolute bottom-20 right-0 w-80 sm:w-96 shadow-2xl animate-scale-in max-h-[60vh] flex flex-col overflow-hidden">
+          <Card className="absolute bottom-20 right-0 w-[calc(100vw-5rem)] max-w-[320px] sm:w-96 shadow-2xl animate-scale-in max-h-[60vh] flex flex-col overflow-hidden">
             <CardContent className="p-0">
-              <div className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-800 text-white p-4 rounded-t-lg font-bold flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden vizi-cyber-glow">
+              <div className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-800 text-white p-3 sm:p-4 rounded-t-lg font-bold flex items-center gap-2 sm:gap-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden vizi-cyber-glow flex-shrink-0">
                   <img 
                     src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
                     alt="Визи"
                     className="w-full h-full object-cover scale-110 vizi-neon"
                   />
                 </div>
-                <span>{language === 'ru' ? 'Визи - Ваш консультант' : 'Vizi - Your Consultant'}</span>
+                <span className="text-sm sm:text-base truncate">{language === 'ru' ? 'Визи - Ваш консультант' : 'Vizi - Your Consultant'}</span>
               </div>
-              <div className="p-4 space-y-4 max-h-96 overflow-y-auto">
-                <div className="flex gap-3">
+              <div className="p-3 sm:p-4 space-y-3 sm:space-y-4 max-h-96 overflow-y-auto">
+                <div className="flex gap-2 sm:gap-3">
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 vizi-cyber-glow">
                     <img 
                       src="https://cdn.poehali.dev/files/ce7f214b-3425-4422-9d1d-7945d8bc7da3.jpeg"
@@ -902,22 +908,25 @@ const Index = () => {
                     />
                   </div>
                   <Card className="flex-1 bg-secondary/10">
-                    <CardContent className="p-3 text-sm">
+                    <CardContent className="p-2 sm:p-3 text-xs sm:text-sm break-words">
                       {t.chat.viziGreeting}
                     </CardContent>
                   </Card>
                 </div>
                 <div className="space-y-2">
-                  <Button variant="default" size="sm" className="w-full justify-start bg-primary hover:bg-primary/90" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
+                  <Button variant="default" size="sm" className="w-full justify-start bg-primary hover:bg-primary/90 text-xs sm:text-sm" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
                     {t.chat.btnStartChat}
                   </Button>
-                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
+                  <Button variant="outline" size="sm" className="w-full justify-start text-xs sm:text-sm" onClick={() => window.open('https://t.me/Vizi1st_bot', '_blank')}>
                     {t.chat.btnCost}
                   </Button>
-                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => scrollToSection('portfolio')}>
+                  <Button variant="outline" size="sm" className="w-full justify-start text-xs sm:text-sm" onClick={() => scrollToSection('portfolio')}>
                     {t.chat.btnExamples}
                   </Button>
-                  <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => setFormOpen(true)}>
+                  <Button variant="outline" size="sm" className="w-full justify-start text-xs sm:text-sm" onClick={() => {
+                    setFormOpen(true);
+                    setChatOpen(false);
+                  }}>
                     {t.chat.btnOrder}
                   </Button>
                 </div>
