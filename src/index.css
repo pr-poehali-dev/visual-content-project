@@ -212,3 +212,30 @@
     animation: none;
   }
 }
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Improve touch target sizes */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile */
+  h1,
+  h2,
+  h3 {
+    line-height: 1.2;
+  }
+}
