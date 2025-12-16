@@ -161,10 +161,10 @@ const Index = () => {
   ];
 
   const portfolio = [
-    { category: 'stickers', emoji: '🎨', title: t.portfolio.stickerTitle, gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
-    { category: 'neuro', emoji: '📸', title: t.portfolio.neuroTitle, gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
-    { category: 'fashion', emoji: '👗', title: t.portfolio.fashionTitle, gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
-    { category: 'ecommerce', emoji: '🛒', title: t.portfolio.ecommerceTitle, gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
+    { category: 'stickers', emoji: '🎨', titleKey: 'stickerTitle', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
+    { category: 'neuro', emoji: '📸', titleKey: 'neuroTitle', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
+    { category: 'fashion', emoji: '👗', titleKey: 'fashionTitle', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
+    { category: 'ecommerce', emoji: '🛒', titleKey: 'ecommerceTitle', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -611,44 +611,47 @@ const Index = () => {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {filteredPortfolio.map((item, index) => (
-            <Card 
-              key={index} 
-              className="group cursor-pointer overflow-hidden hover-scale"
-              onClick={() => {
-                if (item.hasGallery) {
-                  if (item.category === 'neuro') {
-                    setNeuroGalleryOpen(true);
-                  } else if (item.category === 'stickers') {
-                    setStickerGalleryOpen(true);
-                  } else if (item.category === 'ecommerce') {
-                    setEcommerceGalleryOpen(true);
-                  } else if (item.category === 'fashion') {
-                    setFashionGalleryOpen(true);
+          {filteredPortfolio.map((item, index) => {
+            const title = t.portfolio[item.titleKey as keyof typeof t.portfolio] as string;
+            return (
+              <Card 
+                key={index} 
+                className="group cursor-pointer overflow-hidden hover-scale"
+                onClick={() => {
+                  if (item.hasGallery) {
+                    if (item.category === 'neuro') {
+                      setNeuroGalleryOpen(true);
+                    } else if (item.category === 'stickers') {
+                      setStickerGalleryOpen(true);
+                    } else if (item.category === 'ecommerce') {
+                      setEcommerceGalleryOpen(true);
+                    } else if (item.category === 'fashion') {
+                      setFashionGalleryOpen(true);
+                    }
                   }
-                }
-              }}
-            >
-              <div className="h-48 sm:h-64 relative">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex items-end p-4 sm:p-6">
-                  <div className="w-full">
-                    <p className="text-white text-lg sm:text-xl font-bold mb-1">{item.emoji} {item.title}</p>
-                    {item.hasGallery && <p className="text-white/80 text-xs sm:text-sm">Нажмите для просмотра галереи</p>}
+                }}
+              >
+                <div className="h-48 sm:h-64 relative">
+                  <img 
+                    src={item.image} 
+                    alt={title}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex items-end p-4 sm:p-6">
+                    <div className="w-full">
+                      <p className="text-white text-lg sm:text-xl font-bold mb-1">{item.emoji} {title}</p>
+                      {item.hasGallery && <p className="text-white/80 text-xs sm:text-sm">{t.portfolio.clickToView}</p>}
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-6">
+                    <p className="text-xl font-bold mb-4">{title}</p>
+                    {item.hasGallery && <Button variant="secondary" size="sm">{t.portfolio.viewAll}</Button>}
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-6">
-                  <p className="text-xl font-bold mb-4">{item.title}</p>
-                  {item.hasGallery && <Button variant="secondary" size="sm">Смотреть все</Button>}
-                </div>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
       </section>
 
