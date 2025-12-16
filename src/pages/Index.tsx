@@ -1012,7 +1012,7 @@ const Index = () => {
 
       {/* Neuro Gallery Dialog */}
       <Dialog open={neuroGalleryOpen} onOpenChange={setNeuroGalleryOpen}>
-        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0 flex flex-col">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
@@ -1030,9 +1030,9 @@ const Index = () => {
               </div>
             </div>
           </DialogHeader>
-          <div className="relative flex-1 flex flex-col h-full">
+          <div className="relative flex-1 flex flex-col min-h-0">
             <div 
-              className="relative w-full flex-1 overflow-hidden bg-black"
+              className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px]"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
@@ -1083,7 +1083,7 @@ const Index = () => {
 
       {/* Sticker Gallery Dialog */}
       <Dialog open={stickerGalleryOpen} onOpenChange={setStickerGalleryOpen}>
-        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0 flex flex-col">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
@@ -1101,9 +1101,9 @@ const Index = () => {
               </div>
             </div>
           </DialogHeader>
-          <div className="relative flex-1 flex flex-col h-full">
+          <div className="relative flex-1 flex flex-col min-h-0">
             <div 
-              className="relative w-full flex-1 overflow-hidden bg-gray-100"
+              className="relative w-full flex-1 overflow-hidden bg-gray-100 min-h-[400px] sm:min-h-[500px]"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleStickerTouchEnd}
@@ -1154,7 +1154,7 @@ const Index = () => {
 
       {/* E-commerce Gallery Dialog */}
       <Dialog open={ecommerceGalleryOpen} onOpenChange={setEcommerceGalleryOpen}>
-        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0 flex flex-col">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
@@ -1172,9 +1172,9 @@ const Index = () => {
               </div>
             </div>
           </DialogHeader>
-          <div className="relative flex-1 flex flex-col h-full">
+          <div className="relative flex-1 flex flex-col min-h-0">
             <div 
-              className="relative w-full flex-1 overflow-hidden bg-black"
+              className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px]"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleEcommerceTouchEnd}
@@ -1225,7 +1225,7 @@ const Index = () => {
 
       {/* Fashion Gallery Dialog */}
       <Dialog open={fashionGalleryOpen} onOpenChange={setFashionGalleryOpen}>
-        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0">
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0 flex flex-col">
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
@@ -1243,9 +1243,9 @@ const Index = () => {
               </div>
             </div>
           </DialogHeader>
-          <div className="relative flex-1 flex flex-col h-full">
+          <div className="relative flex-1 flex flex-col min-h-0">
             <div 
-              className="relative w-full flex-1 overflow-hidden bg-gray-100"
+              className="relative w-full flex-1 overflow-hidden bg-gray-100 min-h-[400px] sm:min-h-[500px]"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleFashionTouchEnd}
