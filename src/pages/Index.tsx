@@ -617,17 +617,23 @@ const Index = () => {
               <Card 
                 key={index} 
                 className="group cursor-pointer overflow-hidden hover-scale"
-                onClick={() => {
-                  if (item.hasGallery) {
-                    if (item.category === 'neuro') {
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!item.hasGallery) return;
+                  
+                  switch (item.category) {
+                    case 'neuro':
                       setNeuroGalleryOpen(true);
-                    } else if (item.category === 'stickers') {
+                      break;
+                    case 'stickers':
                       setStickerGalleryOpen(true);
-                    } else if (item.category === 'ecommerce') {
+                      break;
+                    case 'ecommerce':
                       setEcommerceGalleryOpen(true);
-                    } else if (item.category === 'fashion') {
+                      break;
+                    case 'fashion':
                       setFashionGalleryOpen(true);
-                    }
+                      break;
                   }
                 }}
               >
@@ -644,9 +650,9 @@ const Index = () => {
                       {item.hasGallery && <p className="text-white/80 text-xs sm:text-sm">{t.portfolio.clickToView}</p>}
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-6">
+                  <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-6 pointer-events-none group-hover:pointer-events-auto">
                     <p className="text-xl font-bold mb-4">{title}</p>
-                    {item.hasGallery && <Button variant="secondary" size="sm">{t.portfolio.viewAll}</Button>}
+                    {item.hasGallery && <Button variant="secondary" size="sm" className="pointer-events-none">{t.portfolio.viewAll}</Button>}
                   </div>
                 </div>
               </Card>
