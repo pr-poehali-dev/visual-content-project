@@ -65,7 +65,7 @@ export const translations = {
       viewAll: 'Смотреть все',
       stickerTitle: 'AI стикеры для бизнеса',
       neuroTitle: 'Нейрофотосессия онлайн',
-      fashionTitle: 'Съемка одежды для каталога',
+      fashionTitle: 'Fashion стикеры',
       ecommerceTitle: 'Фото товаров для Wildberries'
     },
     reviews: {
@@ -217,7 +217,7 @@ export const translations = {
       viewAll: 'View all',
       stickerTitle: 'AI Stickers for Business',
       neuroTitle: 'AI Photo Session Online',
-      fashionTitle: 'Clothing Photography for Catalog',
+      fashionTitle: 'Fashion Stickers',
       ecommerceTitle: 'Product Photos for Wildberries'
     },
     reviews: {
