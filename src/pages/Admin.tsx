@@ -23,6 +23,63 @@ const Admin = () => {
     }
   };
 
+  const compressVideo = async (file: File): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      const video = document.createElement('video');
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      video.preload = 'metadata';
+      video.src = URL.createObjectURL(file);
+      
+      video.onloadedmetadata = () => {
+        const maxWidth = 1280;
+        const maxHeight = 720;
+        let width = video.videoWidth;
+        let height = video.videoHeight;
+        
+        if (width > maxWidth) {
+          height = (height * maxWidth) / width;
+          width = maxWidth;
+        }
+        if (height > maxHeight) {
+          width = (width * maxHeight) / height;
+          height = maxHeight;
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        
+        const mediaRecorder = new MediaRecorder(canvas.captureStream(30), {
+          mimeType: 'video/webm;codecs=vp8',
+          videoBitsPerSecond: 1000000
+        });
+        
+        const chunks: Blob[] = [];
+        mediaRecorder.ondataavailable = (e) => chunks.push(e.data);
+        mediaRecorder.onstop = () => resolve(new Blob(chunks, { type: 'video/webm' }));
+        mediaRecorder.onerror = reject;
+        
+        mediaRecorder.start();
+        video.play();
+        
+        const drawFrame = () => {
+          if (video.ended || video.paused) {
+            mediaRecorder.stop();
+            URL.revokeObjectURL(video.src);
+            return;
+          }
+          ctx?.drawImage(video, 0, 0, width, height);
+          requestAnimationFrame(drawFrame);
+        };
+        
+        drawFrame();
+      };
+      
+      video.onerror = reject;
+    });
+  };
+
   const uploadVideo = async (file: File) => {
     if (!file.type.startsWith('video/')) {
       toast({
@@ -36,6 +93,37 @@ const Admin = () => {
     setUploading(true);
 
     try {
+      let processedFile: File | Blob = file;
+      const maxSize = 10 * 1024 * 1024;
+      
+      if (file.size > maxSize) {
+        toast({
+          title: '🔄 Сжатие видео...',
+          description: 'Файл больше 10MB, сжимаем автоматически'
+        });
+        
+        try {
+          processedFile = await compressVideo(file);
+          const newName = file.name.replace(/\.[^.]+$/, '.webm');
+          processedFile = new File([processedFile], newName, { type: 'video/webm' });
+          
+          toast({
+            title: '✅ Видео сжато',
+            description: `Размер уменьшен с ${(file.size / 1024 / 1024).toFixed(1)}MB до ${(processedFile.size / 1024 / 1024).toFixed(1)}MB`
+          });
+        } catch (compressionError) {
+          toast({
+            title: '⚠️ Сжатие не удалось',
+            description: 'Загружаем оригинальный файл. Максимум 10MB.',
+            variant: 'destructive'
+          });
+          
+          if (file.size > maxSize) {
+            throw new Error('Файл слишком большой (больше 10MB). Сожмите видео вручную.');
+          }
+        }
+      }
+      
       const reader = new FileReader();
       reader.onload = async () => {
         const base64 = (reader.result as string).split(',')[1];
@@ -44,15 +132,15 @@ const Admin = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            fileName: file.name,
+            fileName: processedFile instanceof File ? processedFile.name : file.name,
             fileData: base64,
-            contentType: file.type,
+            contentType: processedFile.type,
             title: videoTitle || file.name.split('.').slice(0, -1).join('.')
           })
         });
 
         if (response.status === 413) {
-          throw new Error('Видео слишком большое! Максимум 5MB. Сожмите видео перед загрузкой.');
+          throw new Error('Видео слишком большое! Максимум 10MB. Попробуйте сжать сильнее.');
         }
         
         const result = await response.json();
@@ -72,7 +160,7 @@ const Admin = () => {
         }
       };
       
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(processedFile);
     } catch (error) {
       toast({
         title: '❌ Ошибка загрузки',
@@ -184,7 +272,8 @@ const Admin = () => {
                   </Button>
                   <p className="text-xs text-gray-400 mt-4">
                     Поддерживаются: MP4, WebM, MOV<br/>
-                    ⚠️ Максимальный размер: 5 MB
+                    📦 Максимальный размер: 10 MB<br/>
+                    🔄 Автоматическое сжатие для больших файлов
                   </p>
                 </>
               )}
