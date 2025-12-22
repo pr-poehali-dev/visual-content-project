@@ -48,7 +48,7 @@ const Index = () => {
   const [touchEndY, setTouchEndY] = useState(0);
   const [videoWorks, setVideoWorks] = useState<Array<{title: string, media: string, type: string}>>([]);
   const [videoVolume, setVideoVolume] = useState(0.7);
-  const [videoMuted, setVideoMuted] = useState(false);
+  const [videoMuted, setVideoMuted] = useState(true);
 
   const quizQuestions = [
     {
@@ -1475,27 +1475,29 @@ const Index = () => {
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleVideosTouchEnd}
               >
-                {videoWorks.map((item, index) => (
-                  <video
-                    key={index}
-                    src={item.media}
-                    controls
-                    autoPlay={index === currentVideosIndex}
-                    loop
-                    playsInline
-                    muted={videoMuted}
-                    volume={videoVolume}
-                    onVolumeChange={(e) => {
-                      const video = e.target as HTMLVideoElement;
-                      setVideoVolume(video.volume);
-                      setVideoMuted(video.muted);
-                    }}
-                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                      index === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                    }`}
-                  />
-                ))}
-                <div className="absolute bottom-20 left-4 right-4 z-20 flex items-center gap-3 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
+                {videoWorks.map((item, index) => {
+                  const videoRef = (el: HTMLVideoElement | null) => {
+                    if (el) {
+                      el.volume = videoVolume;
+                      el.muted = videoMuted;
+                    }
+                  };
+                  return (
+                    <video
+                      key={index}
+                      ref={videoRef}
+                      src={item.media}
+                      controls
+                      autoPlay={index === currentVideosIndex}
+                      loop
+                      playsInline
+                      className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                        index === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                      }`}
+                    />
+                  );
+                })}
+                <div className="absolute bottom-20 left-4 right-4 z-20 flex items-center gap-3 bg-black/60 backdrop-blur-sm p-3 rounded-lg sm:hidden">
                   <button
                     onClick={() => {
                       setVideoMuted(!videoMuted);
