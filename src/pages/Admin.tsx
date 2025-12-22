@@ -11,6 +11,7 @@ const Admin = () => {
   const [uploading, setUploading] = useState(false);
   const [uploadedVideos, setUploadedVideos] = useState<Array<{url: string, name: string}>>([]);
   const [dragActive, setDragActive] = useState(false);
+  const [videoTitle, setVideoTitle] = useState('');
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -45,7 +46,8 @@ const Admin = () => {
           body: JSON.stringify({
             fileName: file.name,
             fileData: base64,
-            contentType: file.type
+            contentType: file.type,
+            title: videoTitle || file.name.split('.').slice(0, -1).join('.')
           })
         });
 
@@ -54,10 +56,11 @@ const Admin = () => {
         if (response.ok && result.success) {
           toast({
             title: '✅ Видео загружено!',
-            description: 'URL скопирован в буфер обмена'
+            description: 'Видео добавлено в галерею автоматически'
           });
           
           setUploadedVideos(prev => [...prev, { url: result.url, name: file.name }]);
+          setVideoTitle('');
           
           navigator.clipboard.writeText(result.url);
         } else {
@@ -122,6 +125,20 @@ const Admin = () => {
             <CardTitle>Загрузить видео</CardTitle>
           </CardHeader>
           <CardContent>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-2">
+                Название видео (опционально)
+              </label>
+              <Input
+                value={videoTitle}
+                onChange={(e) => setVideoTitle(e.target.value)}
+                placeholder="Введите название видео"
+                className="max-w-md"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Если не указано, будет использовано имя файла
+              </p>
+            </div>
             <div
               className={`border-2 border-dashed rounded-lg p-12 text-center transition-all ${
                 dragActive 
@@ -211,23 +228,24 @@ const Admin = () => {
           </Card>
         )}
 
-        <Card className="mt-8 bg-blue-50 border-blue-200">
+        <Card className="mt-8 bg-green-50 border-green-200">
           <CardContent className="pt-6">
-            <h3 className="font-bold mb-2 flex items-center">
-              <Icon name="Info" size={20} className="mr-2 text-blue-600" />
-              Как добавить видео в галерею?
+            <h3 className="font-bold mb-2 flex items-center text-green-800">
+              <Icon name="CheckCircle" size={20} className="mr-2 text-green-600" />
+              Видео добавляется автоматически!
             </h3>
-            <ol className="text-sm text-gray-700 space-y-2 ml-6 list-decimal">
-              <li>Загрузите видео через форму выше</li>
-              <li>Скопируйте полученный URL</li>
-              <li>Откройте файл <code className="bg-white px-2 py-1 rounded">src/pages/Index.tsx</code></li>
-              <li>Найдите массив <code className="bg-white px-2 py-1 rounded">videoWorks</code></li>
-              <li>Добавьте новый объект с вашим URL:
-                <pre className="bg-white p-2 rounded mt-2 text-xs overflow-x-auto">
-{`{ title: 'Название видео', media: 'ВАШ_URL', type: 'video' }`}
-                </pre>
-              </li>
-            </ol>
+            <p className="text-sm text-gray-700 mb-3">
+              После загрузки видео автоматически появится в галерее на главной странице.
+              Не нужно редактировать код вручную!
+            </p>
+            <div className="bg-white rounded p-3 border border-green-200">
+              <p className="text-xs text-gray-600 mb-2">✨ Что происходит автоматически:</p>
+              <ul className="text-xs text-gray-700 space-y-1 ml-4 list-disc">
+                <li>Видео загружается в S3 хранилище</li>
+                <li>Запись сохраняется в базу данных</li>
+                <li>Видео появляется в разделе "🎬 Видео работы" на сайте</li>
+              </ul>
+            </div>
           </CardContent>
         </Card>
       </div>

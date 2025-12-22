@@ -46,6 +46,7 @@ const Index = () => {
   const [touchEnd, setTouchEnd] = useState(0);
   const [touchStartY, setTouchStartY] = useState(0);
   const [touchEndY, setTouchEndY] = useState(0);
+  const [videoWorks, setVideoWorks] = useState<Array<{title: string, media: string, type: string}>>([]);
 
   const quizQuestions = [
     {
@@ -162,11 +163,7 @@ const Index = () => {
     { title: 'Йога и гармония', media: 'https://cdn.poehali.dev/files/2d9822cf-2427-48c0-8fc6-e56e4edc8a24.jpeg', type: 'image' }
   ];
 
-  const videoWorks = [
-    { title: 'Пример работы 1', media: 'https://cdn.poehali.dev/files/video-example-1.mp4', type: 'video' },
-    { title: 'Пример работы 2', media: 'https://cdn.poehali.dev/files/video-example-2.mp4', type: 'video' },
-    { title: 'Процесс создания', media: 'https://cdn.poehali.dev/files/video-example-3.mp4', type: 'video' }
-  ];
+  // videoWorks загружается из БД в useEffect
 
   const portfolio = [
     { category: 'stickers', emoji: '🎨', titleKey: 'stickerTitle', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
@@ -383,6 +380,25 @@ const Index = () => {
 
     return () => clearInterval(interval);
   }, [reviews.length]);
+
+  useEffect(() => {
+    const loadVideos = async () => {
+      try {
+        const response = await fetch(funcUrls['upload-video'], {
+          method: 'GET'
+        });
+        const result = await response.json();
+        
+        if (result.success && result.videos) {
+          setVideoWorks(result.videos);
+        }
+      } catch (error) {
+        console.error('Error loading videos:', error);
+      }
+    };
+    
+    loadVideos();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
