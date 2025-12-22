@@ -1429,55 +1429,65 @@ const Index = () => {
               </div>
             </div>
           </DialogHeader>
-          <div className="relative flex-1 flex flex-col min-h-0">
-            <div 
-              className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px]"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleVideosTouchEnd}
-            >
-              {videoWorks.map((item, index) => (
-                <video
-                  key={index}
-                  src={item.media}
-                  controls
-                  autoPlay={index === currentVideosIndex}
-                  loop
-                  playsInline
-                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                    index === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
-                />
-              ))}
-              <button
-                onClick={prevVideosPhoto}
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-16 h-16 sm:w-14 sm:h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-90 touch-manipulation z-20 shadow-lg"
+          {videoWorks.length > 0 ? (
+            <div className="relative flex-1 flex flex-col min-h-0">
+              <div 
+                className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px]"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleVideosTouchEnd}
               >
-                <Icon name="ChevronLeft" size={32} />
-              </button>
-              <button
-                onClick={nextVideosPhoto}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-16 h-16 sm:w-14 sm:h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-90 touch-manipulation z-20 shadow-lg"
-              >
-                <Icon name="ChevronRight" size={32} />
-              </button>
-            </div>
-            <div className="absolute bottom-16 sm:relative sm:bottom-auto left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-2 sm:bg-transparent sm:backdrop-blur-none sm:mt-4 text-center space-y-1">
-              <p className="text-xs sm:text-lg font-semibold text-white sm:text-foreground">{videoWorks[currentVideosIndex].title}</p>
-              <p className="text-xs sm:text-sm text-gray-300 sm:text-gray-500">{currentVideosIndex + 1} / {videoWorks.length}</p>
-            </div>
-            <div className="absolute bottom-4 sm:relative sm:bottom-auto left-0 right-0 z-30 flex gap-1.5 sm:gap-2 justify-center sm:mt-4 px-4">
-              {videoWorks.map((_, index) => (
+                {videoWorks.map((item, index) => (
+                  <video
+                    key={index}
+                    src={item.media}
+                    controls
+                    autoPlay={index === currentVideosIndex}
+                    loop
+                    playsInline
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                ))}
                 <button
-                  key={index}
-                  onClick={() => setCurrentVideosIndex(index)}
-                  className={`h-1.5 sm:h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
-                    index === currentVideosIndex ? 'bg-white sm:bg-primary w-6 sm:w-10' : 'bg-white/50 sm:bg-gray-300 w-1.5 sm:w-3'
-                  }`}
-                />
-              ))}
+                  onClick={prevVideosPhoto}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-16 h-16 sm:w-14 sm:h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-90 touch-manipulation z-20 shadow-lg"
+                >
+                  <Icon name="ChevronLeft" size={32} />
+                </button>
+                <button
+                  onClick={nextVideosPhoto}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-16 h-16 sm:w-14 sm:h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-90 touch-manipulation z-20 shadow-lg"
+                >
+                  <Icon name="ChevronRight" size={32} />
+                </button>
+              </div>
+              <div className="absolute bottom-16 sm:relative sm:bottom-auto left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-2 sm:bg-transparent sm:backdrop-blur-none sm:mt-4 text-center space-y-1">
+                <p className="text-xs sm:text-lg font-semibold text-white sm:text-foreground">{videoWorks[currentVideosIndex].title}</p>
+                <p className="text-xs sm:text-sm text-gray-300 sm:text-gray-500">{currentVideosIndex + 1} / {videoWorks.length}</p>
+              </div>
+              <div className="absolute bottom-4 sm:relative sm:bottom-auto left-0 right-0 z-30 flex gap-1.5 sm:gap-2 justify-center sm:mt-4 px-4">
+                {videoWorks.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentVideosIndex(index)}
+                    className={`h-1.5 sm:h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                      index === currentVideosIndex ? 'bg-white sm:bg-primary w-6 sm:w-10' : 'bg-white/50 sm:bg-gray-300 w-1.5 sm:w-3'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="flex-1 flex items-center justify-center min-h-[400px] bg-black/5">
+              <div className="text-center p-8">
+                <Icon name="Video" size={48} className="mx-auto mb-4 text-gray-400" />
+                <p className="text-lg text-gray-600">Видео еще не загружены</p>
+                <p className="text-sm text-gray-500 mt-2">Перейдите в /admin для загрузки</p>
+              </div>
+            </div>
+          )}
           <Button onClick={() => setVideosGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
