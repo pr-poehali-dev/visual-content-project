@@ -184,7 +184,7 @@ const Index = () => {
     { category: 'neuro', emoji: '📸', titleKey: 'neuroTitle', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', titleKey: 'fashionTitle', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
     { category: 'ecommerce', emoji: '🛒', titleKey: 'ecommerceTitle', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/freepik__-stormshield-pro-08-70-stormshield-pro-10-__95475.jpeg', hasGallery: true },
-    { category: 'videos', emoji: '🎬', titleKey: 'videosTitle', gradient: 'from-purple-400 to-pink-500', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true }
+    { category: 'videos', emoji: '🎬', titleKey: 'videosTitle', gradient: 'from-purple-400 to-pink-500', image: videoWorks.length > 0 ? videoWorks[0].media : 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true, isVideo: videoWorks.length > 0 }
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -712,12 +712,24 @@ const Index = () => {
                 }}
               >
                 <div className="h-56 sm:h-64 relative">
-                  <img 
-                    src={item.image} 
-                    alt={title}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
+                  {item.isVideo ? (
+                    <video 
+                      src={item.image} 
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                      onMouseEnter={(e) => e.currentTarget.play()}
+                      onMouseLeave={(e) => e.currentTarget.pause()}
+                    />
+                  ) : (
+                    <img 
+                      src={item.image} 
+                      alt={title}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent flex items-end p-4 sm:p-6">
                     <div className="w-full">
                       <p className="text-white text-lg sm:text-xl font-bold mb-1">{item.emoji} {title}</p>
