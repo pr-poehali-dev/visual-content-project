@@ -136,7 +136,12 @@ const Index = () => {
     { title: 'Волшебный шар', media: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', type: 'image' },
     { title: 'Уютное Рождество', media: 'https://cdn.poehali.dev/files/ffc743a7-fb3d-43e7-a169-e97efa541bb7.jpeg', type: 'image' },
     { title: 'Праздничный вечер', media: 'https://cdn.poehali.dev/files/6a470c32-8ef3-4a95-a291-88506d871222.jpeg', type: 'image' },
-    { title: 'Рождественская Москва', media: 'https://cdn.poehali.dev/files/f168d5b2-6dd9-48ee-9756-8c45655ffedc.jpeg', type: 'image' }
+    { title: 'Рождественская Москва', media: 'https://cdn.poehali.dev/files/f168d5b2-6dd9-48ee-9756-8c45655ffedc.jpeg', type: 'image' },
+    { title: 'Королевский портрет', media: 'https://cdn.poehali.dev/files/freepik__-__51817.jpeg', type: 'image' },
+    { title: 'Цветочная элегантность', media: 'https://cdn.poehali.dev/files/freepik__-img1-8k__95479.jpeg', type: 'image' },
+    { title: 'Праздничный шик', media: 'https://cdn.poehali.dev/files/freepik__beautiful-woman-img1-in-luxury-gold-or-emerald-eve__95489.jpeg', type: 'image' },
+    { title: 'Уютное рождественское утро', media: 'https://cdn.poehali.dev/files/freepik__beautiful-woman-img1-in-elegant-romantic-setting-w__95488.jpeg', type: 'image' },
+    { title: 'Вечерняя изысканность', media: 'https://cdn.poehali.dev/files/freepik__-img1-4k-__95487.jpeg', type: 'image' }
   ];
 
   const stickerPhotos = [
