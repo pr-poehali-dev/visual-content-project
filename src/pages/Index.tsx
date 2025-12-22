@@ -116,48 +116,48 @@ const Index = () => {
   ];
 
   const neuroPhotos = [
-    { title: 'Fashion-минимализм', image: 'https://cdn.poehali.dev/files/85226719-576c-41a5-83e7-3350b31a11d6.jpeg' },
-    { title: 'Рождественская элегантность', image: 'https://cdn.poehali.dev/files/7c57b981-1a76-45da-9aa3-62be985a95c3.jpeg' },
-    { title: 'Весенняя оранжерея', image: 'https://cdn.poehali.dev/files/800d83ff-97c4-435d-a060-ffcca6f5d16d.jpeg' },
-    { title: 'Шахматная королева', image: 'https://cdn.poehali.dev/files/2fea8a02-3efa-4682-a0f0-ca5f2af7b2d7.jpeg' },
-    { title: 'Chanel элегантность', image: 'https://cdn.poehali.dev/files/8ace4480-833b-4492-b35c-1bacfe569082.jpeg' },
-    { title: 'Versace зимний лукбук', image: 'https://cdn.poehali.dev/files/9cda06be-bddb-4444-8a7f-4aac8bc2dc71.jpeg' },
-    { title: 'Зимний стиль Geely', image: 'https://cdn.poehali.dev/files/852e855b-0251-49e8-aea6-217d3f10c3d9.jpeg' },
-    { title: 'Минималистичная элегантность', image: 'https://cdn.poehali.dev/files/c0ea7e63-0320-4609-b446-6f33a65a0f72.jpeg' },
-    { title: 'Естественная красота', image: 'https://cdn.poehali.dev/files/4eaf5416-5b22-4bd0-8917-bb94cdfaf271.jpeg' },
-    { title: 'Портрет в интерьере', image: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg' },
-    { title: 'Уличная фотосессия', image: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg' },
-    { title: 'Городской стиль', image: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg' },
-    { title: 'Нейропортрет', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg' },
-    { title: 'Зимняя Москва', image: 'https://cdn.poehali.dev/files/ffb55f20-d2e1-4fea-8b1d-118b8feaae69.jpeg' },
-    { title: 'Волшебный шар', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg' },
-    { title: 'Уютное Рождество', image: 'https://cdn.poehali.dev/files/ffc743a7-fb3d-43e7-a169-e97efa541bb7.jpeg' },
-    { title: 'Праздничный вечер', image: 'https://cdn.poehali.dev/files/6a470c32-8ef3-4a95-a291-88506d871222.jpeg' },
-    { title: 'Рождественская Москва', image: 'https://cdn.poehali.dev/files/f168d5b2-6dd9-48ee-9756-8c45655ffedc.jpeg' }
+    { title: 'Fashion-минимализм', media: 'https://cdn.poehali.dev/files/85226719-576c-41a5-83e7-3350b31a11d6.jpeg', type: 'image' },
+    { title: 'Рождественская элегантность', media: 'https://cdn.poehali.dev/files/7c57b981-1a76-45da-9aa3-62be985a95c3.jpeg', type: 'image' },
+    { title: 'Весенняя оранжерея', media: 'https://cdn.poehali.dev/files/800d83ff-97c4-435d-a060-ffcca6f5d16d.jpeg', type: 'image' },
+    { title: 'Шахматная королева', media: 'https://cdn.poehali.dev/files/2fea8a02-3efa-4682-a0f0-ca5f2af7b2d7.jpeg', type: 'image' },
+    { title: 'Chanel элегантность', media: 'https://cdn.poehali.dev/files/8ace4480-833b-4492-b35c-1bacfe569082.jpeg', type: 'image' },
+    { title: 'Versace зимний лукбук', media: 'https://cdn.poehali.dev/files/9cda06be-bddb-4444-8a7f-4aac8bc2dc71.jpeg', type: 'image' },
+    { title: 'Зимний стиль Geely', media: 'https://cdn.poehali.dev/files/852e855b-0251-49e8-aea6-217d3f10c3d9.jpeg', type: 'image' },
+    { title: 'Минималистичная элегантность', media: 'https://cdn.poehali.dev/files/c0ea7e63-0320-4609-b446-6f33a65a0f72.jpeg', type: 'image' },
+    { title: 'Естественная красота', media: 'https://cdn.poehali.dev/files/4eaf5416-5b22-4bd0-8917-bb94cdfaf271.jpeg', type: 'image' },
+    { title: 'Портрет в интерьере', media: 'https://cdn.poehali.dev/files/dcc0c536-34fe-4e84-ba8b-8098569095fa.jpeg', type: 'image' },
+    { title: 'Уличная фотосессия', media: 'https://cdn.poehali.dev/files/10ce13e6-958b-4df7-8c2d-057954dedb29.jpeg', type: 'image' },
+    { title: 'Городской стиль', media: 'https://cdn.poehali.dev/files/7d3ba810-4482-414c-9555-fbc80319a53d.jpeg', type: 'image' },
+    { title: 'Нейропортрет', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/files/e5ef606d-7df8-42b2-9bdc-8b02d3b09783.jpg', type: 'image' },
+    { title: 'Зимняя Москва', media: 'https://cdn.poehali.dev/files/ffb55f20-d2e1-4fea-8b1d-118b8feaae69.jpeg', type: 'image' },
+    { title: 'Волшебный шар', media: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', type: 'image' },
+    { title: 'Уютное Рождество', media: 'https://cdn.poehali.dev/files/ffc743a7-fb3d-43e7-a169-e97efa541bb7.jpeg', type: 'image' },
+    { title: 'Праздничный вечер', media: 'https://cdn.poehali.dev/files/6a470c32-8ef3-4a95-a291-88506d871222.jpeg', type: 'image' },
+    { title: 'Рождественская Москва', media: 'https://cdn.poehali.dev/files/f168d5b2-6dd9-48ee-9756-8c45655ffedc.jpeg', type: 'image' }
   ];
 
   const stickerPhotos = [
-    { title: 'Кибер-котик', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg' },
-    { title: 'Стикерпак Vizi', image: 'https://cdn.poehali.dev/files/0acc6698-fd67-4b82-abfc-2b57943caedd.jpeg' },
-    { title: 'Фотограф-камера', image: 'https://cdn.poehali.dev/files/4097e8c1-83cc-4b98-b2c5-70ba74345b8a.jpeg' },
-    { title: 'Фотограф студия', image: 'https://cdn.poehali.dev/files/f2f3edfb-252d-4440-a806-8587f251c296.jpeg' },
-    { title: 'Кофе стикеры', image: 'https://cdn.poehali.dev/files/f0502733-f2ce-4853-9345-d64894f87501.jpeg' },
-    { title: 'Кофе эмоции', image: 'https://cdn.poehali.dev/files/44b1682c-a3c7-4872-aebf-8f2f51177920.jpeg' }
+    { title: 'Кибер-котик', media: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', type: 'image' },
+    { title: 'Стикерпак Vizi', media: 'https://cdn.poehali.dev/files/0acc6698-fd67-4b82-abfc-2b57943caedd.jpeg', type: 'image' },
+    { title: 'Фотограф-камера', media: 'https://cdn.poehali.dev/files/4097e8c1-83cc-4b98-b2c5-70ba74345b8a.jpeg', type: 'image' },
+    { title: 'Фотограф студия', media: 'https://cdn.poehali.dev/files/f2f3edfb-252d-4440-a806-8587f251c296.jpeg', type: 'image' },
+    { title: 'Кофе стикеры', media: 'https://cdn.poehali.dev/files/f0502733-f2ce-4853-9345-d64894f87501.jpeg', type: 'image' },
+    { title: 'Кофе эмоции', media: 'https://cdn.poehali.dev/files/44b1682c-a3c7-4872-aebf-8f2f51177920.jpeg', type: 'image' }
   ];
 
   const ecommercePhotos = [
-    { title: 'Новогодняя игрушка', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg' },
-    { title: 'Пряничный домик', image: 'https://cdn.poehali.dev/files/ec48fe3e-3c51-4813-b8f5-a4d7680288cf.jpeg' },
-    { title: 'Геометрия уюта', image: 'https://cdn.poehali.dev/files/2c579169-bd1a-4310-975d-5cc2c0b45a8b.jpeg' }
+    { title: 'Новогодняя игрушка', media: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', type: 'image' },
+    { title: 'Пряничный домик', media: 'https://cdn.poehali.dev/files/ec48fe3e-3c51-4813-b8f5-a4d7680288cf.jpeg', type: 'image' },
+    { title: 'Геометрия уюта', media: 'https://cdn.poehali.dev/files/2c579169-bd1a-4310-975d-5cc2c0b45a8b.jpeg', type: 'image' }
   ];
 
   const fashionPhotos = [
-    { title: 'Стикеры для авто', image: 'https://cdn.poehali.dev/files/ea9af10e-aa28-4e38-abcd-1ce40e0bbe4a.jpeg' },
-    { title: 'Дизайнерские стикеры', image: 'https://cdn.poehali.dev/files/272b3cde-20db-4113-a8fc-9e3801e65553.jpeg' },
-    { title: 'Fashion стиль', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg' },
-    { title: 'Путешествия', image: 'https://cdn.poehali.dev/files/778b28d3-f95c-4ede-ae6d-42002f28e4f4.jpeg' },
-    { title: 'Креативные мемы', image: 'https://cdn.poehali.dev/files/c08e79cc-6ac9-4357-bbf6-2ec5d4eeda98.jpeg' },
-    { title: 'Йога и гармония', image: 'https://cdn.poehali.dev/files/2d9822cf-2427-48c0-8fc6-e56e4edc8a24.jpeg' }
+    { title: 'Стикеры для авто', media: 'https://cdn.poehali.dev/files/ea9af10e-aa28-4e38-abcd-1ce40e0bbe4a.jpeg', type: 'image' },
+    { title: 'Дизайнерские стикеры', media: 'https://cdn.poehali.dev/files/272b3cde-20db-4113-a8fc-9e3801e65553.jpeg', type: 'image' },
+    { title: 'Fashion стиль', media: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', type: 'image' },
+    { title: 'Путешествия', media: 'https://cdn.poehali.dev/files/778b28d3-f95c-4ede-ae6d-42002f28e4f4.jpeg', type: 'image' },
+    { title: 'Креативные мемы', media: 'https://cdn.poehali.dev/files/c08e79cc-6ac9-4357-bbf6-2ec5d4eeda98.jpeg', type: 'image' },
+    { title: 'Йога и гармония', media: 'https://cdn.poehali.dev/files/2d9822cf-2427-48c0-8fc6-e56e4edc8a24.jpeg', type: 'image' }
   ];
 
   const portfolio = [
@@ -1046,16 +1046,30 @@ const Index = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              {neuroPhotos.map((photo, index) => (
-                <img 
-                  key={index}
-                  src={photo.image} 
-                  alt={photo.title}
-                  loading="eager"
-                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                    index === currentNeuroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
-                />
+              {neuroPhotos.map((item, index) => (
+                item.type === 'video' ? (
+                  <video
+                    key={index}
+                    src={item.media}
+                    controls
+                    autoPlay={index === currentNeuroIndex}
+                    loop
+                    playsInline
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentNeuroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                ) : (
+                  <img 
+                    key={index}
+                    src={item.media} 
+                    alt={item.title}
+                    loading="eager"
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentNeuroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                )
               ))}
               <button
                 onClick={prevNeuroPhoto}
@@ -1117,16 +1131,30 @@ const Index = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleStickerTouchEnd}
             >
-              {stickerPhotos.map((photo, index) => (
-                <img 
-                  key={index}
-                  src={photo.image} 
-                  alt={photo.title}
-                  loading="eager"
-                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                    index === currentStickerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
-                />
+              {stickerPhotos.map((item, index) => (
+                item.type === 'video' ? (
+                  <video
+                    key={index}
+                    src={item.media}
+                    controls
+                    autoPlay={index === currentStickerIndex}
+                    loop
+                    playsInline
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentStickerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                ) : (
+                  <img 
+                    key={index}
+                    src={item.media} 
+                    alt={item.title}
+                    loading="eager"
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentStickerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                )
               ))}
               <button
                 onClick={prevStickerPhoto}
@@ -1188,16 +1216,30 @@ const Index = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleEcommerceTouchEnd}
             >
-              {ecommercePhotos.map((photo, index) => (
-                <img 
-                  key={index}
-                  src={photo.image} 
-                  alt={photo.title}
-                  loading="eager"
-                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                    index === currentEcommerceIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
-                />
+              {ecommercePhotos.map((item, index) => (
+                item.type === 'video' ? (
+                  <video
+                    key={index}
+                    src={item.media}
+                    controls
+                    autoPlay={index === currentEcommerceIndex}
+                    loop
+                    playsInline
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentEcommerceIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                ) : (
+                  <img 
+                    key={index}
+                    src={item.media} 
+                    alt={item.title}
+                    loading="eager"
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentEcommerceIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                )
               ))}
               <button
                 onClick={prevEcommercePhoto}
@@ -1259,16 +1301,30 @@ const Index = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleFashionTouchEnd}
             >
-              {fashionPhotos.map((photo, index) => (
-                <img 
-                  key={index}
-                  src={photo.image} 
-                  alt={photo.title}
-                  loading="eager"
-                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                    index === currentFashionIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                  }`}
-                />
+              {fashionPhotos.map((item, index) => (
+                item.type === 'video' ? (
+                  <video
+                    key={index}
+                    src={item.media}
+                    controls
+                    autoPlay={index === currentFashionIndex}
+                    loop
+                    playsInline
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentFashionIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                ) : (
+                  <img 
+                    key={index}
+                    src={item.media} 
+                    alt={item.title}
+                    loading="eager"
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                      index === currentFashionIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    }`}
+                  />
+                )
               ))}
               <button
                 onClick={prevFashionPhoto}
