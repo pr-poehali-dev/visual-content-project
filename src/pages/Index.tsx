@@ -151,7 +151,12 @@ const Index = () => {
   const ecommercePhotos = [
     { title: 'Новогодняя игрушка', media: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', type: 'image' },
     { title: 'Пряничный домик', media: 'https://cdn.poehali.dev/files/ec48fe3e-3c51-4813-b8f5-a4d7680288cf.jpeg', type: 'image' },
-    { title: 'Геометрия уюта', media: 'https://cdn.poehali.dev/files/2c579169-bd1a-4310-975d-5cc2c0b45a8b.jpeg', type: 'image' }
+    { title: 'Геометрия уюта', media: 'https://cdn.poehali.dev/files/2c579169-bd1a-4310-975d-5cc2c0b45a8b.jpeg', type: 'image' },
+    { title: 'Кружевной пеньюар LuxeNight™', media: 'https://cdn.poehali.dev/files/freepik__-luxenight-100-xsxl-luxenight-img2-__95476.jpeg', type: 'image' },
+    { title: 'Набор ножей ChefMaster Pro™', media: 'https://cdn.poehali.dev/files/freepik__-chefmaster-pro-vg10-10-__95478.jpeg', type: 'image' },
+    { title: 'Мужской зонт StormShield Pro™', media: 'https://cdn.poehali.dev/files/freepik__-stormshield-pro-08-70-stormshield-pro-10-__95475.jpeg', type: 'image' },
+    { title: 'Кожаные перчатки Premium Heritage™', media: 'https://cdn.poehali.dev/files/freepik__-premium-heritage-20-__95471.jpeg', type: 'image' },
+    { title: 'Ватные палочки Softcare™', media: 'https://cdn.poehali.dev/files/freepik__-softcare-15-200-__95470.jpeg', type: 'image' }
   ];
 
   const fashionPhotos = [
