@@ -141,7 +141,11 @@ const Index = () => {
     { title: 'Цветочная элегантность', media: 'https://cdn.poehali.dev/files/freepik__-img1-8k__95479.jpeg', type: 'image' },
     { title: 'Праздничный шик', media: 'https://cdn.poehali.dev/files/freepik__beautiful-woman-img1-in-luxury-gold-or-emerald-eve__95489.jpeg', type: 'image' },
     { title: 'Уютное рождественское утро', media: 'https://cdn.poehali.dev/files/freepik__beautiful-woman-img1-in-elegant-romantic-setting-w__95488.jpeg', type: 'image' },
-    { title: 'Вечерняя изысканность', media: 'https://cdn.poehali.dev/files/freepik__-img1-4k-__95487.jpeg', type: 'image' }
+    { title: 'Вечерняя изысканность', media: 'https://cdn.poehali.dev/files/freepik__-img1-4k-__95487.jpeg', type: 'image' },
+    { title: 'Драматичный портрет', media: 'https://cdn.poehali.dev/files/freepik__-img1-4k-__95486.jpeg', type: 'image' },
+    { title: 'Новогодний уют', media: 'https://cdn.poehali.dev/files/freepik__-photorealistic-serif-georgia-sansserif-montserrat__95484.jpeg', type: 'image' },
+    { title: 'Креативная фотосессия', media: 'https://cdn.poehali.dev/files/freepik__-editorial-fashion-11-editorial-fashion-__95480.jpeg', type: 'image' },
+    { title: 'Дворцовая роскошь', media: 'https://cdn.poehali.dev/files/freepik__-__51816.jpeg', type: 'image' }
   ];
 
   const stickerPhotos = [
