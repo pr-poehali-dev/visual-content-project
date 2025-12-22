@@ -108,12 +108,12 @@ const Admin = () => {
 
     try {
       let processedFile: File | Blob = file;
-      const maxSize = 10 * 1024 * 1024;
+      const maxSize = 50 * 1024 * 1024;
       
       if (file.size > maxSize) {
         toast({
           title: '🔄 Сжатие видео...',
-          description: 'Файл больше 10MB, сжимаем автоматически'
+          description: 'Файл больше 50MB, сжимаем автоматически'
         });
         
         try {
@@ -126,89 +126,57 @@ const Admin = () => {
             description: `Размер уменьшен с ${(file.size / 1024 / 1024).toFixed(1)}MB до ${(processedFile.size / 1024 / 1024).toFixed(1)}MB`
           });
         } catch (compressionError) {
-          console.error('Compression failed:', compressionError);
+          toast({
+            title: '⚠️ Сжатие не удалось',
+            description: 'Загружаем оригинальный файл. Максимум 50MB.',
+            variant: 'destructive'
+          });
+          
+          if (file.size > maxSize) {
+            throw new Error('Файл слишком большой (больше 50MB). Сожмите видео вручную.');
+          }
         }
       }
       
-      // Прямая загрузка в S3 через presigned URL (минуя API Gateway)
-      const fileName = processedFile instanceof File ? processedFile.name : file.name;
-      const contentType = processedFile.type;
-      const title = videoTitle || file.name.split('.').slice(0, -1).join('.');
-      
-      // Шаг 1: Получить presigned URL
-      toast({
-        title: '📡 Подготовка загрузки...',
-        description: 'Получение URL для загрузки'
-      });
-      
-      const urlResponse = await fetch(
-        `${funcUrls['direct-upload']}?fileName=${encodeURIComponent(fileName)}&contentType=${encodeURIComponent(contentType)}`,
-        { method: 'GET' }
-      );
-      
-      if (!urlResponse.ok) {
-        throw new Error('Не удалось получить URL для загрузки');
-      }
-      
-      const urlData = await urlResponse.json();
-      
-      if (!urlData.success || !urlData.uploadUrl) {
-        throw new Error(urlData.error || 'Ошибка получения URL');
-      }
-      
-      // Шаг 2: Загрузить файл напрямую в S3
-      toast({
-        title: '⬆️ Загрузка видео...',
-        description: 'Отправка файла на сервер'
-      });
-      
-      const uploadResponse = await fetch(urlData.uploadUrl, {
-        method: 'PUT',
-        body: processedFile,
-        headers: {
-          'Content-Type': contentType
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const base64 = (reader.result as string).split(',')[1];
+        
+        const response = await fetch(funcUrls['upload-video'], {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fileName: processedFile instanceof File ? processedFile.name : file.name,
+            fileData: base64,
+            contentType: processedFile.type,
+            title: videoTitle || file.name.split('.').slice(0, -1).join('.')
+          })
+        });
+
+        if (response.status === 413) {
+          throw new Error('Видео слишком большое! Максимум 50MB. Попробуйте сжать сильнее.');
         }
-      });
+        
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          toast({
+            title: '✅ Видео загружено!',
+            description: 'Видео добавлено в галерею автоматически'
+          });
+          
+          setUploadedVideos(prev => [...prev, { url: result.url, name: file.name }]);
+          setVideoTitle('');
+          loadAllVideos();
+          
+          navigator.clipboard.writeText(result.url);
+        } else {
+          throw new Error(result.error || 'Ошибка загрузки');
+        }
+      };
       
-      if (!uploadResponse.ok) {
-        throw new Error(`Ошибка загрузки: ${uploadResponse.status}`);
-      }
-      
-      // Шаг 3: Сохранить метаданные в БД
-      toast({
-        title: '💾 Сохранение...',
-        description: 'Добавление видео в галерею'
-      });
-      
-      const metadataResponse = await fetch(funcUrls['direct-upload'], {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: title,
-          cdnUrl: urlData.cdnUrl,
-          s3Key: urlData.s3Key
-        })
-      });
-      
-      const metadataResult = await metadataResponse.json();
-      
-      if (!metadataResponse.ok || !metadataResult.success) {
-        throw new Error(metadataResult.error || 'Ошибка сохранения метаданных');
-      }
-      
-      toast({
-        title: '✅ Видео загружено!',
-        description: 'Видео добавлено в галерею автоматически'
-      });
-      
-      setUploadedVideos(prev => [...prev, { url: urlData.cdnUrl, name: fileName }]);
-      setVideoTitle('');
-      loadAllVideos();
-      
-      navigator.clipboard.writeText(urlData.cdnUrl);
-      
+      reader.readAsDataURL(processedFile);
     } catch (error) {
-      console.error('Upload error:', error);
       toast({
         title: '❌ Ошибка загрузки',
         description: error instanceof Error ? error.message : 'Попробуйте снова',
@@ -374,9 +342,8 @@ const Admin = () => {
                   </Button>
                   <p className="text-xs text-gray-400 mt-4">
                     Поддерживаются: MP4, WebM, MOV<br/>
-                    📦 Рекомендуемый размер: до 10 MB<br/>
-                    🔄 Автосжатие больших файлов: 720x480, 800kbps, 25fps<br/>
-                    ⚡ Прямая загрузка — без ограничений API Gateway
+                    Максимальный размер: 50 MB<br/>
+                    Автоматическое сжатие при превышении лимита
                   </p>
                 </>
               )}
