@@ -47,6 +47,8 @@ const Index = () => {
   const [touchStartY, setTouchStartY] = useState(0);
   const [touchEndY, setTouchEndY] = useState(0);
   const [videoWorks, setVideoWorks] = useState<Array<{title: string, media: string, type: string}>>([]);
+  const [videoVolume, setVideoVolume] = useState(0.7);
+  const [videoMuted, setVideoMuted] = useState(false);
 
   const quizQuestions = [
     {
@@ -1481,11 +1483,47 @@ const Index = () => {
                     autoPlay={index === currentVideosIndex}
                     loop
                     playsInline
+                    muted={videoMuted}
+                    volume={videoVolume}
+                    onVolumeChange={(e) => {
+                      const video = e.target as HTMLVideoElement;
+                      setVideoVolume(video.volume);
+                      setVideoMuted(video.muted);
+                    }}
                     className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                       index === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                     }`}
                   />
                 ))}
+                <div className="absolute bottom-20 left-4 right-4 z-20 flex items-center gap-3 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
+                  <button
+                    onClick={() => {
+                      setVideoMuted(!videoMuted);
+                      const videos = document.querySelectorAll('video');
+                      videos.forEach(v => (v as HTMLVideoElement).muted = !videoMuted);
+                    }}
+                    className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90"
+                  >
+                    <Icon name={videoMuted ? 'VolumeX' : 'Volume2'} size={20} className="text-white" />
+                  </button>
+                  <Slider
+                    value={[videoMuted ? 0 : videoVolume * 100]}
+                    max={100}
+                    step={1}
+                    onValueChange={(values) => {
+                      const newVolume = values[0] / 100;
+                      setVideoVolume(newVolume);
+                      setVideoMuted(newVolume === 0);
+                      const videos = document.querySelectorAll('video');
+                      videos.forEach(v => {
+                        (v as HTMLVideoElement).volume = newVolume;
+                        (v as HTMLVideoElement).muted = newVolume === 0;
+                      });
+                    }}
+                    className="flex-1"
+                  />
+                  <span className="text-white text-sm font-medium min-w-[3ch]">{Math.round((videoMuted ? 0 : videoVolume) * 100)}</span>
+                </div>
                 <button
                   onClick={prevVideosPhoto}
                   className="absolute left-2 top-1/2 -translate-y-1/2 w-16 h-16 sm:w-14 sm:h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-90 touch-manipulation z-20 shadow-lg"
