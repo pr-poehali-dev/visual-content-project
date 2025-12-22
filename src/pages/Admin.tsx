@@ -45,9 +45,9 @@ const Admin = () => {
       video.src = URL.createObjectURL(file);
       
       video.onloadedmetadata = () => {
-        // Более агрессивное сжатие: 640x360 вместо 1280x720
-        const maxWidth = 640;
-        const maxHeight = 360;
+        // Очень агрессивное сжатие: 480x270 для гарантированной загрузки
+        const maxWidth = 480;
+        const maxHeight = 270;
         let width = video.videoWidth;
         let height = video.videoHeight;
         
@@ -63,10 +63,10 @@ const Admin = () => {
         canvas.width = width;
         canvas.height = height;
         
-        // Снижаем битрейт до 500kbps и FPS до 24
-        const mediaRecorder = new MediaRecorder(canvas.captureStream(24), {
+        // Снижаем битрейт до 300kbps и FPS до 20
+        const mediaRecorder = new MediaRecorder(canvas.captureStream(20), {
           mimeType: 'video/webm;codecs=vp8',
-          videoBitsPerSecond: 500000
+          videoBitsPerSecond: 300000
         });
         
         const chunks: Blob[] = [];
@@ -343,7 +343,7 @@ const Admin = () => {
                   <p className="text-xs text-gray-400 mt-4">
                     Поддерживаются: MP4, WebM, MOV<br/>
                     📦 Максимальный размер: 10 MB<br/>
-                    🔄 Автоматическое сжатие: 640x360, 500kbps, 24fps
+                    🔄 Автоматическое сжатие: 480x270, 300kbps, 20fps
                   </p>
                 </>
               )}
