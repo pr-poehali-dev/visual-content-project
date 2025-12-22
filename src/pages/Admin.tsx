@@ -45,9 +45,8 @@ const Admin = () => {
       video.src = URL.createObjectURL(file);
       
       video.onloadedmetadata = () => {
-        // Сжатие примерно в 10 раз: 720x480
-        const maxWidth = 720;
-        const maxHeight = 480;
+        const maxWidth = 1280;
+        const maxHeight = 720;
         let width = video.videoWidth;
         let height = video.videoHeight;
         
@@ -63,10 +62,9 @@ const Admin = () => {
         canvas.width = width;
         canvas.height = height;
         
-        // Битрейт 800kbps и FPS 25
-        const mediaRecorder = new MediaRecorder(canvas.captureStream(25), {
+        const mediaRecorder = new MediaRecorder(canvas.captureStream(30), {
           mimeType: 'video/webm;codecs=vp8',
-          videoBitsPerSecond: 800000
+          videoBitsPerSecond: 1000000
         });
         
         const chunks: Blob[] = [];
@@ -108,12 +106,12 @@ const Admin = () => {
 
     try {
       let processedFile: File | Blob = file;
-      const maxSize = 50 * 1024 * 1024;
+      const maxSize = 10 * 1024 * 1024;
       
       if (file.size > maxSize) {
         toast({
           title: '🔄 Сжатие видео...',
-          description: 'Файл больше 50MB, сжимаем автоматически'
+          description: 'Файл больше 10MB, сжимаем автоматически'
         });
         
         try {
@@ -128,12 +126,12 @@ const Admin = () => {
         } catch (compressionError) {
           toast({
             title: '⚠️ Сжатие не удалось',
-            description: 'Загружаем оригинальный файл. Максимум 50MB.',
+            description: 'Загружаем оригинальный файл. Максимум 10MB.',
             variant: 'destructive'
           });
           
           if (file.size > maxSize) {
-            throw new Error('Файл слишком большой (больше 50MB). Сожмите видео вручную.');
+            throw new Error('Файл слишком большой (больше 10MB). Сожмите видео вручную.');
           }
         }
       }
@@ -154,7 +152,7 @@ const Admin = () => {
         });
 
         if (response.status === 413) {
-          throw new Error('Видео слишком большое! Максимум 50MB. Попробуйте сжать сильнее.');
+          throw new Error('Видео слишком большое! Максимум 10MB. Попробуйте сжать сильнее.');
         }
         
         const result = await response.json();
@@ -342,8 +340,8 @@ const Admin = () => {
                   </Button>
                   <p className="text-xs text-gray-400 mt-4">
                     Поддерживаются: MP4, WebM, MOV<br/>
-                    Максимальный размер: 50 MB<br/>
-                    Автоматическое сжатие при превышении лимита
+                    📦 Максимальный размер: 10 MB<br/>
+                    🔄 Автоматическое сжатие для больших файлов
                   </p>
                 </>
               )}

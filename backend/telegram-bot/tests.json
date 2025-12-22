@@ -1,28 +1,38 @@
 {
   "tests": [
     {
-      "name": "Test webhook POST",
+      "name": "Handle OPTIONS for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": "",
+      "bodyMatcher": "exact"
+    },
+    {
+      "name": "Handle webhook POST",
       "method": "POST",
       "path": "/",
       "body": {
-        "update_id": 123456789,
         "message": {
-          "message_id": 1,
-          "from": {
-            "id": 123456,
-            "first_name": "Test",
-            "username": "testuser"
-          },
-          "chat": {
-            "id": 123456,
-            "type": "private"
-          },
-          "text": "Hello bot"
+          "chat": {"id": 123456},
+          "from": {"first_name": "Test"},
+          "text": "/start"
         }
       },
       "expectedStatus": 200,
       "expectedBody": {
-        "success": true
+        "ok": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Handle empty POST",
+      "method": "POST",
+      "path": "/",
+      "body": {},
+      "expectedStatus": 200,
+      "expectedBody": {
+        "ok": true
       },
       "bodyMatcher": "partial"
     }
