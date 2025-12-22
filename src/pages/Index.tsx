@@ -40,6 +40,8 @@ const Index = () => {
   const [currentEcommerceIndex, setCurrentEcommerceIndex] = useState(0);
   const [fashionGalleryOpen, setFashionGalleryOpen] = useState(false);
   const [currentFashionIndex, setCurrentFashionIndex] = useState(0);
+  const [videosGalleryOpen, setVideosGalleryOpen] = useState(false);
+  const [currentVideosIndex, setCurrentVideosIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [touchStartY, setTouchStartY] = useState(0);
@@ -160,11 +162,18 @@ const Index = () => {
     { title: 'Йога и гармония', media: 'https://cdn.poehali.dev/files/2d9822cf-2427-48c0-8fc6-e56e4edc8a24.jpeg', type: 'image' }
   ];
 
+  const videoWorks = [
+    { title: 'Пример работы 1', media: 'https://cdn.poehali.dev/files/video-example-1.mp4', type: 'video' },
+    { title: 'Пример работы 2', media: 'https://cdn.poehali.dev/files/video-example-2.mp4', type: 'video' },
+    { title: 'Процесс создания', media: 'https://cdn.poehali.dev/files/video-example-3.mp4', type: 'video' }
+  ];
+
   const portfolio = [
     { category: 'stickers', emoji: '🎨', titleKey: 'stickerTitle', gradient: 'from-red-400 to-orange-400', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true },
     { category: 'neuro', emoji: '📸', titleKey: 'neuroTitle', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', titleKey: 'fashionTitle', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
-    { category: 'ecommerce', emoji: '🛒', titleKey: 'ecommerceTitle', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true }
+    { category: 'ecommerce', emoji: '🛒', titleKey: 'ecommerceTitle', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/a65ea833-5a00-408c-80c1-cca73d592a2c.jpeg', hasGallery: true },
+    { category: 'videos', emoji: '🎬', titleKey: 'videosTitle', gradient: 'from-purple-400 to-pink-500', image: 'https://cdn.poehali.dev/files/b3feacff-a433-4015-b44e-02ae36404264.jpeg', hasGallery: true }
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -290,6 +299,27 @@ const Index = () => {
       nextFashionPhoto();
     } else if (touchStart - touchEnd < -75) {
       prevFashionPhoto();
+    }
+  };
+
+  const nextVideosPhoto = () => {
+    setCurrentVideosIndex((prev) => (prev + 1) % videoWorks.length);
+  };
+
+  const prevVideosPhoto = () => {
+    setCurrentVideosIndex((prev) => (prev - 1 + videoWorks.length) % videoWorks.length);
+  };
+
+  const handleVideosTouchEnd = () => {
+    const swipeX = Math.abs(touchStart - touchEnd);
+    const swipeY = Math.abs(touchStartY - touchEndY);
+    
+    if (swipeY > swipeX && swipeY > 100) {
+      setVideosGalleryOpen(false);
+    } else if (touchStart - touchEnd > 75) {
+      nextVideosPhoto();
+    } else if (touchStart - touchEnd < -75) {
+      prevVideosPhoto();
     }
   };
 
@@ -596,7 +626,7 @@ const Index = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 sm:mb-10 leading-tight">{t.portfolio.title}</h2>
         
         <div className="flex flex-wrap gap-2 sm:gap-2 justify-center mb-8 sm:mb-12">
-          {['all', 'stickers', 'neuro', 'fashion', 'ecommerce'].map((filter) => (
+          {['all', 'stickers', 'neuro', 'fashion', 'ecommerce', 'videos'].map((filter) => (
             <Button
               key={filter}
               variant={activeFilter === filter ? 'default' : 'outline'}
@@ -609,6 +639,7 @@ const Index = () => {
               {filter === 'neuro' && t.portfolio.filterNeuro}
               {filter === 'fashion' && t.portfolio.filterFashion}
               {filter === 'ecommerce' && t.portfolio.filterEcommerce}
+              {filter === 'videos' && t.portfolio.filterVideos}
             </Button>
           ))}
         </div>
@@ -636,6 +667,9 @@ const Index = () => {
                       break;
                     case 'fashion':
                       setFashionGalleryOpen(true);
+                      break;
+                    case 'videos':
+                      setVideosGalleryOpen(true);
                       break;
                   }
                 }}
@@ -1356,6 +1390,79 @@ const Index = () => {
             </div>
           </div>
           <Button onClick={() => setFashionGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Videos Gallery Dialog */}
+      <Dialog open={videosGalleryOpen} onOpenChange={setVideosGalleryOpen}>
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0 flex flex-col">
+          <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">{t.gallery.videosGalleryTitle}</DialogTitle>
+                <button
+                  onClick={() => setVideosGalleryOpen(false)}
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+                >
+                  <Icon name="X" size={20} className="text-white sm:text-foreground" />
+                </button>
+              </div>
+              <div className="flex items-center justify-center gap-2 sm:hidden">
+                <div className="w-8 h-1 bg-white/30 rounded-full"></div>
+                <p className="text-xs text-white/60">{t.gallery.swipeHint}</p>
+              </div>
+            </div>
+          </DialogHeader>
+          <div className="relative flex-1 flex flex-col min-h-0">
+            <div 
+              className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px]"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleVideosTouchEnd}
+            >
+              {videoWorks.map((item, index) => (
+                <video
+                  key={index}
+                  src={item.media}
+                  controls
+                  autoPlay={index === currentVideosIndex}
+                  loop
+                  playsInline
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                    index === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                />
+              ))}
+              <button
+                onClick={prevVideosPhoto}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-16 h-16 sm:w-14 sm:h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-90 touch-manipulation z-20 shadow-lg"
+              >
+                <Icon name="ChevronLeft" size={32} />
+              </button>
+              <button
+                onClick={nextVideosPhoto}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-16 h-16 sm:w-14 sm:h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm active:scale-90 touch-manipulation z-20 shadow-lg"
+              >
+                <Icon name="ChevronRight" size={32} />
+              </button>
+            </div>
+            <div className="absolute bottom-16 sm:relative sm:bottom-auto left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-2 sm:bg-transparent sm:backdrop-blur-none sm:mt-4 text-center space-y-1">
+              <p className="text-xs sm:text-lg font-semibold text-white sm:text-foreground">{videoWorks[currentVideosIndex].title}</p>
+              <p className="text-xs sm:text-sm text-gray-300 sm:text-gray-500">{currentVideosIndex + 1} / {videoWorks.length}</p>
+            </div>
+            <div className="absolute bottom-4 sm:relative sm:bottom-auto left-0 right-0 z-30 flex gap-1.5 sm:gap-2 justify-center sm:mt-4 px-4">
+              {videoWorks.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentVideosIndex(index)}
+                  className={`h-1.5 sm:h-3 rounded-full transition-all touch-manipulation active:scale-95 ${
+                    index === currentVideosIndex ? 'bg-white sm:bg-primary w-6 sm:w-10' : 'bg-white/50 sm:bg-gray-300 w-1.5 sm:w-3'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          <Button onClick={() => setVideosGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
 

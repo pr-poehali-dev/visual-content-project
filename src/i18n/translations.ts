@@ -61,12 +61,14 @@ export const translations = {
       filterNeuro: '📸 Нейрофото',
       filterFashion: '👔 Fashion',
       filterEcommerce: '🛍️ Shop',
+      filterVideos: '🎬 Видео работы',
       clickToView: 'Нажмите для просмотра галереи',
       viewAll: 'Смотреть все',
       stickerTitle: 'AI стикеры для бизнеса',
       neuroTitle: 'Нейрофотосессия онлайн',
       fashionTitle: 'Fashion стикеры',
-      ecommerceTitle: 'Фото товаров для Wildberries'
+      ecommerceTitle: 'Фото товаров для Wildberries',
+      videosTitle: 'Видео примеры работ'
     },
     reviews: {
       title: 'Что говорят клиенты ⭐'
@@ -140,7 +142,8 @@ export const translations = {
       neuroGalleryTitle: '📸 Нейрофотосессия',
       stickerGalleryTitle: '🎨 Брендовый стикерпак',
       ecommerceGalleryTitle: '🛒 E-commerce фото',
-      fashionGalleryTitle: '👗 Fashion стикеры'
+      fashionGalleryTitle: '👗 Fashion стикеры',
+      videosGalleryTitle: '🎬 Видео работы'
     },
     menu: {
       quiz: '🎯 Квиз',
@@ -213,12 +216,14 @@ export const translations = {
       filterNeuro: '📸 Neuro Photos',
       filterFashion: '👔 Fashion',
       filterEcommerce: '🛍️ Shop',
+      filterVideos: '🎬 Video Works',
       clickToView: 'Click to view gallery',
       viewAll: 'View all',
       stickerTitle: 'AI Stickers for Business',
       neuroTitle: 'AI Photo Session Online',
       fashionTitle: 'Fashion Stickers',
-      ecommerceTitle: 'Product Photos for Wildberries'
+      ecommerceTitle: 'Product Photos for Wildberries',
+      videosTitle: 'Video Examples'
     },
     reviews: {
       title: 'What clients say ⭐'
@@ -292,7 +297,8 @@ export const translations = {
       neuroGalleryTitle: '📸 AI Photo Session',
       stickerGalleryTitle: '🎨 Brand Sticker Pack',
       ecommerceGalleryTitle: '🛒 E-commerce Photos',
-      fashionGalleryTitle: '👗 Fashion Stickers'
+      fashionGalleryTitle: '👗 Fashion Stickers',
+      videosGalleryTitle: '🎬 Video Works'
     },
     menu: {
       quiz: '🎯 Quiz',
