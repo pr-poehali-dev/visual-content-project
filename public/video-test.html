@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Audio Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Проверка звука в видео</h1>
+    
+    <video id="testVideo" controls>
+        <source src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/videos/20251222_150732_Avatar_IV_Video_(1).webm" type="video/webm">
+    </video>
+    
+    <div class="controls">
+        <button onclick="playVideo()">▶️ Play</button>
+        <button onclick="pauseVideo()">⏸️ Pause</button>
+        <button onclick="toggleMute()">🔊 Toggle Mute</button>
+        <button onclick="setVolume(1.0)">Volume 100%</button>
+        <button onclick="setVolume(0.5)">Volume 50%</button>
+    </div>
+    
+    <div class="info" id="videoInfo">
+        <h3>Информация о видео:</h3>
+        <div id="infoContent">Загрузка...</div>
+    </div>
+    
+    <script>
+        const video = document.getElementById('testVideo');
+        const infoContent = document.getElementById('infoContent');
+        
+        video.addEventListener('loadedmetadata', () => {
+            updateInfo();
+        });
+        
+        video.addEventListener('volumechange', () => {
+            updateInfo();
+        });
+        
+        function updateInfo() {
+            const audioTracks = video.audioTracks ? video.audioTracks.length : 'не поддерживается браузером';
+            const hasAudio = video.mozHasAudio || video.webkitAudioDecodedByteCount > 0 || (video.audioTracks && video.audioTracks.length > 0);
+            
+            infoContent.innerHTML = `
+                <p><strong>Продолжительность:</strong> ${video.duration.toFixed(2)} сек</p>
+                <p><strong>Размер:</strong> ${video.videoWidth} x ${video.videoHeight}</p>
+                <p><strong>Громкость:</strong> ${Math.round(video.volume * 100)}%</p>
+                <p><strong>Muted:</strong> ${video.muted ? 'Да' : 'Нет'}</p>
+                <p><strong>Audio tracks:</strong> ${audioTracks}</p>
+                <p><strong>Есть звук (определено):</strong> ${hasAudio ? 'Да' : 'Неизвестно'}</p>
+                <p><strong>webkitAudioDecodedByteCount:</strong> ${video.webkitAudioDecodedByteCount || 'N/A'}</p>
+                <p><strong>mozHasAudio:</strong> ${video.mozHasAudio || 'N/A'}</p>
+            `;
+        }
+        
+        function playVideo() {
+            video.play();
+        }
+        
+        function pauseVideo() {
+            video.pause();
+        }
+        
+        function toggleMute() {
+            video.muted = !video.muted;
+            updateInfo();
+        }
+        
+        function setVolume(vol) {
+            video.volume = vol;
+            video.muted = false;
+            updateInfo();
+        }
+        
+        // Обновляем информацию каждую секунду во время воспроизведения
+        setInterval(() => {
+            if (!video.paused) {
+                updateInfo();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
