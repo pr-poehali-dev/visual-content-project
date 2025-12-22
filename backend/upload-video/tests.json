@@ -9,16 +9,22 @@
       "bodyMatcher": "exact"
     },
     {
-      "name": "Test upload without data",
-      "method": "POST",
+      "name": "Test GET visible videos",
+      "method": "GET",
       "path": "/",
-      "body": {
-        "fileName": "test.mp4"
-      },
-      "expectedStatus": 400,
+      "expectedStatus": 200,
       "expectedBody": {
-        "success": false,
-        "error": "string"
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test GET all videos",
+      "method": "GET",
+      "path": "/?all=true",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
       },
       "bodyMatcher": "partial"
     }

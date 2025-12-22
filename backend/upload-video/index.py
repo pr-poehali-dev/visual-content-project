@@ -8,8 +8,11 @@ from datetime import datetime
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
-    Управляет видео: загрузка (POST) и получение списка (GET)
-    Args: event - dict с httpMethod, body (для POST: fileName, fileData, contentType)
+    Управляет видео: загрузка (POST), получение списка (GET), изменение видимости (PUT)
+    Args: event - dict с httpMethod, body, queryStringParameters
+          POST body: fileName, fileData, contentType, title
+          PUT body: videoId, isVisible
+          GET query: all=true для получения всех видео включая скрытые
           context - объект с request_id и другими атрибутами
     Returns: HTTP response с результатом операции
     '''
@@ -20,7 +23,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Max-Age': '86400'
             },
@@ -34,12 +37,23 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             conn = psycopg2.connect(os.environ['DATABASE_URL'])
             cursor = conn.cursor()
             
-            cursor.execute("""
-                SELECT id, title, url, type, category, created_at, is_visible
-                FROM videos
-                WHERE is_visible = true
-                ORDER BY created_at DESC
-            """)
+            # Проверяем, нужны ли все видео или только видимые
+            query_params = event.get('queryStringParameters', {})
+            show_all = query_params.get('all') == 'true' if query_params else False
+            
+            if show_all:
+                cursor.execute("""
+                    SELECT id, title, url, type, category, created_at, is_visible
+                    FROM videos
+                    ORDER BY created_at DESC
+                """)
+            else:
+                cursor.execute("""
+                    SELECT id, title, url, type, category, created_at, is_visible
+                    FROM videos
+                    WHERE is_visible = true
+                    ORDER BY created_at DESC
+                """)
             
             rows = cursor.fetchall()
             
@@ -68,6 +82,65 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                     'success': True,
                     'videos': videos,
                     'count': len(videos)
+                }),
+                'isBase64Encoded': False
+            }
+        except Exception as e:
+            return {
+                'statusCode': 500,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({
+                    'success': False,
+                    'error': str(e)
+                }),
+                'isBase64Encoded': False
+            }
+    
+    # PUT - изменить видимость видео
+    if method == 'PUT':
+        try:
+            body_data = json.loads(event.get('body', '{}'))
+            video_id = body_data.get('videoId')
+            is_visible = body_data.get('isVisible')
+            
+            if video_id is None or is_visible is None:
+                return {
+                    'statusCode': 400,
+                    'headers': {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    'body': json.dumps({
+                        'success': False,
+                        'error': 'videoId and isVisible are required'
+                    }),
+                    'isBase64Encoded': False
+                }
+            
+            conn = psycopg2.connect(os.environ['DATABASE_URL'])
+            cursor = conn.cursor()
+            
+            cursor.execute(
+                "UPDATE videos SET is_visible = %s WHERE id = %s",
+                (is_visible, video_id)
+            )
+            
+            conn.commit()
+            cursor.close()
+            conn.close()
+            
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({
+                    'success': True,
+                    'message': 'Visibility updated'
                 }),
                 'isBase64Encoded': False
             }

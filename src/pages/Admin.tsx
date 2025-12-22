@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
+import { Badge } from '@/components/ui/badge';
 import funcUrls from '../../backend/func2url.json';
+
+interface Video {
+  id: number;
+  title: string;
+  media: string;
+  type: string;
+  is_visible: boolean;
+  created_at: string;
+}
 
 const Admin = () => {
   const { toast } = useToast();
   const [uploading, setUploading] = useState(false);
   const [uploadedVideos, setUploadedVideos] = useState<Array<{url: string, name: string}>>([]);
+  const [allVideos, setAllVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
   const [dragActive, setDragActive] = useState(false);
   const [videoTitle, setVideoTitle] = useState('');
 
@@ -153,6 +165,7 @@ const Admin = () => {
           
           setUploadedVideos(prev => [...prev, { url: result.url, name: file.name }]);
           setVideoTitle('');
+          loadAllVideos();
           
           navigator.clipboard.writeText(result.url);
         } else {
@@ -195,6 +208,61 @@ const Admin = () => {
       description: 'URL видео в буфере обмена'
     });
   };
+
+  const loadAllVideos = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${funcUrls['upload-video']}?all=true`, {
+        method: 'GET'
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success && result.videos) {
+          setAllVideos(result.videos);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading videos:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleVisibility = async (videoId: number, currentVisibility: boolean) => {
+    try {
+      const response = await fetch(funcUrls['upload-video'], {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          videoId,
+          isVisible: !currentVisibility
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast({
+          title: currentVisibility ? '👁️ Видео скрыто' : '✅ Видео показано',
+          description: currentVisibility ? 'Видео убрано из галереи' : 'Видео добавлено в галерею'
+        });
+        loadAllVideos();
+      } else {
+        throw new Error(result.error || 'Ошибка изменения видимости');
+      }
+    } catch (error) {
+      toast({
+        title: '❌ Ошибка',
+        description: error instanceof Error ? error.message : 'Не удалось изменить видимость',
+        variant: 'destructive'
+      });
+    }
+  };
+
+  useEffect(() => {
+    loadAllVideos();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 py-12 px-4">
@@ -322,22 +390,89 @@ const Admin = () => {
           </Card>
         )}
 
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Все видео в базе ({allVideos.length})</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {loading ? (
+              <div className="flex items-center justify-center py-8">
+                <Icon name="Loader2" size={32} className="animate-spin text-primary" />
+              </div>
+            ) : allVideos.length === 0 ? (
+              <p className="text-center text-gray-500 py-8">Видео еще не загружены</p>
+            ) : (
+              <div className="space-y-3">
+                {allVideos.map((video) => (
+                  <div 
+                    key={video.id}
+                    className={`flex items-center justify-between p-4 rounded-lg border-2 transition-all ${
+                      video.is_visible 
+                        ? 'bg-green-50 border-green-200' 
+                        : 'bg-gray-50 border-gray-200 opacity-60'
+                    }`}
+                  >
+                    <div className="flex-1 min-w-0 mr-4">
+                      <div className="flex items-center gap-2 mb-1">
+                        <p className="font-medium text-lg">{video.title}</p>
+                        <Badge variant={video.is_visible ? 'default' : 'secondary'} className="text-xs">
+                          {video.is_visible ? '✅ Показано' : '👁️ Скрыто'}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-gray-600 truncate">{video.media}</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Загружено: {new Date(video.created_at).toLocaleString('ru-RU')}
+                      </p>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        size="sm"
+                        variant={video.is_visible ? 'outline' : 'default'}
+                        onClick={() => toggleVisibility(video.id, video.is_visible)}
+                        className="whitespace-nowrap"
+                      >
+                        <Icon name={video.is_visible ? 'EyeOff' : 'Eye'} size={16} className="mr-1" />
+                        {video.is_visible ? 'Скрыть' : 'Показать'}
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => copyToClipboard(video.media)}
+                      >
+                        <Icon name="Copy" size={16} />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => window.open(video.media, '_blank')}
+                      >
+                        <Icon name="ExternalLink" size={16} />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
         <Card className="mt-8 bg-green-50 border-green-200">
           <CardContent className="pt-6">
             <h3 className="font-bold mb-2 flex items-center text-green-800">
               <Icon name="CheckCircle" size={20} className="mr-2 text-green-600" />
-              Видео добавляется автоматически!
+              Управление видимостью
             </h3>
             <p className="text-sm text-gray-700 mb-3">
-              После загрузки видео автоматически появится в галерее на главной странице.
-              Не нужно редактировать код вручную!
+              Вы можете скрывать или показывать видео в галерее одним кликом.
+              Скрытые видео остаются в базе, но не отображаются на сайте.
             </p>
             <div className="bg-white rounded p-3 border border-green-200">
-              <p className="text-xs text-gray-600 mb-2">✨ Что происходит автоматически:</p>
+              <p className="text-xs text-gray-600 mb-2">✨ Возможности:</p>
               <ul className="text-xs text-gray-700 space-y-1 ml-4 list-disc">
-                <li>Видео загружается в S3 хранилище</li>
-                <li>Запись сохраняется в базу данных</li>
-                <li>Видео появляется в разделе "🎬 Видео работы" на сайте</li>
+                <li>Скрыть видео из галереи без удаления</li>
+                <li>Показать скрытое видео обратно</li>
+                <li>Копировать прямую ссылку на видео</li>
+                <li>Просмотреть все загруженные видео</li>
               </ul>
             </div>
           </CardContent>
