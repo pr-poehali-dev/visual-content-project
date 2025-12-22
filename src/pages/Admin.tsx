@@ -51,6 +51,10 @@ const Admin = () => {
           })
         });
 
+        if (response.status === 413) {
+          throw new Error('Видео слишком большое! Максимум 5MB. Сожмите видео перед загрузкой.');
+        }
+        
         const result = await response.json();
 
         if (response.ok && result.success) {
@@ -179,7 +183,8 @@ const Admin = () => {
                     Выбрать файл
                   </Button>
                   <p className="text-xs text-gray-400 mt-4">
-                    Поддерживаются: MP4, WebM, MOV и другие видео форматы
+                    Поддерживаются: MP4, WebM, MOV<br/>
+                    ⚠️ Максимальный размер: 5 MB
                   </p>
                 </>
               )}

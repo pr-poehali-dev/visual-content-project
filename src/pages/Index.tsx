@@ -387,10 +387,17 @@ const Index = () => {
         const response = await fetch(funcUrls['upload-video'], {
           method: 'GET'
         });
+        
+        if (!response.ok) {
+          console.error('Failed to load videos:', response.status);
+          return;
+        }
+        
         const result = await response.json();
         
-        if (result.success && result.videos) {
+        if (result.success && result.videos && Array.isArray(result.videos)) {
           setVideoWorks(result.videos);
+          console.log('Loaded videos:', result.videos.length);
         }
       } catch (error) {
         console.error('Error loading videos:', error);
