@@ -35,8 +35,17 @@
 <body>
     <h1>Проверка звука в видео</h1>
     
+    <div style="margin-bottom: 20px;">
+        <label for="videoSelect"><strong>Выберите видео:</strong></label><br>
+        <select id="videoSelect" onchange="changeVideo()" style="padding: 8px; font-size: 16px; margin-top: 10px;">
+            <option value="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/videos/20251222_150732_Avatar_IV_Video_(1).webm">Avatar</option>
+            <option value="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/videos/20251222_093451_селфи.webm">Селфи со звездой</option>
+            <option value="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/videos/20251222_093302_селфи.webm">Селфи (старое)</option>
+        </select>
+    </div>
+    
     <video id="testVideo" controls>
-        <source src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/videos/20251222_150732_Avatar_IV_Video_(1).webm" type="video/webm">
+        <source id="videoSource" src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/videos/20251222_150732_Avatar_IV_Video_(1).webm" type="video/webm">
     </video>
     
     <div class="controls">
@@ -97,6 +106,14 @@
             video.volume = vol;
             video.muted = false;
             updateInfo();
+        }
+        
+        function changeVideo() {
+            const select = document.getElementById('videoSelect');
+            const videoSource = document.getElementById('videoSource');
+            videoSource.src = select.value;
+            video.load();
+            video.play();
         }
         
         // Обновляем информацию каждую секунду во время воспроизведения
