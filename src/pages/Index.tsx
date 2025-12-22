@@ -1497,7 +1497,7 @@ const Index = () => {
                     />
                   );
                 })}
-                <div className="absolute bottom-20 left-4 right-4 z-20 flex items-center gap-3 bg-black/60 backdrop-blur-sm p-3 rounded-lg sm:hidden">
+                <div className="absolute bottom-20 left-4 right-4 z-20 flex items-center gap-3 bg-black/60 backdrop-blur-sm p-3 rounded-lg">
                   <button
                     onClick={() => {
                       setVideoMuted(!videoMuted);
