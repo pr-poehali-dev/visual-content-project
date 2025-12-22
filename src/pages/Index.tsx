@@ -715,7 +715,6 @@ const Index = () => {
                   {(item as any).isVideo ? (
                     <video 
                       src={item.image} 
-                      muted
                       loop
                       playsInline
                       className="w-full h-full object-cover"
