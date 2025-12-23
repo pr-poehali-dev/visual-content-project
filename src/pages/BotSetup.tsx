@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -19,6 +20,7 @@ interface WebhookInfo {
 
 const BotSetup = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [botToken, setBotToken] = useState('');
   const [webhookInfo, setWebhookInfo] = useState<WebhookInfo | null>(null);
   const [loading, setLoading] = useState(false);
@@ -138,6 +140,14 @@ const BotSetup = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 p-8">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/')}
+            className="mb-4"
+          >
+            <Icon name="ArrowLeft" size={20} className="mr-2" />
+            На главную
+          </Button>
           <h1 className="text-4xl font-bold mb-2">🤖 Настройка Telegram Бота</h1>
           <p className="text-gray-600">Установка и проверка webhook</p>
         </div>
