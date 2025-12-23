@@ -8,10 +8,11 @@ from datetime import datetime
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
-    Управляет видео: загрузка (POST), получение списка (GET), изменение видимости (PUT)
+    Управляет видео: загрузка (POST), получение списка (GET), изменение видимости (PUT), удаление (DELETE)
     Args: event - dict с httpMethod, body, queryStringParameters
           POST body: fileName, fileData, contentType, title
           PUT body: videoId, isVisible
+          DELETE query: videoId - ID видео для удаления
           GET query: all=true для получения всех видео включая скрытые
           context - объект с request_id и другими атрибутами
     Returns: HTTP response с результатом операции
@@ -23,7 +24,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Max-Age': '86400'
             },
@@ -141,6 +142,96 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 'body': json.dumps({
                     'success': True,
                     'message': 'Visibility updated'
+                }),
+                'isBase64Encoded': False
+            }
+        except Exception as e:
+            return {
+                'statusCode': 500,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({
+                    'success': False,
+                    'error': str(e)
+                }),
+                'isBase64Encoded': False
+            }
+    
+    # DELETE - удалить видео
+    if method == 'DELETE':
+        try:
+            query_params = event.get('queryStringParameters', {})
+            video_id = query_params.get('videoId') if query_params else None
+            
+            if not video_id:
+                return {
+                    'statusCode': 400,
+                    'headers': {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    'body': json.dumps({
+                        'success': False,
+                        'error': 'videoId is required'
+                    }),
+                    'isBase64Encoded': False
+                }
+            
+            conn = psycopg2.connect(os.environ['DATABASE_URL'])
+            cursor = conn.cursor()
+            
+            # Get video URL before deleting
+            cursor.execute("SELECT url FROM videos WHERE id = %s", (video_id,))
+            result = cursor.fetchone()
+            
+            if not result:
+                cursor.close()
+                conn.close()
+                return {
+                    'statusCode': 404,
+                    'headers': {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    'body': json.dumps({
+                        'success': False,
+                        'error': 'Video not found'
+                    }),
+                    'isBase64Encoded': False
+                }
+            
+            video_url = result[0]
+            
+            # Delete from database
+            cursor.execute("DELETE FROM videos WHERE id = %s", (video_id,))
+            conn.commit()
+            cursor.close()
+            conn.close()
+            
+            # Try to delete from S3 (optional, don't fail if it doesn't work)
+            try:
+                if 'bucket/' in video_url:
+                    s3_key = video_url.split('bucket/')[1]
+                    s3 = boto3.client('s3',
+                        endpoint_url='https://bucket.poehali.dev',
+                        aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+                        aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
+                    )
+                    s3.delete_object(Bucket='files', Key=s3_key)
+            except:
+                pass  # Ignore S3 deletion errors
+            
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({
+                    'success': True,
+                    'message': 'Video deleted successfully'
                 }),
                 'isBase64Encoded': False
             }

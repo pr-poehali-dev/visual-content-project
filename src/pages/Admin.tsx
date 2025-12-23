@@ -260,6 +260,36 @@ const Admin = () => {
     }
   };
 
+  const deleteVideo = async (videoId: number, title: string) => {
+    if (!confirm(`Удалить видео "${title}"? Это действие необратимо.`)) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${funcUrls['upload-video']}?videoId=${videoId}`, {
+        method: 'DELETE'
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast({
+          title: '🗑️ Видео удалено',
+          description: 'Файл удалён из базы и хранилища'
+        });
+        loadAllVideos();
+      } else {
+        throw new Error(result.error || 'Ошибка удаления');
+      }
+    } catch (error) {
+      toast({
+        title: '❌ Ошибка',
+        description: error instanceof Error ? error.message : 'Не удалось удалить видео',
+        variant: 'destructive'
+      });
+    }
+  };
+
   useEffect(() => {
     loadAllVideos();
   }, []);
@@ -447,6 +477,13 @@ const Admin = () => {
                         onClick={() => window.open(video.media, '_blank')}
                       >
                         <Icon name="ExternalLink" size={16} />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        onClick={() => deleteVideo(video.id, video.title)}
+                      >
+                        <Icon name="Trash2" size={16} />
                       </Button>
                     </div>
                   </div>
