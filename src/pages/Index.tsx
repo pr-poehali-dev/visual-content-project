@@ -122,11 +122,6 @@ const Index = () => {
   ];
 
   const neuroPhotos = [
-    { title: 'Ночной городской стиль', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/621810d3-f753-42ec-adc2-317ab1640bf5.jpeg', type: 'image' },
-    { title: 'Романтичная пара', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/438721d9-e592-45bd-86ab-5c3ea6695203.jpeg', type: 'image' },
-    { title: 'Доброе утро', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/1893d101-1455-4409-aff5-73a76de10dd8.jpeg', type: 'image' },
-    { title: 'Зимняя уютная фотосессия', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/a91c8902-91e0-40d4-b380-115804c1f4ce.jpeg', type: 'image' },
-    { title: 'Горный портрет', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/66cc7d7e-1d62-4ed7-99b0-d65977fe3679.jpeg', type: 'image' },
     { title: 'Fashion-минимализм', media: 'https://cdn.poehali.dev/files/85226719-576c-41a5-83e7-3350b31a11d6.jpeg', type: 'image' },
     { title: 'Рождественская элегантность', media: 'https://cdn.poehali.dev/files/7c57b981-1a76-45da-9aa3-62be985a95c3.jpeg', type: 'image' },
     { title: 'Весенняя оранжерея', media: 'https://cdn.poehali.dev/files/800d83ff-97c4-435d-a060-ffcca6f5d16d.jpeg', type: 'image' },
