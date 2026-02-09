@@ -346,18 +346,13 @@ const Index = () => {
     setIsSubmitting(true);
 
     try {
-      console.log('Отправка формы:', formData);
-      console.log('URL функции:', funcUrls['contact-form']);
-      
       const response = await fetch(funcUrls['contact-form'], {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
-      console.log('Статус ответа:', response.status);
       const result = await response.json();
-      console.log('Ответ сервера:', result);
 
       if (response.ok && result.success) {
         toast({
@@ -375,7 +370,6 @@ const Index = () => {
         });
       }
     } catch (error: unknown) {
-      console.error('Ошибка отправки формы:', error);
       toast({
         title: t.form.errorTitle,
         description: t.form.errorDescription,
