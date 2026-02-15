@@ -3,9 +3,6 @@ export const translations = {
     hero: {
       title: 'Нейрофотосессия и AI фото онлайн 👋',
       subtitle: 'Создайте AI стикеры для бизнеса, нейрофото и фото товаров для Wildberries — быстро, без VPN, оплата из России!',
-      badge: 'AI фотосессия онлайн',
-      cta: 'Начать проект',
-      portfolio: 'Посмотреть примеры',
       btnStickers: 'Стикеры',
       btnAiPhoto: 'AI-фото',
       btnCalculator: 'Калькулятор',
@@ -13,10 +10,6 @@ export const translations = {
     },
     quiz: {
       title: 'Давайте найдём ваше идеальное решение 🎯',
-      subtitle: 'Всего 3 вопроса',
-      step: 'Шаг',
-      complete: 'Отлично! Теперь я знаю, что вам нужно',
-      completeText: 'Оставьте заявку, и мы свяжемся с вами в ближайшее время',
       question1: 'Где ваша аудитория?',
       options1: ['Telegram', 'VK', 'Instagram*', 'Везде'],
       reactions1: {
@@ -63,15 +56,6 @@ export const translations = {
     },
     portfolio: {
       title: 'Примеры работ: нейрофото, стикеры, фото товаров 🎨',
-      subtitle: 'Посмотрите наши реализованные проекты',
-      filters: {
-        all: 'Все',
-        neuro: 'Нейрофото',
-        stickers: 'Стикеры',
-        ecommerce: 'E-commerce',
-        fashion: 'Fashion',
-        videos: 'Видео'
-      },
       filterAll: '🎨 Все',
       filterStickers: '💬 Стикеры',
       filterNeuro: '📸 Нейрофото',
@@ -87,30 +71,10 @@ export const translations = {
       videosTitle: 'Видео примеры работ'
     },
     reviews: {
-      title: 'Что говорят клиенты ⭐',
-      subtitle: 'Реальные отзывы наших клиентов'
+      title: 'Что говорят клиенты ⭐'
     },
     faq: {
       title: 'Вопросы о AI фотосессии и стикерах ❓',
-      subtitle: 'Ответы на часто задаваемые вопросы',
-      items: [
-        {
-          question: 'Сколько времени занимает нейрофотосессия и создание стикеров?',
-          answer: 'AI фотосессия онлайн и генератор стикеров — обычно 24-72 часа в зависимости от сложности. Быстрая генерация!'
-        },
-        {
-          question: 'Можно ли использовать для коммерческих проектов?',
-          answer: 'Да, вы получаете полные права на коммерческое использование.'
-        },
-        {
-          question: 'В каких форматах вы отдаёте файлы?',
-          answer: 'PNG, WebP и по запросу любые нужные форматы. Всё оптимизировано для соцсетей.'
-        },
-        {
-          question: 'Подходит ли фото товаров для Wildberries и Ozon?',
-          answer: 'Да! Предметная съемка для маркетплейсов и фото товаров для Wildberries, Ozon, Яндекс.Маркета — каталожная съемка товаров для интернет-магазинов.'
-        }
-      ],
       q1: 'Сколько времени занимает нейрофотосессия и создание стикеров?',
       a1: 'AI фотосессия онлайн и генератор стикеров — обычно 24-72 часа в зависимости от сложности. Быстрая генерация!',
       v1: 'Но обычно я справляюсь быстрее! ⚡',
@@ -147,41 +111,27 @@ export const translations = {
     },
     form: {
       title: 'Заказать визуальный контент',
-      name: 'Ваше имя',
-      namePlaceholder: 'Иван Иванов',
-      contact: 'Контакт (email или телефон)',
-      contactPlaceholder: 'ivan@example.com',
-      service: 'Какая услуга вас интересует?',
-      servicePlaceholder: 'Выберите услугу',
-      message: 'Сообщение',
-      messagePlaceholder: 'Расскажите о вашем проекте...',
-      privacy: 'Я согласен на',
-      privacyLink: 'обработку персональных данных',
-      submit: 'Отправить заявку',
-      submitting: 'Отправка...',
-      successTitle: '✅ Заявка отправлена!',
-      successDescription: 'Мы свяжемся с вами в ближайшее время',
-      errorTitle: '❌ Ошибка',
-      errorDescription: 'Не удалось отправить заявку. Попробуйте позже.',
       nameLabel: 'Ваше имя *',
+      namePlaceholder: 'Иван Иванов',
       contactLabel: 'Контакт (email или телефон) *',
+      contactPlaceholder: 'ivan@example.com',
       serviceLabel: 'Какая услуга вас интересует? *',
+      servicePlaceholder: 'Выберите услугу',
       serviceStickers: '🎨 Стикеры',
       serviceNeuro: '📸 Нейрофотосессии',
       serviceFull: '💼 Полный пакет',
       messageLabel: 'Сообщение',
+      messagePlaceholder: 'Расскажите о вашем проекте...',
+      privacyText: 'Я согласен на',
+      privacyLink: 'обработку персональных данных',
       btnSubmit: 'Отправить заявку',
-      btnSubmitting: 'Отправка...'
+      btnSubmitting: 'Отправка...',
+      successTitle: '✅ Заявка отправлена!',
+      successDescription: 'Мы свяжемся с вами в ближайшее время',
+      errorTitle: '❌ Ошибка',
+      errorDescription: 'Не удалось отправить заявку. Попробуйте позже.'
     },
     footer: {
-      description: 'AI фотосессия и стикеры для вашего бизнеса',
-      links: 'Ссылки',
-      portfolio: 'Портфолио',
-      reviews: 'Отзывы',
-      faq: 'FAQ',
-      contact: 'Контакты',
-      followUs: 'Мы в соцсетях',
-      rights: '© 2024 Vizi Studio. Все права защищены.',
       copyright: '© 2024 Vizi Studio. Все права защищены.',
       privacyPolicy: 'Политика конфиденциальности',
       disclaimer: '* Instagram и Facebook принадлежат компании Meta Platforms Inc., которая признана экстремистской организацией и запрещена на территории Российской Федерации'
@@ -202,36 +152,12 @@ export const translations = {
       reviews: '⭐ Отзывы',
       faq: '❓ FAQ',
       startProject: '🚀 Начать проект'
-    },
-    nav: {
-      portfolio: 'Портфолио',
-      reviews: 'Отзывы',
-      faq: 'FAQ',
-      contact: 'Контакты',
-      order: 'Оставить заявку'
-    },
-    stats: {
-      clients: 'Клиентов',
-      projects: 'Проектов',
-      delivery: 'Срок',
-      rating: 'Рейтинг'
-    },
-    contact: {
-      title: 'Свяжитесь с нами',
-      subtitle: 'Напишите нам удобным способом или оставьте заявку'
-    },
-    privacy: {
-      title: 'Политика конфиденциальности',
-      content: 'Мы обрабатываем ваши персональные данные в соответствии с законодательством РФ. Данные используются только для связи с вами и не передаются третьим лицам.'
     }
   },
   en: {
     hero: {
       title: 'AI Photo Session & AI Photos Online 👋',
       subtitle: 'Create AI stickers for business, neuro photos and product photos for Wildberries — fast, no VPN, payment from Russia!',
-      badge: 'AI Photo Session Online',
-      cta: 'Start Project',
-      portfolio: 'View Examples',
       btnStickers: 'Stickers',
       btnAiPhoto: 'AI Photos',
       btnCalculator: 'Calculator',
@@ -239,10 +165,6 @@ export const translations = {
     },
     quiz: {
       title: "Let's find your perfect solution 🎯",
-      subtitle: 'Just 3 questions',
-      step: 'Step',
-      complete: 'Great! Now I know what you need',
-      completeText: 'Leave a request and we will contact you soon',
       question1: 'Where is your audience?',
       options1: ['Telegram', 'VK', 'Instagram*', 'Everywhere'],
       reactions1: {
@@ -289,15 +211,6 @@ export const translations = {
     },
     portfolio: {
       title: 'Portfolio: neuro photos, stickers, product photos 🎨',
-      subtitle: 'Check out our completed projects',
-      filters: {
-        all: 'All',
-        neuro: 'Neuro Photos',
-        stickers: 'Stickers',
-        ecommerce: 'E-commerce',
-        fashion: 'Fashion',
-        videos: 'Videos'
-      },
       filterAll: '🎨 All',
       filterStickers: '💬 Stickers',
       filterNeuro: '📸 Neuro Photos',
@@ -313,30 +226,10 @@ export const translations = {
       videosTitle: 'Video Examples'
     },
     reviews: {
-      title: 'What clients say ⭐',
-      subtitle: 'Real reviews from our clients'
+      title: 'What clients say ⭐'
     },
     faq: {
       title: 'Questions about AI photo sessions and stickers ❓',
-      subtitle: 'Answers to frequently asked questions',
-      items: [
-        {
-          question: 'How long does AI photo session and sticker creation take?',
-          answer: 'AI photo session online and sticker generator — usually 24-72 hours depending on complexity. Fast generation!'
-        },
-        {
-          question: 'Can I use for commercial projects?',
-          answer: 'Yes, you get full commercial use rights.'
-        },
-        {
-          question: 'What file formats do you provide?',
-          answer: 'PNG, WebP and any needed formats on request. Everything optimized for social media.'
-        },
-        {
-          question: 'Are product photos suitable for Wildberries and Ozon?',
-          answer: 'Yes! Product photography for marketplaces and product photos for Wildberries, Ozon, Yandex.Market — catalog photography for online stores.'
-        }
-      ],
       q1: 'How long does AI photo session and sticker creation take?',
       a1: 'AI photo session online and sticker generator — usually 24-72 hours depending on complexity. Fast generation!',
       v1: 'But I usually manage faster! ⚡',
@@ -373,41 +266,27 @@ export const translations = {
     },
     form: {
       title: 'Order visual content',
-      name: 'Your name',
-      namePlaceholder: 'John Doe',
-      contact: 'Contact (email or phone)',
-      contactPlaceholder: 'john@example.com',
-      service: 'Which service are you interested in?',
-      servicePlaceholder: 'Select service',
-      message: 'Message',
-      messagePlaceholder: 'Tell us about your project...',
-      privacy: 'I agree to',
-      privacyLink: 'personal data processing',
-      submit: 'Submit request',
-      submitting: 'Sending...',
-      successTitle: '✅ Request sent!',
-      successDescription: 'We will contact you soon',
-      errorTitle: '❌ Error',
-      errorDescription: 'Failed to send request. Try again later.',
       nameLabel: 'Your name *',
+      namePlaceholder: 'John Doe',
       contactLabel: 'Contact (email or phone) *',
+      contactPlaceholder: 'john@example.com',
       serviceLabel: 'Which service are you interested in? *',
+      servicePlaceholder: 'Select service',
       serviceStickers: '🎨 Stickers',
       serviceNeuro: '📸 AI Photo Sessions',
       serviceFull: '💼 Full Package',
       messageLabel: 'Message',
+      messagePlaceholder: 'Tell us about your project...',
+      privacyText: 'I agree to',
+      privacyLink: 'personal data processing',
       btnSubmit: 'Submit request',
-      btnSubmitting: 'Sending...'
+      btnSubmitting: 'Sending...',
+      successTitle: '✅ Request sent!',
+      successDescription: 'We will contact you soon',
+      errorTitle: '❌ Error',
+      errorDescription: 'Failed to send request. Try again later.'
     },
     footer: {
-      description: 'AI photo sessions and stickers for your business',
-      links: 'Links',
-      portfolio: 'Portfolio',
-      reviews: 'Reviews',
-      faq: 'FAQ',
-      contact: 'Contact',
-      followUs: 'Follow Us',
-      rights: '© 2024 Vizi Studio. All rights reserved.',
       copyright: '© 2024 Vizi Studio. All rights reserved.',
       privacyPolicy: 'Privacy Policy',
       disclaimer: '* Instagram and Facebook belong to Meta Platforms Inc., which is recognized as an extremist organization and banned in the Russian Federation'
@@ -428,27 +307,6 @@ export const translations = {
       reviews: '⭐ Reviews',
       faq: '❓ FAQ',
       startProject: '🚀 Start Project'
-    },
-    nav: {
-      portfolio: 'Portfolio',
-      reviews: 'Reviews',
-      faq: 'FAQ',
-      contact: 'Contact',
-      order: 'Submit Request'
-    },
-    stats: {
-      clients: 'Clients',
-      projects: 'Projects',
-      delivery: 'Delivery',
-      rating: 'Rating'
-    },
-    contact: {
-      title: 'Contact Us',
-      subtitle: 'Write to us in a convenient way or leave a request'
-    },
-    privacy: {
-      title: 'Privacy Policy',
-      content: 'We process your personal data in accordance with the laws of the Russian Federation. Data is used only to contact you and is not transferred to third parties.'
     }
   }
 };
