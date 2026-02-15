@@ -20,9 +20,9 @@ interface Translation {
     options1: string[];
     options2: string[];
     options3: string[];
-    reactions1: string[];
-    reactions2: string[];
-    reactions3: string[];
+    reactions1: Record<string, string>;
+    reactions2: Record<string, string>;
+    reactions3: Record<string, string>;
   };
 }
 
@@ -242,7 +242,7 @@ export default function HeroSection({
                         <div className="flex-1">
                           <p className="text-sm font-medium text-primary mb-1">Vizi:</p>
                           <p className="text-sm text-muted-foreground">
-                            {quizQuestions[quizStep].reactions[quizQuestions[quizStep].options.indexOf(quizAnswers[quizStep])]}
+                            {quizQuestions[quizStep].reactions[quizAnswers[quizStep]]}
                           </p>
                         </div>
                       </div>
