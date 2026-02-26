@@ -12,6 +12,7 @@ interface PortfolioSectionProps {
       title: string;
       subtitle: string;
       filters: { all: string; neuro: string; stickers: string; ecommerce: string; fashion: string; videos: string };
+      categoryDescriptions: { neuro: string; stickers: string; ecommerce: string; fashion: string; videos: string; all?: string };
     };
   };
 }
@@ -283,7 +284,7 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{t.portfolio.subtitle}</p>
         </div>
 
-        <div className="flex flex-wrap gap-3 justify-center mb-12">
+        <div className="flex flex-wrap gap-3 justify-center mb-6">
           {[
             { key: 'all', label: t.portfolio.filters.all, icon: 'Grid' },
             { key: 'neuro', label: t.portfolio.filters.neuro, icon: 'User' },
@@ -303,6 +304,13 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
             </Button>
           ))}
         </div>
+
+        {activeFilter !== 'all' && t.portfolio.categoryDescriptions[activeFilter as keyof typeof t.portfolio.categoryDescriptions] && (
+          <p className="text-center text-sm text-muted-foreground max-w-xl mx-auto mb-8">
+            {t.portfolio.categoryDescriptions[activeFilter as keyof typeof t.portfolio.categoryDescriptions]}
+          </p>
+        )}
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPortfolio.map((item, index) => (
@@ -345,7 +353,7 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
                   ) : (
                     <img 
                       src={item.image} 
-                      alt={item.title}
+                      alt={`${item.title} — ${item.category === 'neuro' ? 'нейрофотосессия онлайн' : item.category === 'stickers' ? 'AI стикеры для бизнеса' : item.category === 'ecommerce' ? 'фото товаров для маркетплейсов' : 'fashion стикеры'}`}
                       className="w-full h-full object-cover transition-transform group-hover:scale-105"
                     />
                   )}

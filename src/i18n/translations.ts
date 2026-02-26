@@ -55,7 +55,8 @@ export const translations = {
       viziMessage: 'Впечатляет, правда? 💰'
     },
     portfolio: {
-      title: 'Примеры работ: нейрофото, стикеры, фото товаров 🎨',
+      title: 'Нейрофотосессия, стикеры и фото товаров: примеры работ',
+      subtitle: 'Реальные проекты: AI фотосессии онлайн, генератор стикеров нейросеть, предметная съемка для Wildberries и Ozon',
       filterAll: '🎨 Все',
       filterStickers: '💬 Стикеры',
       filterNeuro: '📸 Нейрофото',
@@ -68,7 +69,22 @@ export const translations = {
       neuroTitle: 'Нейрофотосессия онлайн',
       fashionTitle: 'Fashion стикеры',
       ecommerceTitle: 'Фото товаров для Wildberries',
-      videosTitle: 'Видео примеры работ'
+      videosTitle: 'Видео примеры работ',
+      filters: {
+        all: '🎨 Все работы',
+        neuro: '📸 Нейрофотосессия',
+        stickers: '💬 Стикеры для бизнеса',
+        ecommerce: '🛍️ Фото для маркетплейсов',
+        fashion: '👔 Fashion',
+        videos: '🎬 Видео'
+      },
+      categoryDescriptions: {
+        neuro: 'AI фотосессия онлайн — реалистичные портреты без фотографа. Нейрофото по вашему фото, готово за 24–48 часов.',
+        stickers: 'Брендовые стикеры для бизнеса нейросетью. Стикерпак на заказ для Telegram, корпоративный брендинг.',
+        ecommerce: 'Предметная съемка для маркетплейсов: фото товаров для Wildberries, Ozon, Яндекс.Маркета. Каталожные фото без студии.',
+        fashion: 'Fashion стикеры и AI-лукбуки для брендов одежды. Съемка одежды для каталога без фотографа.',
+        videos: 'Видео-презентации AI-контента: анимированные стикеры, нейровидео для соцсетей и маркетплейсов.'
+      }
     },
     reviews: {
       title: 'Что говорят клиенты ⭐'
@@ -210,7 +226,8 @@ export const translations = {
       viziMessage: 'Impressive, right? 💰'
     },
     portfolio: {
-      title: 'Portfolio: neuro photos, stickers, product photos 🎨',
+      title: 'AI Photo Sessions, Stickers & Product Photos — Portfolio',
+      subtitle: 'Real projects: AI photo sessions online, neural network sticker generator, product photography for Wildberries and Ozon',
       filterAll: '🎨 All',
       filterStickers: '💬 Stickers',
       filterNeuro: '📸 Neuro Photos',
@@ -223,7 +240,22 @@ export const translations = {
       neuroTitle: 'AI Photo Session Online',
       fashionTitle: 'Fashion Stickers',
       ecommerceTitle: 'Product Photos for Wildberries',
-      videosTitle: 'Video Examples'
+      videosTitle: 'Video Examples',
+      filters: {
+        all: '🎨 All works',
+        neuro: '📸 AI Photo Session',
+        stickers: '💬 Business Stickers',
+        ecommerce: '🛍️ Marketplace Photos',
+        fashion: '👔 Fashion',
+        videos: '🎬 Video'
+      },
+      categoryDescriptions: {
+        neuro: 'AI photo session online — realistic portraits without a photographer. Neuro photos from your photo, ready in 24–48 hours.',
+        stickers: 'Branded business stickers via AI. Custom sticker packs for Telegram, corporate branding.',
+        ecommerce: 'Product photography for marketplaces: photos for Wildberries, Ozon, Yandex.Market. Catalog photos without a studio.',
+        fashion: 'Fashion stickers and AI lookbooks for clothing brands. Outfit photography for catalogs without a photographer.',
+        videos: 'Video presentations of AI content: animated stickers, neuro-video for social media and marketplaces.'
+      }
     },
     reviews: {
       title: 'What clients say ⭐'

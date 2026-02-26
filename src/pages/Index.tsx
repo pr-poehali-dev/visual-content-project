@@ -1162,7 +1162,7 @@ const Index = () => {
                   <img 
                     key={index}
                     src={item.media} 
-                    alt={item.title}
+                    alt={`${item.title} — нейрофотосессия онлайн, AI портрет`}
                     loading="eager"
                     className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                       index === currentNeuroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
@@ -1247,7 +1247,7 @@ const Index = () => {
                   <img 
                     key={index}
                     src={item.media} 
-                    alt={item.title}
+                    alt={`${item.title} — AI стикеры для бизнеса, генератор стикеров нейросеть`}
                     loading="eager"
                     className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                       index === currentStickerIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
@@ -1332,7 +1332,7 @@ const Index = () => {
                   <img 
                     key={index}
                     src={item.media} 
-                    alt={item.title}
+                    alt={`${item.title} — предметная съемка для маркетплейсов, фото товаров для Wildberries`}
                     loading="eager"
                     className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                       index === currentEcommerceIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
@@ -1417,7 +1417,7 @@ const Index = () => {
                   <img 
                     key={index}
                     src={item.media} 
-                    alt={item.title}
+                    alt={`${item.title} — fashion стикеры, AI лукбук для бренда одежды`}
                     loading="eager"
                     className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                       index === currentFashionIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
