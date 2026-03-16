@@ -1412,22 +1412,23 @@ const Index = () => {
               {[
                 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/746e8a99-f362-4cb3-b216-46dc142e3719.mp4',
                 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/1776d423-5d72-4034-ba80-3f14aef565c6.mp4',
-              ].map((src, i) => (
+                'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/62ea70ac-bd5d-4945-aef3-f2cffa77dc22.mp4',
+              ].map((src, i, arr) => (
                 <video key={i} src={src} controls autoPlay={i === currentVideosIndex} loop playsInline
                   className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${i === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                 />
               ))}
-              <button onClick={() => setCurrentVideosIndex(v => (v - 1 + 2) % 2)}
+              <button onClick={() => setCurrentVideosIndex(v => (v - 1 + 3) % 3)}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center z-20">
                 <Icon name="ChevronLeft" size={28} />
               </button>
-              <button onClick={() => setCurrentVideosIndex(v => (v + 1) % 2)}
+              <button onClick={() => setCurrentVideosIndex(v => (v + 1) % 3)}
                 className="absolute right-2 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center z-20">
                 <Icon name="ChevronRight" size={28} />
               </button>
             </div>
             <div className="flex gap-2 justify-center mt-4">
-              {[0, 1].map(i => (
+              {[0, 1, 2].map(i => (
                 <button key={i} onClick={() => setCurrentVideosIndex(i)}
                   className={`h-3 rounded-full transition-all ${i === currentVideosIndex ? 'bg-primary w-10' : 'bg-gray-300 w-3'}`}
                 />
