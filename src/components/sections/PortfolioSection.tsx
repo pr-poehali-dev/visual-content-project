@@ -107,7 +107,6 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
   const videoWorks = [
     { title: 'AI Видео', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/746e8a99-f362-4cb3-b216-46dc142e3719.mp4', type: 'video' },
     { title: 'AI Видео 2', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/1776d423-5d72-4034-ba80-3f14aef565c6.mp4', type: 'video' },
-    { title: 'AI Видео 3', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/62ea70ac-bd5d-4945-aef3-f2cffa77dc22.mp4', type: 'video' },
     { title: 'AI Видео 4', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/d6d6cc7a-79ed-459f-910b-9eea00687a59.mp4', type: 'video' },
     { title: 'AI Видео 5', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/a5f91017-5875-49b7-92bd-d020a79f421a.mp4', type: 'video' },
     { title: 'Aespa Stickers', media: 'https://cdn.poehali.dev/files/a51eed36-ffa7-45c8-a6ba-6afbb08e1e87.mp4', type: 'video' },
