@@ -40,6 +40,7 @@ const Index = () => {
   const [currentEcommerceIndex, setCurrentEcommerceIndex] = useState(0);
   const [fashionGalleryOpen, setFashionGalleryOpen] = useState(false);
   const [currentFashionIndex, setCurrentFashionIndex] = useState(0);
+  const [videosGalleryOpen, setVideosGalleryOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [touchStartY, setTouchStartY] = useState(0);
@@ -179,6 +180,7 @@ const Index = () => {
     { category: 'neuro', emoji: '📸', titleKey: 'neuroTitle', gradient: 'from-teal-400 to-cyan-500', image: 'https://cdn.poehali.dev/files/895620e9-85fc-4510-9fe6-00cee5ccc347.jpeg', hasGallery: true },
     { category: 'fashion', emoji: '👗', titleKey: 'fashionTitle', gradient: 'from-emerald-400 to-teal-400', image: 'https://cdn.poehali.dev/files/5833a839-e1a9-4a63-b2a0-e6dc71fd9c5c.jpeg', hasGallery: true },
     { category: 'ecommerce', emoji: '🛒', titleKey: 'ecommerceTitle', gradient: 'from-indigo-500 to-blue-600', image: 'https://cdn.poehali.dev/files/freepik__-stormshield-pro-08-70-stormshield-pro-10-__95475.jpeg', hasGallery: true },
+    { category: 'videos', emoji: '🎬', titleKey: 'videosTitle', gradient: 'from-purple-400 to-pink-500', image: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/746e8a99-f362-4cb3-b216-46dc142e3719.mp4', hasGallery: true, isVideo: true },
   ];
 
   const handleQuizAnswer = (answer: string) => {
@@ -1390,6 +1392,36 @@ const Index = () => {
             </div>
           </div>
           <Button onClick={() => setFashionGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
+        </DialogContent>
+      </Dialog>
+
+      {/* Videos Gallery Dialog */}
+      <Dialog open={videosGalleryOpen} onOpenChange={setVideosGalleryOpen}>
+        <DialogContent className="max-w-[100vw] sm:max-w-3xl h-[100dvh] sm:h-auto mx-0 sm:mx-4 p-0 sm:p-6 border-0 sm:border gap-0 flex flex-col">
+          <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
+            <div className="flex items-center justify-between">
+              <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🎬 AI Видео</DialogTitle>
+              <button
+                onClick={() => setVideosGalleryOpen(false)}
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
+              >
+                <Icon name="X" size={20} className="text-white sm:text-foreground" />
+              </button>
+            </div>
+          </DialogHeader>
+          <div className="relative flex-1 flex flex-col min-h-0">
+            <div className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px] flex items-center justify-center">
+              <video
+                src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/746e8a99-f362-4cb3-b216-46dc142e3719.mp4"
+                controls
+                autoPlay
+                loop
+                playsInline
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          <Button onClick={() => setVideosGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
         </DialogContent>
       </Dialog>
 
