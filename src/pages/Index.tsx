@@ -41,6 +41,7 @@ const Index = () => {
   const [fashionGalleryOpen, setFashionGalleryOpen] = useState(false);
   const [currentFashionIndex, setCurrentFashionIndex] = useState(0);
   const [videosGalleryOpen, setVideosGalleryOpen] = useState(false);
+  const [currentVideosIndex, setCurrentVideosIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [touchStartY, setTouchStartY] = useState(0);
@@ -1401,24 +1402,36 @@ const Index = () => {
           <DialogHeader className="absolute top-0 left-0 right-0 z-30 bg-black/80 backdrop-blur-md p-3 sm:relative sm:bg-transparent sm:backdrop-blur-none sm:pb-2">
             <div className="flex items-center justify-between">
               <DialogTitle className="text-sm sm:text-2xl text-white sm:text-foreground">🎬 AI Видео</DialogTitle>
-              <button
-                onClick={() => setVideosGalleryOpen(false)}
-                className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation"
-              >
+              <button onClick={() => setVideosGalleryOpen(false)} className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all active:scale-90 touch-manipulation">
                 <Icon name="X" size={20} className="text-white sm:text-foreground" />
               </button>
             </div>
           </DialogHeader>
           <div className="relative flex-1 flex flex-col min-h-0">
-            <div className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px] flex items-center justify-center">
-              <video
-                src="https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/746e8a99-f362-4cb3-b216-46dc142e3719.mp4"
-                controls
-                autoPlay
-                loop
-                playsInline
-                className="w-full h-full object-contain"
-              />
+            <div className="relative w-full flex-1 overflow-hidden bg-black min-h-[400px] sm:min-h-[500px]">
+              {[
+                'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/746e8a99-f362-4cb3-b216-46dc142e3719.mp4',
+                'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/1776d423-5d72-4034-ba80-3f14aef565c6.mp4',
+              ].map((src, i) => (
+                <video key={i} src={src} controls autoPlay={i === currentVideosIndex} loop playsInline
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${i === currentVideosIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                />
+              ))}
+              <button onClick={() => setCurrentVideosIndex(v => (v - 1 + 2) % 2)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center z-20">
+                <Icon name="ChevronLeft" size={28} />
+              </button>
+              <button onClick={() => setCurrentVideosIndex(v => (v + 1) % 2)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-14 h-14 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center z-20">
+                <Icon name="ChevronRight" size={28} />
+              </button>
+            </div>
+            <div className="flex gap-2 justify-center mt-4">
+              {[0, 1].map(i => (
+                <button key={i} onClick={() => setCurrentVideosIndex(i)}
+                  className={`h-3 rounded-full transition-all ${i === currentVideosIndex ? 'bg-primary w-10' : 'bg-gray-300 w-3'}`}
+                />
+              ))}
             </div>
           </div>
           <Button onClick={() => setVideosGalleryOpen(false)} className="hidden sm:block w-full mt-4 text-sm sm:text-base">{t.gallery.closeBtn}</Button>
