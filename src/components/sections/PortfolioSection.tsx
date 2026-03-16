@@ -1,9 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Slider } from '@/components/ui/slider';
 import Icon from '@/components/ui/icon';
 
 interface PortfolioSectionProps {
@@ -21,7 +20,6 @@ interface PortfolioItem {
   title: string;
   category: string;
   image: string;
-  isVideo?: boolean;
 }
 
 export default function PortfolioSection({ t }: PortfolioSectionProps) {
@@ -34,23 +32,10 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
   const [currentEcommerceIndex, setCurrentEcommerceIndex] = useState(0);
   const [fashionGalleryOpen, setFashionGalleryOpen] = useState(false);
   const [currentFashionIndex, setCurrentFashionIndex] = useState(0);
-  const [videosGalleryOpen, setVideosGalleryOpen] = useState(false);
-  const [currentVideosIndex, setCurrentVideosIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [touchStartY, setTouchStartY] = useState(0);
   const [touchEndY, setTouchEndY] = useState(0);
-  const [videoWorks] = useState<Array<{title: string, media: string, type: string}>>([
-    { title: 'Aespa Stickers', media: 'https://cdn.poehali.dev/files/a51eed36-ffa7-45c8-a6ba-6afbb08e1e87.mp4', type: 'video' },
-    { title: 'SUSHI ROLL', media: 'https://cdn.poehali.dev/files/5c4de9e6-4ee8-48f8-929a-72a1e53db8b5.mp4', type: 'video' },
-    { title: 'TATTOO', media: 'https://cdn.poehali.dev/files/05d651a8-c5cd-4d66-9aee-e04be27f0c8d.mp4', type: 'video' },
-    { title: 'Anya stickers', media: 'https://cdn.poehali.dev/files/a7c91bcd-70ff-4d90-ab36-94ca6ca94e08.mp4', type: 'video' },
-    { title: 'Winnie Harlow', media: 'https://cdn.poehali.dev/files/c1af5568-3e82-42e3-afb7-9a1a7e15088b.mp4', type: 'video' },
-    { title: 'KW2S', media: 'https://cdn.poehali.dev/files/29c8e0aa-9af9-4ea7-b8a5-7e87f77ce87e.mp4', type: 'video' }
-  ]);
-  const [videoVolume, setVideoVolume] = useState(0.7);
-  const [videoMuted, setVideoMuted] = useState(false);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const neuroPhotos = [
     { title: 'Fashion-минимализм', media: 'https://cdn.poehali.dev/files/85226719-576c-41a5-83e7-3350b31a11d6.jpeg', type: 'image' },
@@ -119,8 +104,7 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
     ...neuroPhotos.map(p => ({ ...p, category: 'neuro', image: p.media })),
     ...stickerPacks.map(p => ({ ...p, category: 'stickers', image: p.media })),
     ...ecommercePhotos.map(p => ({ ...p, category: 'ecommerce', image: p.media })),
-    ...fashionStickers.map(p => ({ ...p, category: 'fashion', image: p.media })),
-    ...videoWorks.map(p => ({ ...p, category: 'videos', image: p.media, isVideo: true }))
+    ...fashionStickers.map(p => ({ ...p, category: 'fashion', image: p.media }))
   ];
 
   const filteredPortfolio = activeFilter === 'all' 
@@ -151,38 +135,6 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
     }
   };
 
-  const handleVolumeChange = (value: number[]) => {
-    const newVolume = value[0];
-    setVideoVolume(newVolume);
-    setVideoMuted(newVolume === 0);
-    videoRefs.current.forEach(video => {
-      if (video) {
-        video.volume = newVolume;
-        video.muted = newVolume === 0;
-      }
-    });
-  };
-
-  const toggleMute = () => {
-    const newMuted = !videoMuted;
-    setVideoMuted(newMuted);
-    videoRefs.current.forEach(video => {
-      if (video) {
-        video.muted = newMuted;
-        if (newMuted) {
-          video.volume = 0;
-        } else {
-          video.volume = videoVolume;
-        }
-      }
-    });
-    if (newMuted) {
-      setVideoVolume(0);
-    } else {
-      setVideoVolume(0.7);
-    }
-  };
-
   const renderGalleryDialog = (
     open: boolean,
     setOpen: (open: boolean) => void,
@@ -198,53 +150,11 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
         onTouchEnd={() => handleTouchEnd('gallery', currentIndex, items.length, setCurrentIndex)}
       >
         <div className="relative w-full h-full flex items-center justify-center">
-          {items[currentIndex].type === 'video' ? (
-            <div className="relative w-full h-full">
-              <video
-                ref={(el) => {
-                  if (el && !videoRefs.current.includes(el)) {
-                    videoRefs.current.push(el);
-                  }
-                }}
-                src={items[currentIndex].media}
-                className="w-full h-full object-contain"
-                controls
-                autoPlay
-                loop
-                playsInline
-                volume={videoVolume}
-                muted={videoMuted}
-                onLoadedMetadata={(e) => {
-                  const video = e.currentTarget;
-                  video.volume = videoVolume;
-                  video.muted = videoMuted;
-                }}
-              />
-              <div className="absolute bottom-20 left-4 right-4 flex items-center space-x-4 bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleMute}
-                  className="text-white hover:bg-white/20"
-                >
-                  <Icon name={videoMuted ? "VolumeX" : "Volume2"} size={20} />
-                </Button>
-                <Slider
-                  value={[videoVolume]}
-                  max={1}
-                  step={0.1}
-                  onValueChange={handleVolumeChange}
-                  className="flex-1"
-                />
-              </div>
-            </div>
-          ) : (
-            <img 
-              src={items[currentIndex].media} 
-              alt={items[currentIndex].title}
-              className="max-w-full max-h-full object-contain"
-            />
-          )}
+          <img 
+            src={items[currentIndex].media} 
+            alt={items[currentIndex].title}
+            className="max-w-full max-h-full object-contain"
+          />
 
           <Button
             variant="ghost"
@@ -290,8 +200,7 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
             { key: 'neuro', label: t.portfolio.filters.neuro, icon: 'User' },
             { key: 'stickers', label: t.portfolio.filters.stickers, icon: 'Sticker' },
             { key: 'ecommerce', label: t.portfolio.filters.ecommerce, icon: 'ShoppingBag' },
-            { key: 'fashion', label: t.portfolio.filters.fashion, icon: 'Shirt' },
-            { key: 'videos', label: t.portfolio.filters.videos, icon: 'Video' }
+            { key: 'fashion', label: t.portfolio.filters.fashion, icon: 'Shirt' }
           ].map(filter => (
             <Button
               key={filter.key}
@@ -299,7 +208,7 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
               onClick={() => setActiveFilter(filter.key)}
               className="transition-all"
             >
-              <Icon name={filter.icon as "Grid" | "User" | "Sticker" | "ShoppingBag" | "Shirt" | "Video"} size={18} className="mr-2" />
+              <Icon name={filter.icon as "Grid" | "User" | "Sticker" | "ShoppingBag" | "Shirt"} size={18} className="mr-2" />
               {filter.label}
             </Button>
           ))}
@@ -330,33 +239,16 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
                 } else if (item.category === 'fashion') {
                   setCurrentFashionIndex(fashionStickers.findIndex(p => p.media === item.image));
                   setFashionGalleryOpen(true);
-                } else if (item.category === 'videos') {
-                  setCurrentVideosIndex(videoWorks.findIndex(p => p.media === item.image));
-                  setVideosGalleryOpen(true);
                 }
               }}
             >
               <CardContent className="p-0 relative">
                 <div className="h-56 sm:h-64 relative">
-                  {item.isVideo ? (
-                    <video 
-                      src={item.image} 
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover"
-                      onMouseEnter={(e) => e.currentTarget.play()}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.pause();
-                        e.currentTarget.currentTime = 0;
-                      }}
-                    />
-                  ) : (
-                    <img 
-                      src={item.image} 
-                      alt={`${item.title} — ${item.category === 'neuro' ? 'нейрофотосессия онлайн' : item.category === 'stickers' ? 'AI стикеры для бизнеса' : item.category === 'ecommerce' ? 'фото товаров для маркетплейсов' : 'fashion стикеры'}`}
-                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                    />
-                  )}
+                  <img 
+                    src={item.image} 
+                    alt={`${item.title} — ${item.category === 'neuro' ? 'нейрофотосессия онлайн' : item.category === 'stickers' ? 'AI стикеры для бизнеса' : item.category === 'ecommerce' ? 'фото товаров для маркетплейсов' : 'fashion стикеры'}`}
+                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                     <div className="text-white">
                       <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
@@ -376,7 +268,6 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
       {renderGalleryDialog(stickerGalleryOpen, setStickerGalleryOpen, stickerPacks, currentStickerIndex, setCurrentStickerIndex)}
       {renderGalleryDialog(ecommerceGalleryOpen, setEcommerceGalleryOpen, ecommercePhotos, currentEcommerceIndex, setCurrentEcommerceIndex)}
       {renderGalleryDialog(fashionGalleryOpen, setFashionGalleryOpen, fashionStickers, currentFashionIndex, setCurrentFashionIndex)}
-      {renderGalleryDialog(videosGalleryOpen, setVideosGalleryOpen, videoWorks, currentVideosIndex, setCurrentVideosIndex)}
     </section>
   );
 }
