@@ -105,6 +105,7 @@ export default function PortfolioSection({ t }: PortfolioSectionProps) {
   ];
 
   const videoWorks = [
+    { title: 'AI Видео', media: 'https://cdn.poehali.dev/projects/a4b74196-9d6f-4de8-becb-0795012f6edd/bucket/746e8a99-f362-4cb3-b216-46dc142e3719.mp4', type: 'video' },
     { title: 'Aespa Stickers', media: 'https://cdn.poehali.dev/files/a51eed36-ffa7-45c8-a6ba-6afbb08e1e87.mp4', type: 'video' },
     { title: 'SUSHI ROLL', media: 'https://cdn.poehali.dev/files/5c4de9e6-4ee8-48f8-929a-72a1e53db8b5.mp4', type: 'video' },
     { title: 'TATTOO', media: 'https://cdn.poehali.dev/files/05d651a8-c5cd-4d66-9aee-e04be27f0c8d.mp4', type: 'video' },
